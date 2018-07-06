@@ -1,0 +1,19 @@
+import firebase from "firebase/app";
+import "firebase/auth";
+
+const config = {
+  apiKey: "AIzaSyBwhp7z1ncfKPKkTBcb5CIZhl4Z3LpVbvs",
+  authDomain: "react-firebase-1e4b3.firebaseapp.com",
+  databaseURL: "https://react-firebase-1e4b3.firebaseio.com",
+  projectId: "react-firebase-1e4b3",
+  storageBucket: "react-firebase-1e4b3.appspot.com",
+  messagingSenderId: "955744531804"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+
+const auth = firebase.auth();
+
+export { auth };
