@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { auth } from "../firebase";
-import * as routes from "../constants/routes";
+import { auth, db } from "../../firebase";
+import * as routes from "../../constants/routes";
 
 const SignUpPage = ({ history }) => {
   return (
@@ -30,16 +30,22 @@ class SignUpForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { email, passwordOne } = this.state;
+    const { username, email, passwordOne } = this.state;
     const { history } = this.props;
     auth
+      // create user in firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
-      })
-      .catch(error => {
-        this.setState(byPropKey("error", error));
+        // create user in own firebase database
+        db.doCreateUser(authUser.user.uid, username, email)
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+            history.push(routes.HOME);
+            console.log(this.state);
+          })
+          .catch(error => {
+            this.setState(byPropKey("error", error));
+          });
       });
     event.preventDefault();
   };
