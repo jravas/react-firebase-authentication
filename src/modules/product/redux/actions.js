@@ -8,17 +8,28 @@ export const addProduct = (name, category) => async dispatch => {
   productsRef.update({ [key]: Product(key, name, category) });
 };
 
-// update Product
-// export const updateProduct = (ProductId, name) => async dispatch => {
-//   categoriesRef.child(ProductId).update(Product(name));
-// };
+//update Product
+export const updateProduct = (productId, name, category) => async dispatch => {
+  // productsRef.child(productId).update(Product(name, category));
+  productsRef.child(productId).update(Product(productId, name, category));
+};
 
 // delete Product
 export const deleteProduct = productId => async dispatch => {
   productsRef.child(productId).remove();
 };
 
-// list categories
+// get product by id
+export const fetchProduct = productId => async dispatch => {
+  productsRef.child(productId).on("value", snapshot => {
+    dispatch({
+      type: FETCH_PRODUCTS,
+      payload: snapshot.val()
+    });
+  });
+};
+
+// list products
 export const fetchProducts = () => async dispatch => {
   productsRef.on("value", snapshot => {
     dispatch({

@@ -15,6 +15,7 @@ import {
 } from "./views";
 // pages
 import ProductsPage from "./modules/product";
+import ProductEdit from "./modules/product/views/ProductEdit";
 // authentication hoc
 import withAuthentication from "./components/withAuthentication";
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route exact path={routes.ACCOUNT} component={AccountPage} />
         <Route exact path={routes.CATEGORIES} component={Categories} />
         <Route exact path={routes.PRODUCTS} component={ProductsPage} />
+        <Route exact path={routes.PRODUCT_EDIT} component={ProductEdit} />
       </main>
     </Router>
   );

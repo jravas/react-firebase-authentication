@@ -5,7 +5,7 @@ import { addProduct } from "../redux/actions";
 import { fetchCategories } from "../../../actions";
 
 class ProductAdd extends Component {
-  state = { name: "", category: "Uncategorised" };
+  state = { name: "", category: "" };
   submitAction = event => {
     const { addProduct } = this.props;
     const { name, category } = this.state;
@@ -19,7 +19,7 @@ class ProductAdd extends Component {
   }
   render() {
     const { categories } = this.props;
-    // const { category, name } = this.state;
+    const { name } = this.state;
     return (
       <div>
         <form onSubmit={this.submitAction}>
@@ -27,23 +27,24 @@ class ProductAdd extends Component {
             <input
               className="form-control"
               type="text"
-              value={this.state.name}
+              value={name}
               onChange={event => this.setState({ name: event.target.value })}
             />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" htmlFor="inputGroupSelect01">
+              <label className="input-group-text" htmlFor="categorySelect">
                 Options
               </label>
             </div>
             <select
               className="custom-select"
+              id="categorySelect"
               onChange={event =>
                 this.setState({ category: event.target.value })
               }
             >
-              <option key="1" value="Uncategorised" selected>
+              <option key="1" defaultValue="Uncategorised">
                 Uncategorised
               </option>
               {categories &&
