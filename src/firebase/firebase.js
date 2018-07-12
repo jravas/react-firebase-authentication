@@ -21,5 +21,6 @@ const auth = firebase.auth();
 const db = firebase.database();
 const dbRef = firebase.database().ref();
 export const categoriesRef = dbRef.child("categories");
+export const productsRef = dbRef.child("products");
 
 export { auth, db };

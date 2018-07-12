@@ -17,12 +17,3 @@ function categoriesReducer(state = INITIAL_STATE, action) {
   }
 }
 export default categoriesReducer;
-
-// export default (state = {}, action) => {
-//   switch (action.type) {
-//     case FETCH_CATEGORIES:
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };

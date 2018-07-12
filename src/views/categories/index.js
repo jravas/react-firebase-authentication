@@ -19,11 +19,10 @@ class Categories extends Component {
     this.setState({ name: "" });
   };
   componentWillMount() {
-    this.props.fetchCategories().then(console.log("test"));
+    this.props.fetchCategories();
   }
   render() {
     const { categories } = this.props;
-    // const { deleteCategory } = this.props;
     return (
       <div className="container">
         <div className="row">
