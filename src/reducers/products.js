@@ -8,6 +8,7 @@ const applySetProducts = (state, action) => ({
 function productsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "PRODUCTS_SET": {
+      console.log("product");
       return applySetProducts(state, action);
     }
     default:

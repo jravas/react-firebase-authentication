@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import AuthUserContext from "../../components/AuthUserContext";
 import SignOutButton from "../../components/SignOut";
 import * as routes from "../../constants/routes";
 
@@ -38,14 +37,17 @@ const NavigationAuth = () => (
           </Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to={routes.CATEGORIES}>
+            Categories
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to={routes.ACCOUNT}>
             Account
           </Link>
         </li>
-        <li className="nav-item">
-          <SignOutButton />
-        </li>
       </ul>
+      <SignOutButton />
     </div>
   </nav>
 );

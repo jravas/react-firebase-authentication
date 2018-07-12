@@ -10,7 +10,8 @@ import {
   SignInPage,
   PasswordForgetPage,
   HomePage,
-  AccountPage
+  AccountPage,
+  Categories
 } from "./views";
 // authentication hoc
 import withAuthentication from "./components/withAuthentication";
@@ -30,6 +31,7 @@ const App = () => {
         />
         <Route exact path={routes.HOME} component={HomePage} />
         <Route exact path={routes.ACCOUNT} component={AccountPage} />
+        <Route exact path={routes.CATEGORIES} component={Categories} />
       </main>
     </Router>
   );
