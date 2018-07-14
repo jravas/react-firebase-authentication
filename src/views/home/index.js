@@ -2,24 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import withAuthorization from "../../components/withAuthorization";
-import { AddProduct, ListProducts } from "../../components/product/";
 import { db } from "../../firebase";
 
 class HomePage extends Component {
   componentDidMount() {
-    const { onSetUsers, onSetProducts } = this.props;
+    const { onSetUsers } = this.props;
     db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
-    db.onceGetProducts().then(snapshot => onSetProducts(snapshot.val()));
   }
   render() {
-    const { users, products } = this.props;
+    const { users } = this.props;
     return (
       <div className="container">
         <h1>Home</h1>
-        <AddProduct />
         <p>The Home Page is accessible by every signed in user.</p>
         {!!users && <UserList users={users} />}
-        {!!products && <ListProducts products={products} />}
       </div>
     );
   }
@@ -34,13 +30,11 @@ const UserList = ({ users }) => (
 );
 
 const mapStateToProps = state => ({
-  users: state.userState.users,
-  products: state.productsState.products
+  users: state.userState.users
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetUsers: users => dispatch({ type: "USERS_SET", users }),
-  onSetProducts: products => dispatch({ type: "PRODUCTS_SET", products })
+  onSetUsers: users => dispatch({ type: "USERS_SET", users })
 });
 
 const authCondition = authUser => !!authUser;

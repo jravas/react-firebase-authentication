@@ -12,12 +12,13 @@ import {
   HomePage,
   AccountPage
 } from "./views";
-// product admin pages
-import ProductsPage from "./modules/product";
-import ProductEdit from "./modules/product/views/ProductEdit";
-// categories admin pages
-import CategoriesPage from "./modules/category";
-import CategoryEdit from "./modules/category/views/CategoryEdit";
+// admin pages
+import {
+  ProductsPage,
+  ProductEdit,
+  CategoriesPage,
+  CategoryEdit
+} from "./modules";
 
 // authentication hoc
 import withAuthentication from "./components/withAuthentication";

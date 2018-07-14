@@ -5,7 +5,6 @@ import SignInPage from "./sign-in";
 import PasswordForgetPage from "./password-forget";
 import HomePage from "./home";
 import AccountPage from "./account";
-import Categories from "./categories";
 
 export {
   Navigation,
@@ -14,6 +13,5 @@ export {
   SignInPage,
   PasswordForgetPage,
   HomePage,
-  AccountPage,
-  Categories
+  AccountPage
 };

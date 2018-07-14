@@ -26,14 +26,9 @@ const NavigationAuth = () => (
 
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <Link className="nav-link" to={routes.HOME}>
-            Home
-          </Link>
-        </li>
         <li className="nav-item">
-          <Link className="nav-link" to={routes.LANDING}>
-            Landing
+          <Link className="nav-link" to={routes.PRODUCTS}>
+            Products
           </Link>
         </li>
         <li className="nav-item">
