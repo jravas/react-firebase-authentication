@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
+import { auth } from "../../main/firebase";
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -15,10 +15,7 @@ const INITIAL_STATE = {
   error: null
 };
 class PasswordForgetForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
   onSubmit = event => {
     const { email } = this.state;
     auth

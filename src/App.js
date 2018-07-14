@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // routes
-import * as routes from "./constants/routes";
+import * as routes from "./main/constants/routes";
 // components
 import {
   Navigation,
@@ -21,7 +21,7 @@ import {
 } from "./modules";
 
 // authentication hoc
-import withAuthentication from "./components/withAuthentication";
+import withAuthentication from "./main/components/withAuthentication";
 const App = () => {
   return (
     <Router>

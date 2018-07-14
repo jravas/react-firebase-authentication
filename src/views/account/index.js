@@ -4,8 +4,8 @@ import { compose } from "recompose";
 
 // import AuthUserContext from "../../components/AuthUserContext";
 import { PasswordForgetForm } from "../password-forget";
-import PasswordChangeForm from "../../components/PasswordChange";
-import withAuthorization from "../../components/withAuthorization";
+import PasswordChangeForm from "../../main/components/PasswordChange";
+import withAuthorization from "../../main/components/withAuthorization";
 const AccountPage = ({ authUser }) => (
   <div>
     <h1>Account: {authUser.email}</h1>

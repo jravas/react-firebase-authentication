@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
-import withAuthorization from "../../components/withAuthorization";
-import { db } from "../../firebase";
+import withAuthorization from "../../main/components/withAuthorization";
+import { db } from "../../main/firebase";
 
 class HomePage extends Component {
   componentDidMount() {

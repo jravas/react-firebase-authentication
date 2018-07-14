@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import SignOutButton from "../../components/SignOut";
-import * as routes from "../../constants/routes";
+import SignOutButton from "../../main/components/SignOut";
+import * as routes from "../../main/constants/routes";
 
 const Navigation = ({ authUser }) => (
   <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>

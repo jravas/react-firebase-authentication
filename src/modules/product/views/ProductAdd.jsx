@@ -34,7 +34,7 @@ class ProductAdd extends Component {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <label className="input-group-text" htmlFor="categorySelect">
-                Options
+                Select Category
               </label>
             </div>
             <select

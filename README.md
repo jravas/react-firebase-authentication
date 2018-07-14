@@ -5,6 +5,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## TODO
 - [ ] /modules/product/views controlled/uncontrolled error
+- [ ] router routes component
 
 ## Table of Contents
 

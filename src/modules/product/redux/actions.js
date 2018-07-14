@@ -1,4 +1,4 @@
-import { productsRef } from "../../../firebase/firebase";
+import { productsRef } from "../../../main/firebase/firebase";
 import { FETCH_PRODUCTS } from "../consts";
 import Product from "../models/product";
 

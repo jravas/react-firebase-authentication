@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { SignUpLink } from "../sign-up";
 import { PasswordForgetLink } from "../password-forget";
-import { auth } from "../../firebase";
-import * as routes from "../../constants/routes";
+import { auth } from "../../main/firebase";
+import * as routes from "../../main/constants/routes";
 const SignInPage = ({ history }) => (
   <div className="container">
     <h1>SignIn</h1>
@@ -21,10 +21,7 @@ const INITIAL_STATE = {
   error: null
 };
 class SignInForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
   onSubmit = event => {
     const { email, password } = this.state;
     const { history } = this.props;
