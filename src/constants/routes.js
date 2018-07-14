@@ -7,3 +7,4 @@ export const PASSWORD_FORGET = "/pw-forget";
 export const CATEGORIES = "/categories";
 export const PRODUCTS = "/products";
 export const PRODUCT_EDIT = "/products/edit/:id";
+export const CATEGORY_EDIT = "/categories/edit/:id";

@@ -10,12 +10,15 @@ import {
   SignInPage,
   PasswordForgetPage,
   HomePage,
-  AccountPage,
-  Categories
+  AccountPage
 } from "./views";
-// pages
+// product admin pages
 import ProductsPage from "./modules/product";
 import ProductEdit from "./modules/product/views/ProductEdit";
+// categories admin pages
+import CategoriesPage from "./modules/category";
+import CategoryEdit from "./modules/category/views/CategoryEdit";
+
 // authentication hoc
 import withAuthentication from "./components/withAuthentication";
 const App = () => {
@@ -34,7 +37,8 @@ const App = () => {
         />
         <Route exact path={routes.HOME} component={HomePage} />
         <Route exact path={routes.ACCOUNT} component={AccountPage} />
-        <Route exact path={routes.CATEGORIES} component={Categories} />
+        <Route exact path={routes.CATEGORIES} component={CategoriesPage} />
+        <Route exact path={routes.CATEGORY_EDIT} component={CategoryEdit} />
         <Route exact path={routes.PRODUCTS} component={ProductsPage} />
         <Route exact path={routes.PRODUCT_EDIT} component={ProductEdit} />
       </main>

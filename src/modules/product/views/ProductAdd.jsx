@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../redux/actions";
 // todo action for categories
-import { fetchCategories } from "../../../actions";
+import { fetchCategories } from "../../category/redux/actions";
 
 class ProductAdd extends Component {
   state = { name: "", category: "" };
