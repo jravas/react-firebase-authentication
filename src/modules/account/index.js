@@ -1,15 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
-
-// import { PasswordForgetForm } from "../password-forget";
 import PasswordChangeForm from "../../main/components/PasswordChange";
+import PasswordForgetForm from "../authentication/components/PasswordForgetForm";
 import withAuthorization from "../../main/components/withAuthorization";
 const AccountPage = ({ authUser }) => (
-  <div>
-    <h1>Account: {authUser.email}</h1>
-    {/* <PasswordForgetForm /> */}
-    <PasswordChangeForm />
+  <div className="container">
+    <div className="row">
+      <div className="col">
+        <h1>Account: {authUser.email}</h1>
+        <PasswordForgetForm />
+        <PasswordChangeForm />
+      </div>
+    </div>
   </div>
 );
 const authCondition = authUser => !!authUser;

@@ -5,6 +5,9 @@ import CategoryEdit from "./category/views/CategoryEdit";
 import SignUpPage from "./authentication/views/SignUpPage";
 import SignInPage from "./authentication/views/SignInPage";
 import PasswordForgetPage from "./authentication/views/PasswordForgetPage";
+import AccountPage from "./account";
+import Navigation from "./navigation";
+import HomePage from "./home";
 
 export {
   ProductsPage,
@@ -13,5 +16,8 @@ export {
   CategoryEdit,
   SignUpPage,
   SignInPage,
-  PasswordForgetPage
+  PasswordForgetPage,
+  AccountPage,
+  Navigation,
+  HomePage
 };

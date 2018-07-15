@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // routes
 import * as routes from "./main/constants/routes";
-// components
-import { Navigation, LandingPage, HomePage, AccountPage } from "./views";
 // admin pages
 import {
   ProductsPage,
@@ -12,7 +10,10 @@ import {
   CategoryEdit,
   SignUpPage,
   SignInPage,
-  PasswordForgetPage
+  PasswordForgetPage,
+  AccountPage,
+  Navigation,
+  HomePage
 } from "./modules";
 
 // authentication hoc
@@ -23,7 +24,7 @@ const App = () => {
       <main>
         <Navigation />
         <br />
-        <Route exact path={routes.LANDING} component={LandingPage} />
+        {/* <Route exact path={routes.LANDING} component={LandingPage} /> */}
         <Route exact path={routes.SIGN_UP} component={SignUpPage} />
         <Route exact path={routes.SIGN_IN} component={SignInPage} />
         <Route
