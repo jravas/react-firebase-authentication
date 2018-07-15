@@ -3,21 +3,16 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // routes
 import * as routes from "./main/constants/routes";
 // components
-import {
-  Navigation,
-  LandingPage,
-  SignUpPage,
-  SignInPage,
-  PasswordForgetPage,
-  HomePage,
-  AccountPage
-} from "./views";
+import { Navigation, LandingPage, HomePage, AccountPage } from "./views";
 // admin pages
 import {
   ProductsPage,
   ProductEdit,
   CategoriesPage,
-  CategoryEdit
+  CategoryEdit,
+  SignUpPage,
+  SignInPage,
+  PasswordForgetPage
 } from "./modules";
 
 // authentication hoc

@@ -1,39 +1,21 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { SignUpLink } from "../sign-up";
-import { PasswordForgetLink } from "../password-forget";
-import { auth } from "../../main/firebase";
-import * as routes from "../../main/constants/routes";
-const SignInPage = ({ history }) => (
-  <div className="container">
-    <h1>SignIn</h1>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
-  </div>
-);
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
-});
+import * as actions from "../redux/actions";
+import * as routes from "../../../main/constants/routes";
 const INITIAL_STATE = {
   email: "",
   password: "",
   error: null
 };
+
 class SignInForm extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = event => {
     const { email, password } = this.state;
-    const { history } = this.props;
-    auth
-      .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
-      })
-      .catch(error => {
-        this.setState(byPropKey("error", error));
-      });
+    const { history, SignIn } = this.props;
+    // sign in action
+    SignIn(email, password).then(() => history.push(routes.HOME));
     event.preventDefault();
   };
   render() {
@@ -45,9 +27,7 @@ class SignInForm extends Component {
           <input
             className="form-control"
             value={email}
-            onChange={event =>
-              this.setState(byPropKey("email", event.target.value))
-            }
+            onChange={event => this.setState({ email: event.target.value })}
             type="text"
             placeholder="Email Address"
           />
@@ -56,9 +36,7 @@ class SignInForm extends Component {
           <input
             className="form-control"
             value={password}
-            onChange={event =>
-              this.setState(byPropKey("password", event.target.value))
-            }
+            onChange={event => this.setState({ password: event.target.value })}
             type="password"
             placeholder="Password"
           />
@@ -71,4 +49,8 @@ class SignInForm extends Component {
     );
   }
 }
-export default withRouter(SignInPage);
+
+export default connect(
+  null,
+  actions
+)(withRouter(SignInForm));

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import withAuthorization from "../../main/components/withAuthorization";
-import { db } from "../../main/firebase";
+// import { db } from "../../main/firebase";
 
 class HomePage extends Component {
   componentDidMount() {
-    const { onSetUsers } = this.props;
-    db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
+    // const { onSetUsers } = this.props;
+    // db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
   }
   render() {
     const { users } = this.props;

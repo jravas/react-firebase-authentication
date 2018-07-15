@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { auth, db } from "../../main/firebase";
-import * as routes from "../../main/constants/routes";
-
-const SignUpPage = ({ history }) => {
-  return (
-    <div>
-      <h1>Sing Up</h1>
-      <SignUpForm history={history} />
-    </div>
-  );
-};
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import * as routes from "../../../main/constants/routes";
+import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
   username: "",
@@ -19,31 +11,16 @@ const INITIAL_STATE = {
   passwordTwo: "",
   error: null
 };
-
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
-});
-
 class SignUpForm extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
-    const { history } = this.props;
-    auth
-      // create user in firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        // create user in own firebase database
-        db.doCreateUser(authUser.user.uid, username, email)
-          .then(() => {
-            this.setState(() => ({ ...INITIAL_STATE }));
-            history.push(routes.HOME);
-          })
-          .catch(error => {
-            this.setState(byPropKey("error", error));
-          });
-      });
     event.preventDefault();
+    const { username, email, passwordOne } = this.state;
+    const { history, AddUser } = this.props;
+    // pass
+    AddUser(username, email, passwordOne).then(() => {
+      history.push(routes.HOME);
+    });
   };
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
@@ -66,7 +43,7 @@ class SignUpForm extends Component {
               placeholder="Enter username"
               value={username}
               onChange={event =>
-                this.setState(byPropKey("username", event.target.value))
+                this.setState({ username: event.target.value })
               }
             />
           </div>
@@ -79,9 +56,7 @@ class SignUpForm extends Component {
               aria-describedby="emailHelp"
               placeholder="Enter email"
               value={email}
-              onChange={event =>
-                this.setState(byPropKey("email", event.target.value))
-              }
+              onChange={event => this.setState({ email: event.target.value })}
             />
           </div>
           <div className="form-group">
@@ -93,7 +68,7 @@ class SignUpForm extends Component {
               placeholder="Password"
               value={passwordOne}
               onChange={event =>
-                this.setState(byPropKey("passwordOne", event.target.value))
+                this.setState({ passwordOne: event.target.value })
               }
             />
           </div>
@@ -106,7 +81,7 @@ class SignUpForm extends Component {
               placeholder="Password"
               value={passwordTwo}
               onChange={event =>
-                this.setState(byPropKey("passwordTwo", event.target.value))
+                this.setState({ passwordTwo: event.target.value })
               }
             />
           </div>
@@ -124,15 +99,7 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () => {
-  return (
-    <div>
-      <p>Don't have account ?</p>
-      <Link to={routes.SIGN_UP}>Singn Up</Link>
-    </div>
-  );
-};
-
-export default withRouter(SignUpPage);
-
-export { SignUpForm, SignUpLink };
+export default connect(
+  null,
+  actions
+)(withRouter(SignUpForm));
