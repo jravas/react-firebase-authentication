@@ -30,3 +30,6 @@ export const ResetPassword = email => async dispatch => {
       console.log("error");
     });
 };
+// change password
+export const ChangePassword = password => async dispatch =>
+  auth.doPasswordUpdate(password);

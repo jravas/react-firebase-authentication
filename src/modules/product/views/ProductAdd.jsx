@@ -44,9 +44,6 @@ class ProductAdd extends Component {
                 this.setState({ category: event.target.value })
               }
             >
-              <option key="1" defaultValue="Uncategorised">
-                Uncategorised
-              </option>
               {categories &&
                 Object.keys(categories).map(key => (
                   <option key={categories[key].id} value={categories[key].name}>

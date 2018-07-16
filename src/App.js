@@ -15,9 +15,9 @@ import {
   Navigation,
   HomePage
 } from "./modules";
-
 // authentication hoc
 import withAuthentication from "./main/components/withAuthentication";
+
 const App = () => {
   return (
     <Router>

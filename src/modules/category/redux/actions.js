@@ -20,7 +20,6 @@ export const deleteCategory = categoryId => async dispatch => {
 
 // get category by id
 export const fetchCategory = categoryId => async dispatch => {
-  console.log(categoryId);
   categoriesRef.child(categoryId).on("value", snapshot => {
     dispatch({
       type: FETCH_CATEGORIES,
@@ -31,6 +30,14 @@ export const fetchCategory = categoryId => async dispatch => {
 
 // list categories
 export const fetchCategories = () => async dispatch => {
+  // add Uncategorised if there is no categories
+  categoriesRef.once("value", snapshot => {
+    let value = snapshot.val();
+    let name = "Uncategorised";
+    if (!value) {
+      dispatch(addCategory(name));
+    }
+  });
   categoriesRef.on("value", snapshot => {
     dispatch({
       type: FETCH_CATEGORIES,

@@ -61,7 +61,6 @@ class ProductEdit extends Component {
                     this.setState({ category: event.target.value })
                   }
                 >
-                  <option key="1">Uncategorised</option>
                   {categories &&
                     Object.keys(categories).map(key => (
                       <option

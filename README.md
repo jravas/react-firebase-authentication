@@ -4,10 +4,14 @@ Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## TODO
-- [ ] /modules/product/views controlled/uncontrolled error
+- [x] /modules/product/views controlled/uncontrolled error
 - [ ] router routes component
-- [ ] remove ./src/views
-- [ ] refactor password change
+- [x] remove ./src/views
+- [x] refactor password change
+- [ ] notifications
+- [ ] check products category after category delete & update
+- [ ] add categories -> remove uncategorised bug
+- [ ] sign out with actions
 
 ## Table of Contents
 

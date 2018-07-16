@@ -32,9 +32,15 @@ class PasswordForgetForm extends Component {
             placeholder="Email Address"
           />
         </div>
-        <button className="btn btn-primary" disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+        <div className="form-group">
+          <button
+            className="btn btn-primary"
+            disabled={isInvalid}
+            type="submit"
+          >
+            Reset My Password
+          </button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );
