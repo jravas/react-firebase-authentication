@@ -17,6 +17,8 @@ import {
 } from "./modules";
 // authentication hoc
 import withAuthentication from "./main/components/withAuthentication";
+// publc
+import ProductSingle from "./main/components/ProductSingle";
 
 const App = () => {
   return (
@@ -44,6 +46,7 @@ const App = () => {
             component={ProductEdit}
           />
           <Route exact path={routes.PRODUCTS} component={ProductsPage} />
+          <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
         </section>
       </main>
     </Router>
