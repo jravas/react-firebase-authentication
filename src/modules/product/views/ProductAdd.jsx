@@ -5,13 +5,33 @@ import { addProduct } from "../redux/actions";
 import { fetchCategories } from "../../category/redux/actions";
 
 class ProductAdd extends Component {
-  state = { name: "", category: "" };
+  state = {
+    name: "",
+    picture: null,
+    pictureUrl: null,
+    category: "",
+    price: ""
+  };
   submitAction = event => {
     const { addProduct } = this.props;
-    const { name, category } = this.state;
+    const { name, category, picture, price } = this.state;
     event.preventDefault();
-    addProduct(name, category);
-    this.setState({ name: "" });
+    addProduct(name, category, picture, price);
+    this.setState({
+      name: "",
+      picture: null,
+      pictureUrl: null,
+      category: "",
+      price: ""
+    });
+  };
+  fileSelectedHandler = event => {
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({ picture: file, pictureUrl: reader.result });
+    };
+    reader.readAsDataURL(file);
   };
   componentWillMount() {
     const { fetchCategories } = this.props;
@@ -19,9 +39,10 @@ class ProductAdd extends Component {
   }
   render() {
     const { categories } = this.props;
-    const { name } = this.state;
+    const { name, pictureUrl, price } = this.state;
     return (
       <div>
+        <div>{pictureUrl && <img src={pictureUrl} alt="Product" />}</div>
         <form onSubmit={this.submitAction}>
           <div className="form-group">
             <input
@@ -29,6 +50,21 @@ class ProductAdd extends Component {
               type="text"
               value={name}
               onChange={event => this.setState({ name: event.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="number"
+              value={price}
+              onChange={event => this.setState({ price: event.target.value })}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="file"
+              className="form-control"
+              onChange={this.fileSelectedHandler}
             />
           </div>
           <div className="input-group mb-3">

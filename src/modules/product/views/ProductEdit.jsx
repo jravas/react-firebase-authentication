@@ -23,19 +23,20 @@ class ProductEdit extends Component {
     fetchProduct(id);
   }
   componentDidUpdate(prevProps) {
-    const { name, category } = this.props.product;
+    const { name, category, imageUrl } = this.props.product;
     if (this.props.product !== prevProps.product) {
-      this.setState({ name: name, category: category });
+      this.setState({ name: name, category: category, imageUrl: imageUrl });
     }
   }
 
   render() {
     const { categories } = this.props;
-    const { name, category } = this.state;
+    const { name, category, imageUrl } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col">
+            <img src={imageUrl} alt="Product" />
             <form onSubmit={this.submitAction}>
               <div className="form-group">
                 <input

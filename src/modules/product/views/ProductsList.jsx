@@ -18,7 +18,7 @@ class ProductsList extends Component {
               className="list-group-item d-flex justify-content-between align-items-center"
               key={key}
             >
-              <Link to={`/products/edit/${products[key].id}`}>
+              <Link to={`/admin/products/edit/${products[key].id}`}>
                 {products[key].name}
               </Link>
               <button

@@ -1,4 +1,6 @@
 import firebase from "firebase/app";
+// todo
+import * as fireStore from "firebase";
 import "firebase/auth";
 import "firebase/database";
 
@@ -22,5 +24,6 @@ const db = firebase.database();
 const dbRef = firebase.database().ref();
 export const categoriesRef = dbRef.child("categories");
 export const productsRef = dbRef.child("products");
+export const storage = fireStore.storage().ref();
 
 export { auth, db };

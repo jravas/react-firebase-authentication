@@ -12,6 +12,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] check products category after category delete & update
 - [ ] add categories -> remove uncategorised bug
 - [ ] sign out with actions
+- [ ] action errors
+- [ ] default category
+- [ ] clear product ulpoad input, category
 
 ## Table of Contents
 
