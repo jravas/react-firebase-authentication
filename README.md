@@ -15,6 +15,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] action errors
 - [ ] default category
 - [ ] clear product ulpoad input, category
+- [ ] products list right/middle click
+- [ ] product description
+- [ ] loading product/product animation
 
 ## Table of Contents
 

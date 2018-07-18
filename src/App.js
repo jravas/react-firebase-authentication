@@ -13,7 +13,8 @@ import {
   PasswordForgetPage,
   AccountPage,
   Navigation,
-  HomePage
+  HomePage,
+  Cart
 } from "./modules";
 // authentication hoc
 import withAuthentication from "./main/components/withAuthentication";
@@ -47,6 +48,7 @@ const App = () => {
           />
           <Route exact path={routes.PRODUCTS} component={ProductsPage} />
           <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
+          <Route exact path={routes.CART} component={Cart} />
         </section>
       </main>
     </Router>

@@ -8,6 +8,7 @@ import PasswordForgetPage from "./authentication/views/PasswordForgetPage";
 import AccountPage from "./account";
 import Navigation from "./navigation";
 import HomePage from "./home";
+import { Cart } from "./cart";
 
 export {
   ProductsPage,
@@ -19,5 +20,6 @@ export {
   PasswordForgetPage,
   AccountPage,
   Navigation,
-  HomePage
+  HomePage,
+  Cart
 };

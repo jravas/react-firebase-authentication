@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import "./ProductPublic.css";
+import "./ProductPublic.scss";
 
 class ProductPublic extends Component {
   handleClick = event => {
@@ -9,16 +9,15 @@ class ProductPublic extends Component {
   };
   render() {
     const { product } = this.props;
-    console.log(product);
     return (
       product && (
         <li className="product" onClick={this.handleClick}>
-          <section className="product-image">
+          <section className="product__image">
             <img src={product.imageUrl} alt="Product" />
           </section>
-          <section className="product-info">
-            <h1>{product.name}</h1>
-            <p>{product.price}</p>
+          <section className="product__info">
+            <h1 className="product__info__name">{product.name}</h1>
+            <p className="product__info__price">{product.price}</p>
           </section>
         </li>
       )

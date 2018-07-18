@@ -11,3 +11,4 @@ export const ADMIN_PRODUCT_EDIT = "/admin/products/edit/:id";
 export const PRODUCTS = "/products";
 export const SINGLE_PRODUCT = "/product/:id";
 export const CATEGORY_EDIT = "/categories/edit/:id";
+export const CART = "/cart";
