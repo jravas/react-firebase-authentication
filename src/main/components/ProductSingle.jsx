@@ -44,8 +44,7 @@ class ProductSingle extends Component {
 const actions = { fetchProduct, AddToCart };
 
 const mapStateToProps = state => ({
-  product: state.productsState.products,
-  cart: state.cartState
+  product: state.productsState.products
 });
 
 export default connect(

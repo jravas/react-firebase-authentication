@@ -1,9 +1,12 @@
+import cuid from "cuid";
+import CartItem from "../model/cartItem";
 // add to cart
 export const AddToCart = product => async dispatch => {
-  product.cartId = new Date().getTime();
+  const { id, name, imageUrl, price, category } = product;
+  const cartId = cuid();
   dispatch({
     type: "ADD_TO_CART",
-    payload: product
+    payload: CartItem(id, name, imageUrl, category, price, cartId)
   });
 };
 
