@@ -12,12 +12,18 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] check products category after category delete & update
 - [ ] add categories -> remove uncategorised bug
 - [ ] sign out with actions
-- [ ] action errors
+- [ ] action show errors
 - [ ] default category
 - [ ] clear product ulpoad input, category
-- [ ] products list right/middle click
+- [x] products list right/middle click
 - [ ] product description
 - [ ] loading product/product animation
+- [ ] cart is empty message
+- [ ] sign in
+- [ ] replace ../../ with @
+- [ ] auth action
+- [] non register user sign in redirect to register
+- [ ] tabs sync
 
 ## Table of Contents
 

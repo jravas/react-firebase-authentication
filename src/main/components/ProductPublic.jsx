@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ProductPublic.scss";
 
 class ProductPublic extends Component {
@@ -23,4 +23,4 @@ class ProductPublic extends Component {
   }
 }
 
-export default withRouter(ProductPublic);
+export default ProductPublic;

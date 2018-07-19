@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SignOutButton from "../../../main/components/SignOut";
 import * as routes from "../../../main/constants/routes";
 import "./Navigation.scss";
 
-const NavigationNonAuth = () => (
+const NavigationAuth = () => (
   <nav className="main-navigation">
     <div className="main-navigation__logo">
       <Link to={routes.HOME}>Stolen memes</Link>
@@ -25,15 +26,10 @@ const NavigationNonAuth = () => (
         </Link>
       </li>
       <li className="main-navigation__links__item">
-        <Link
-          className="main-navigation__links__item__link"
-          to={routes.SIGN_IN}
-        >
-          Sign In
-        </Link>
+        <SignOutButton />
       </li>
     </ul>
   </nav>
 );
 
-export default NavigationNonAuth;
+export default NavigationAuth;

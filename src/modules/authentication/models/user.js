@@ -1,5 +1,6 @@
-export default (id, username, email) => ({
+export default (id, username, email, cart) => ({
   id: id,
   username: username,
-  email: email
+  email: email,
+  cart: cart
 });

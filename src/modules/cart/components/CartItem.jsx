@@ -5,8 +5,8 @@ import "./CartItem.scss";
 
 class CartItem extends Component {
   handleDelete = () => {
-    const { RemoveFromCart, item } = this.props;
-    RemoveFromCart(item.cartId);
+    const { RemoveFromCart, item, authUser } = this.props;
+    RemoveFromCart(item.cartId, authUser);
   };
   render() {
     const { item } = this.props;
@@ -28,8 +28,11 @@ class CartItem extends Component {
   }
 }
 const actions = { RemoveFromCart };
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(CartItem);

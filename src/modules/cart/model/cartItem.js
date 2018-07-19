@@ -1,4 +1,4 @@
-export default (id, name, imageUrl, price, category, cartId) => ({
+export default (id, name, imageUrl, price, cartId, category) => ({
   id: id,
   name: name,
   imageUrl: imageUrl,

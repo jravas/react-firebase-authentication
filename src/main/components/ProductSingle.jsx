@@ -8,11 +8,11 @@ class ProductSingle extends Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
-    fetchProduct(id).then(() => console.log(this.props));
+    fetchProduct(id);
   }
   addToCart = () => {
-    const { AddToCart } = this.props;
-    AddToCart(this.props.product);
+    const { AddToCart, product, authUser } = this.props;
+    AddToCart(product, authUser);
   };
   render() {
     const { product } = this.props;
@@ -44,7 +44,8 @@ class ProductSingle extends Component {
 const actions = { fetchProduct, AddToCart };
 
 const mapStateToProps = state => ({
-  product: state.productsState.products
+  product: state.productsState.products,
+  authUser: state.sessionState.authUser
 });
 
 export default connect(

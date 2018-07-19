@@ -1,4 +1,4 @@
-import { productsRef, storage } from "../../../main/firebase/firebase";
+import { productsRef, storage } from "@/main/firebase/firebase";
 import { FETCH_PRODUCTS } from "../consts";
 import Product from "../models/product";
 
@@ -28,7 +28,6 @@ export const updateProduct = (
   category,
   price
 ) => async dispatch => {
-  // productsRef.child(productId).update(Product(name, category));
   productsRef
     .child(productId)
     .update(Product(productId, name, category, price));

@@ -14,6 +14,7 @@ import {
   AccountPage,
   Navigation,
   HomePage,
+  Admin,
   Cart
 } from "./modules";
 // authentication hoc
@@ -48,6 +49,7 @@ const App = () => {
           />
           <Route exact path={routes.PRODUCTS} component={ProductsPage} />
           <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
+          <Route exact path={routes.ADMIN} component={Admin} />
           <Route exact path={routes.CART} component={Cart} />
         </section>
       </main>

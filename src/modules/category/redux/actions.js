@@ -1,4 +1,4 @@
-import { categoriesRef } from "../../../main/firebase/firebase";
+import { categoriesRef } from "@/main/firebase/firebase";
 import { FETCH_CATEGORIES } from "../consts";
 import Catergory from "../models/category";
 

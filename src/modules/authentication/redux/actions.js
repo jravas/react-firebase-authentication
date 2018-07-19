@@ -1,6 +1,6 @@
-import { auth } from "../../../main/firebase";
+import { auth } from "@/main/firebase";
 // todo
-import { db } from "../../../main/firebase/firebase";
+import { db } from "@/main/firebase/firebase";
 import User from "../models/user";
 
 // add user
@@ -11,7 +11,7 @@ export const AddUser = (username, email, passwordOne) => async dispatch => {
     .then(authUser => {
       // create user in firebase database
       db.ref(`users/${authUser.user.uid}`).set(
-        User(authUser.user.uid, username, email)
+        User(authUser.user.uid, username, email, 0)
       );
     });
 };

@@ -16,6 +16,10 @@ function cartReducer(state = INITIAL_STATE, action) {
         cart: state.cart.filter(element => element.cartId !== action.payload)
       };
     }
+    case "FETCH_CART_ITEMS": {
+      console.log(state, action.payload);
+      return state;
+    }
     default:
       return state;
   }

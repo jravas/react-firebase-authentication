@@ -5,8 +5,6 @@ import "./CartList.scss";
 export default class CartList extends Component {
   render() {
     const { cart } = this.props;
-    console.log(cart);
-    console.log();
     return (
       cart && (
         <ul className="cart-list">
