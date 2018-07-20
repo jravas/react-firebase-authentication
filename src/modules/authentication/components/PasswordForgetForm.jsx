@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as routes from "../../../main/constants/routes";
+import * as routes from "@/main/constants/routes";
 import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
@@ -22,27 +22,22 @@ class PasswordForgetForm extends Component {
     const { email, error } = this.state;
     const isInvalid = email === "";
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+      <div className="form-container">
+        <h1 className="form-container__title">Sing In</h1>
+        <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
-            className="form-control"
+            className="form-container__form__input"
             value={this.state.email}
             onChange={event => this.setState({ email: event.target.value })}
             type="email"
             placeholder="Email Address"
           />
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-primary"
-            disabled={isInvalid}
-            type="submit"
-          >
-            Reset My Password
+          <button className="default-button" disabled={isInvalid} type="submit">
+            Reset password
           </button>
-        </div>
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }

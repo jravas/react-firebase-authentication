@@ -21,10 +21,11 @@ class PasswordChangeForm extends Component {
     const { passwordOne, passwordTwo, error } = this.state;
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+      <div className="form-container">
+        <h1 className="form-container__title">Sing In</h1>
+        <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
-            className="form-control"
+            className="form-container__input"
             value={passwordOne}
             onChange={event =>
               this.setState({ passwordOne: event.target.value })
@@ -32,10 +33,8 @@ class PasswordChangeForm extends Component {
             type="password"
             placeholder="New Password"
           />
-        </div>
-        <div className="form-group">
           <input
-            className="form-control"
+            className="form-container__input"
             value={passwordTwo}
             onChange={event =>
               this.setState({ passwordTwo: event.target.value })
@@ -43,18 +42,12 @@ class PasswordChangeForm extends Component {
             type="password"
             placeholder="Confirm New Password"
           />
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-primary"
-            disabled={isInvalid}
-            type="submit"
-          >
+          <button className="default-button" disabled={isInvalid} type="submit">
             Change Password
           </button>
-        </div>
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }

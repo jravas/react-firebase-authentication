@@ -17,7 +17,7 @@ class Cart extends Component {
   render() {
     const { cart, authUser } = this.props;
     return (
-      <div className="big-container">
+      <div className="container-style">
         <CartList cart={cart} authUser={authUser} />
       </div>
     );

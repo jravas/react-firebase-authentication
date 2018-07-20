@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as routes from "../../../main/constants/routes";
+import * as routes from "@/main/constants/routes";
 import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
@@ -31,65 +31,48 @@ class SignUpForm extends Component {
       email === "" ||
       username === "";
     return (
-      <div className="container">
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              aria-describedby="usernamelHelp"
-              placeholder="Enter username"
-              value={username}
-              onChange={event =>
-                this.setState({ username: event.target.value })
-              }
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              value={email}
-              onChange={event => this.setState({ email: event.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword"
-              placeholder="Password"
-              value={passwordOne}
-              onChange={event =>
-                this.setState({ passwordOne: event.target.value })
-              }
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-              value={passwordTwo}
-              onChange={event =>
-                this.setState({ passwordTwo: event.target.value })
-              }
-            />
-          </div>
-          <button
-            disabled={isInvalid}
-            type="submit"
-            className="btn btn-primary"
-          >
+      <div className="form-container">
+        <h1 className="form-container__title">Sign Up</h1>
+        <form className="form-container__form" onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            className="form-container__form__input"
+            id="username"
+            aria-describedby="usernamelHelp"
+            placeholder="Enter username"
+            value={username}
+            onChange={event => this.setState({ username: event.target.value })}
+          />
+          <input
+            type="email"
+            className="form-container__form__input"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            value={email}
+            onChange={event => this.setState({ email: event.target.value })}
+          />
+          <input
+            type="password"
+            className="form-container__form__input"
+            id="exampleInputPassword"
+            placeholder="Password"
+            value={passwordOne}
+            onChange={event =>
+              this.setState({ passwordOne: event.target.value })
+            }
+          />
+          <input
+            type="password"
+            className="form-container__form__input"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            value={passwordTwo}
+            onChange={event =>
+              this.setState({ passwordTwo: event.target.value })
+            }
+          />
+          <button disabled={isInvalid} type="submit" className="default-button">
             Submit
           </button>
           {error && <p>{error.message} </p>}

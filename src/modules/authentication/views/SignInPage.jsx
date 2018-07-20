@@ -5,11 +5,12 @@ import PasswordForgetLink from "../components/PasswordForgetLink";
 import SignUpLink from "../components/SignUpLink";
 
 const SignInPage = ({ history }) => (
-  <div className="container">
-    <h1>SignIn</h1>
+  <div className="sing-in-page">
     <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <div className="sing-in-page__additional">
+      <PasswordForgetLink className="sing-in-page__additional__forget" />
+      <SignUpLink />
+    </div>
   </div>
 );
 export default withRouter(SignInPage);

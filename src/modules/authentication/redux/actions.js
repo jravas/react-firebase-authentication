@@ -35,10 +35,6 @@ export const SignIn = (email, password, cart) => async dispatch => {
         result.forEach(el => {
           usersRef.child(`${user.user.uid}/cart`).push(el);
         });
-        // dispatch({
-        //   type: "FETCH_CART_ITEMS",
-        //   payload: snapshot.val()
-        // });
       }
     });
   });

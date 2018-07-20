@@ -5,11 +5,7 @@ class SignUpPage extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col">
-            <SignUpForm />
-          </div>
-        </div>
+        <SignUpForm />
       </div>
     );
   }

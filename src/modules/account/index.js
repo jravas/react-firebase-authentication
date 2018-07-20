@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import PasswordChangeForm from "../authentication/components/PasswordChange";
 import PasswordForgetForm from "../authentication/components/PasswordForgetForm";
-import withAuthorization from "../../main/components/withAuthorization";
+import withAuthorization from "@/main/components/withAuthorization";
 const AccountPage = ({ authUser }) => (
   <div className="container">
     <div className="row">

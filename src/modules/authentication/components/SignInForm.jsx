@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as actions from "../redux/actions";
-import * as routes from "../../../main/constants/routes";
+import * as routes from "@/main/constants/routes";
+
 const INITIAL_STATE = {
   email: "",
   password: "",
@@ -22,30 +23,33 @@ class SignInForm extends Component {
     const { email, password, error } = this.state;
     const isInvalid = password === "" || email === "";
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group">
+      <div className="form-container">
+        <h1 className="form-container__title">Sing In</h1>
+        <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
-            className="form-control"
+            className="form-container__form__input"
             value={email}
             onChange={event => this.setState({ email: event.target.value })}
             type="text"
             placeholder="Email Address"
           />
-        </div>
-        <div className="form-group">
           <input
-            className="form-control"
+            className="form-container__form__input"
             value={password}
             onChange={event => this.setState({ password: event.target.value })}
             type="password"
             placeholder="Password"
           />
-        </div>
-        <button className="btn btn-primary" disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-        {error && <p>{error.message}</p>}
-      </form>
+          <button
+            className="form-container__form__button default-button"
+            disabled={isInvalid}
+            type="submit"
+          >
+            Sign In
+          </button>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }

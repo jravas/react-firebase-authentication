@@ -19,12 +19,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] product description
 - [ ] loading product/product animation
 - [ ] cart is empty message
-- [ ] sign in
-- [ ] replace ../../ with @
+- [x] replace ../../ with @
 - [ ] auth action
 - [] non register user sign in redirect to register
 - [ ] tabs sync
 - [ ] sign in firefox
+- [ ] add items to firebase cart after registration
+- [ ] counter on cart icon
 
 ## Table of Contents
 

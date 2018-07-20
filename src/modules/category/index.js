@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
-import withAuthorization from "../../main/components/withAuthorization";
+import withAuthorization from "@/main/components/withAuthorization";
 import * as actions from "./redux/actions";
 // add category component
 import AddCategory from "./views/CategoryAdd";

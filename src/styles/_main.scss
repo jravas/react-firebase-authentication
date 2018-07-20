@@ -1,35 +1,13 @@
 body {
   background-color: #fafafa;
+  font-family: "Roboto", sans-serif;
 }
-
-/* body {
-  
-  background: -moz-linear-gradient(
-    top,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(214, 88, 38, 0.3) 80%,
-    rgba(196, 80, 35, 0.8) 100%
-  ); 
-  background: -webkit-linear-gradient(
-    top,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(214, 88, 38, 0.3) 80%,
-    rgba(196, 80, 35, 0.8) 100%
-  ); 
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(214, 88, 38, 0.3) 80%,
-    rgba(196, 80, 35, 0.8) 100%
-  ); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ccc45023',GradientType=0 );
-} */
 .container {
   width: 80%;
   margin: 0 auto;
 }
 
-.big-container {
+.container-style {
   display: flex;
   padding: 5%;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -59,4 +37,43 @@ body {
     rgba(250, 250, 250, 1) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fafafa',GradientType=0 ); /* IE6-9 */
+}
+
+.default-button {
+  border: 3px solid #343a40;
+  border-radius: 35px;
+  background-color: #343a40;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  padding: 10px 60px;
+  box-shadow: 0 0 7px 0 rgba(90, 90, 90, 1);
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 1s ease, border 1s ease;
+  &:not([disabled]):hover {
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px #343a40;
+  }
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
+.sing-in-page {
+  &__additional {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    &__up {
+      margin-left: auto;
+    }
+    p {
+      color: #535c65;
+    }
+    a {
+      color: #343a40;
+    }
+  }
 }

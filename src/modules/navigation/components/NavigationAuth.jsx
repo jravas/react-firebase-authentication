@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignOutButton from "../../../main/components/SignOut";
-import * as routes from "../../../main/constants/routes";
+import SignOutButton from "@/main/components/SignOut";
+import * as routes from "@/main/constants/routes";
 import "./Navigation.scss";
 
 const NavigationAuth = () => (

@@ -7,7 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import registerServiceWorker from "./registerServiceWorker";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/reset.css";
-import "./styles/index.css";
+import "./styles/index.scss";
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,10 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProduct } from "../../modules/product/redux/actions";
-import { AddToCart } from "../../modules/cart/redux/actions";
+import { ToastContainer, toast } from "react-toastify";
+// minified version is also included
+import "react-toastify/dist/ReactToastify.min.css";
+import { fetchProduct } from "@/modules/product/redux/actions";
+import { AddToCart } from "@/modules/cart/redux/actions";
 import "./ProductSingle.scss";
 
 class ProductSingle extends Component {
+  state = {
+    toastConfig: {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true
+    }
+  };
   componentWillMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
@@ -12,13 +25,16 @@ class ProductSingle extends Component {
   }
   addToCart = () => {
     const { AddToCart, product, authUser } = this.props;
-    AddToCart(product, authUser);
+    const { toastConfig } = this.state;
+    AddToCart(product, authUser).then(() => {
+      toast(`${product.name} added to cart !`, toastConfig);
+    });
   };
   render() {
     const { product } = this.props;
     return (
       product && (
-        <section className="product-single big-container">
+        <section className="product-single container-style">
           <div className="product-single__image">
             <img src={product.imageUrl} alt="Product" />
           </div>
@@ -32,9 +48,12 @@ class ProductSingle extends Component {
             </p>
             <div className="product-single__info__add-price">
               <p>{product.price} $</p>
-              <button onClick={this.addToCart}>Add to cart</button>
+              <button className="default-button" onClick={this.addToCart}>
+                Add to cart
+              </button>
             </div>
           </div>
+          <ToastContainer />
         </section>
       )
     );
