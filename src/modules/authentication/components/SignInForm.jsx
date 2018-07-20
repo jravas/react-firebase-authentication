@@ -13,9 +13,9 @@ class SignInForm extends Component {
   state = { ...INITIAL_STATE };
   onSubmit = event => {
     const { email, password } = this.state;
-    const { history, SignIn } = this.props;
+    const { history, SignIn, cart } = this.props;
     // sign in action
-    SignIn(email, password).then(() => history.push(routes.HOME));
+    SignIn(email, password, cart).then(() => history.push(routes.HOME));
     event.preventDefault();
   };
   render() {
@@ -49,8 +49,11 @@ class SignInForm extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  cart: state.cartState.cart
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(withRouter(SignInForm));

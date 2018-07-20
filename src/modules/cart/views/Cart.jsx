@@ -4,10 +4,16 @@ import { fetchCartItems } from "../redux/actions";
 import CartList from "../components/CartList";
 
 class Cart extends Component {
-  // componentWillMount() {
-  //   const { fetchCartItems, authUser } = this.props;
-  //   fetchCartItems(authUser);
-  // }
+  componentWillMount() {
+    const { fetchCartItems, authUser, cart } = this.props;
+    fetchCartItems(authUser, cart);
+  }
+  componentDidUpdate(prevProps) {
+    const { fetchCartItems, authUser, cart } = this.props;
+    if (authUser !== prevProps.authUser) {
+      fetchCartItems(authUser, cart);
+    }
+  }
   render() {
     const { cart, authUser } = this.props;
     return (

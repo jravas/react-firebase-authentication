@@ -24,6 +24,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] auth action
 - [] non register user sign in redirect to register
 - [ ] tabs sync
+- [ ] sign in firefox
 
 ## Table of Contents
 

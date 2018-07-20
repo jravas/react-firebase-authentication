@@ -17,7 +17,14 @@ function cartReducer(state = INITIAL_STATE, action) {
       };
     }
     case "FETCH_CART_ITEMS": {
-      console.log(state, action.payload);
+      if (action.payload) {
+        var arr = [];
+        Object.keys(action.payload).map(key => arr.push(action.payload[key]));
+        return {
+          ...state,
+          cart: [...arr]
+        };
+      }
       return state;
     }
     default:
