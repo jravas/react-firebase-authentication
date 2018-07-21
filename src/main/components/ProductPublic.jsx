@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./ProductPublic.scss";
 
 class ProductPublic extends Component {
+  state = {
+    imgLoading: true
+  };
+  handleLoad = data => {
+    this.setState(data);
+  };
   render() {
     const { product } = this.props;
     return (
       product && (
         <li className="product">
           <Link to={`/product/${product.id}`}>
-            <section className="product__image">
+            <section
+              onLoad={() => this.handleLoad({ imgLoading: false })}
+              className={`product__image ${this.state.imgLoading &&
+                "product__image--loading"}`}
+            >
               <img src={product.imageUrl} alt="Product" />
             </section>
             <section className="product__info">

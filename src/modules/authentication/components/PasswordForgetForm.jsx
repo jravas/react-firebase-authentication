@@ -23,7 +23,7 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === "";
     return (
       <div className="form-container">
-        <h1 className="form-container__title">Sing In</h1>
+        <h1 className="form-container__title">Send password reset mail</h1>
         <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
             className="form-container__form__input"

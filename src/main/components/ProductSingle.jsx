@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-// minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
 import { fetchProduct } from "@/modules/product/redux/actions";
 import { AddToCart } from "@/modules/cart/redux/actions";
-import "./ProductSingle.scss";
 
 class ProductSingle extends Component {
   state = {

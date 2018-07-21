@@ -57,8 +57,7 @@
   &__links {
     display: flex;
     margin-left: auto;
-    padding-right: 20px;
-    padding-left: 100px;
+    padding: 0 30px;
     background-color: #343a40;
     border-bottom-left-radius: 35px;
     box-shadow: 0 0 5px 1px rgba(83, 82, 82, 0.49);
@@ -67,6 +66,13 @@
       display: flex;
       &__link {
         padding: 20px 20px;
+        cursor: pointer;
+      }
+      .icon {
+        padding: 17px;
+        img {
+          width: 20px;
+        }
       }
     }
   }
@@ -74,7 +80,7 @@
 
 @font-face {
   font-family: "Rage";
-  src: url("../../../main/fonts/rage.ttf");
+  src: url("../fonts/rage.ttf");
 }
 .main-navigation__logo a {
   font-family: "Rage";

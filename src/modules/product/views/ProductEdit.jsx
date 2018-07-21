@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProduct, updateProduct } from "../redux/actions";
-import { fetchCategories } from "../../category/redux/actions";
+import { fetchCategories } from "@/modules/category/redux/actions";
 
 class ProductEdit extends Component {
   state = {

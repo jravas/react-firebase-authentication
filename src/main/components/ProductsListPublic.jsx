@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProductPublic from "./ProductPublic";
-import "./ProductsListPublic.css";
 class ProductsListPublic extends Component {
   render() {
     const { products } = this.props;

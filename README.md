@@ -11,7 +11,6 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] notifications
 - [ ] check products category after category delete & update
 - [ ] add categories -> remove uncategorised bug
-- [ ] sign out with actions
 - [ ] action show errors
 - [ ] default category
 - [ ] clear product ulpoad input, category
@@ -21,11 +20,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] cart is empty message
 - [x] replace ../../ with @
 - [ ] auth action
-- [] non register user sign in redirect to register
-- [ ] tabs sync
-- [ ] sign in firefox
+- [ ] non register user sign in redirect to register
 - [ ] add items to firebase cart after registration
 - [ ] counter on cart icon
+- [x] remove bootstrap
+- [ ] admin product add/edit, categories edit
+- [ ] close modal after category/product add
+
 
 ## Table of Contents
 

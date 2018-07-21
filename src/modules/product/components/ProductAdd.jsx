@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../redux/actions";
 // todo action for categories
-import { fetchCategories } from "../../category/redux/actions";
+import { fetchCategories } from "@/modules/category/redux/actions";
+import cancleImg from "../../../main/images/cancel.svg";
 
 class ProductAdd extends Component {
   state = {
@@ -12,6 +13,10 @@ class ProductAdd extends Component {
     category: "",
     price: ""
   };
+  closeModal(e) {
+    e.preventDefault();
+    this.props.closeModal({ modal: false });
+  }
   submitAction = event => {
     const { addProduct } = this.props;
     const { name, category, picture, price } = this.state;
@@ -41,33 +46,31 @@ class ProductAdd extends Component {
     const { categories } = this.props;
     const { name, pictureUrl, price } = this.state;
     return (
-      <div>
-        <div>{pictureUrl && <img src={pictureUrl} alt="Product" />}</div>
-        <form onSubmit={this.submitAction}>
-          <div className="form-group">
+      <div className="item-add">
+        <div className="form-container">
+          <div
+            className="item-add__cancel"
+            onClick={this.closeModal.bind(this)}
+          >
+            <img src={cancleImg} alt="Cancel" />
+          </div>
+          <div>{pictureUrl && <img src={pictureUrl} alt="Product" />}</div>
+          <form className="form-container__form" onSubmit={this.submitAction}>
             <input
-              className="form-control"
+              className="form-container__form__input"
+              placeholder="Product name"
               type="text"
               value={name}
               onChange={event => this.setState({ name: event.target.value })}
             />
-          </div>
-          <div className="form-group">
             <input
-              className="form-control"
+              className="form-container__form__input"
+              placeholder="Product price"
               type="number"
               value={price}
               onChange={event => this.setState({ price: event.target.value })}
             />
-          </div>
-          <div className="form-group">
-            <input
-              type="file"
-              className="form-control"
-              onChange={this.fileSelectedHandler}
-            />
-          </div>
-          <div className="input-group mb-3">
+            <input type="file" onChange={this.fileSelectedHandler} />
             <div className="input-group-prepend">
               <label className="input-group-text" htmlFor="categorySelect">
                 Select Category
@@ -87,11 +90,9 @@ class ProductAdd extends Component {
                   </option>
                 ))}
             </select>
-          </div>
-          <div className="form-group">
-            <button className="btn btn-primary float-right">submit</button>
-          </div>
-        </form>
+            <button className="default-button">Add product</button>
+          </form>
+        </div>
       </div>
     );
   }

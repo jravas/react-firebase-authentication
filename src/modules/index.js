@@ -1,7 +1,5 @@
-import ProductsPage from "./product";
-import ProductEdit from "./product/views/ProductEdit";
-import CategoriesPage from "./category";
-import CategoryEdit from "./category/views/CategoryEdit";
+import { AdminProductsPage, ProductEdit } from "./product";
+import { AdminCategoryPage, CategoryEdit } from "./category";
 import {
   SignUpPage,
   SignInPage,
@@ -14,9 +12,9 @@ import Admin from "./admin";
 import { Cart } from "./cart";
 
 export {
-  ProductsPage,
+  AdminProductsPage,
   ProductEdit,
-  CategoriesPage,
+  AdminCategoryPage,
   CategoryEdit,
   SignUpPage,
   SignInPage,

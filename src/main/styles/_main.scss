@@ -66,9 +66,10 @@ body {
     max-width: 640px;
     margin: 0 auto;
     display: flex;
-    &__up {
-      margin-left: auto;
-    }
+    flex-flow: column;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 300;
     p {
       color: #535c65;
     }
@@ -76,4 +77,30 @@ body {
       color: #343a40;
     }
   }
+}
+
+@keyframes blinking {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.add-button {
+  position: absolute;
+  z-index: 2;
+  right: 10%;
+  bottom: 10%;
+  width: 30px;
+  height: 30px;
+  background: #343a40;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 7px 0 rgba(90, 90, 90, 0.33);
+  cursor: pointer;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
+import deleteImage from "@/main/images/delete.svg";
 
 class CategoriesList extends Component {
   handleClickAction = categoryId => {
@@ -11,23 +12,21 @@ class CategoriesList extends Component {
   render() {
     const { categories } = this.props;
     return (
-      <ul className="list-group">
+      <ul className="items-list-admin container-style">
         {categories &&
           Object.keys(categories).map(key => (
-            <li
-              className="list-group-item d-flex justify-content-between align-items-center"
-              key={key}
-            >
+            <li className="items-list-admin__item" key={key}>
               <Link to={`/categories/edit/${categories[key].id}`}>
                 {categories[key].name}
               </Link>
-              <button
-                type="button"
-                className="btn btn-outline-danger"
+              <span
+                className="items-list-admin__item__delete"
                 onClick={() => this.handleClickAction(categories[key].id)}
               >
-                Delete
-              </button>
+                {categories[key].name !== "Uncategorised" && (
+                  <img src={deleteImage} alt="Delete button" />
+                )}
+              </span>
             </li>
           ))}
       </ul>

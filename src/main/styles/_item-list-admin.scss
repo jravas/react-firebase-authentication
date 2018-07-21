@@ -1,0 +1,24 @@
+.items-list-admin {
+  flex-direction: column;
+  &__item {
+    display: flex;
+    width: 100%;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    a {
+      color: #343a40;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 300;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &__delete {
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+}

@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as routes from "./main/constants/routes";
 // admin pages
 import {
-  ProductsPage,
+  AdminProductsPage,
   ProductEdit,
-  CategoriesPage,
+  AdminCategoryPage,
   CategoryEdit,
   SignUpPage,
   SignInPage,
@@ -39,17 +39,28 @@ const App = () => {
           />
           <Route exact path={routes.HOME} component={HomePage} />
           <Route exact path={routes.ACCOUNT} component={AccountPage} />
-          <Route exact path={routes.CATEGORIES} component={CategoriesPage} />
-          <Route exact path={routes.CATEGORY_EDIT} component={CategoryEdit} />
-          <Route exact path={routes.ADMIN_PRODUCTS} component={ProductsPage} />
+          <Route exact path={routes.ADMIN} component={Admin} />
+          <Route
+            exact
+            path={routes.ADMIN_CATEGORIES}
+            component={AdminCategoryPage}
+          />
+          <Route
+            exact
+            path={routes.ADMIN_CATEGORY_EDIT}
+            component={CategoryEdit}
+          />
+          <Route
+            exact
+            path={routes.ADMIN_PRODUCTS}
+            component={AdminProductsPage}
+          />
           <Route
             exact
             path={routes.ADMIN_PRODUCT_EDIT}
             component={ProductEdit}
           />
-          <Route exact path={routes.PRODUCTS} component={ProductsPage} />
           <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
-          <Route exact path={routes.ADMIN} component={Admin} />
           <Route exact path={routes.CART} component={Cart} />
         </section>
       </main>

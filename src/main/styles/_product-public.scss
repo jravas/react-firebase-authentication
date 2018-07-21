@@ -30,6 +30,10 @@
       max-height: 100%;
       object-fit: contain;
     }
+    &--loading {
+      background-color: #d2d2d2;
+      animation: blinking 2s linear infinite;
+    }
   }
   &__info {
     align-self: center;
@@ -41,6 +45,10 @@
       line-height: 24px;
       font-weight: 300;
       color: #343a40;
+      &:empty {
+        background-color: #d2d2d2;
+        animation: blinking 2s linear infinite;
+      }
     }
     &__price {
       text-align: center;

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { auth } from "@/main/firebase";
 import * as routes from "@/main/constants/routes";
 import homeImage from "@/main/images/home.svg";
 import cartImage from "@/main/images/shopping-basket.svg";
 
-const NavigationNonAuth = () => (
+const NavigationAuthAdmin = () => (
   <nav className="main-navigation">
     <div className="main-navigation__logo">
       <Link to={routes.HOME}>Stolen memes</Link>
@@ -34,13 +35,29 @@ const NavigationNonAuth = () => (
       <li className="main-navigation__links__item">
         <Link
           className="main-navigation__links__item__link"
-          to={routes.SIGN_IN}
+          to={routes.ADMIN_PRODUCTS}
         >
-          Sign In
+          Products
         </Link>
+      </li>
+      <li className="main-navigation__links__item">
+        <Link
+          className="main-navigation__links__item__link"
+          to={routes.ADMIN_CATEGORIES}
+        >
+          Categories
+        </Link>
+      </li>
+      <li className="main-navigation__links__item">
+        <a
+          className="main-navigation__links__item__link"
+          onClick={auth.doSignOut}
+        >
+          Sign Out
+        </a>
       </li>
     </ul>
   </nav>
 );
 
-export default NavigationNonAuth;
+export default NavigationAuthAdmin;

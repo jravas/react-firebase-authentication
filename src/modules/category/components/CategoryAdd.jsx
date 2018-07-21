@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCategory } from "../redux/actions";
+import cancleImg from "../../../main/images/cancel.svg";
 
 class CategoryAdd extends Component {
   state = { name: "" };
@@ -11,23 +12,32 @@ class CategoryAdd extends Component {
     addCategory(name);
     this.setState({ name: "" });
   };
+  closeModal(e) {
+    e.preventDefault();
+    this.props.closeModal({ modal: false });
+  }
   render() {
     const { name } = this.state;
     return (
-      <div>
-        <form onSubmit={this.submitAction}>
-          <div className="form-group">
+      <div className="item-add">
+        <div className="form-container">
+          <div
+            className="item-add__cancel"
+            onClick={this.closeModal.bind(this)}
+          >
+            <img src={cancleImg} alt="Cancel" />
+          </div>
+          <form className="form-container__form" onSubmit={this.submitAction}>
             <input
-              className="form-control"
+              className="form-container__form__input"
               type="text"
+              placeholder="Enter category name"
               value={name}
               onChange={event => this.setState({ name: event.target.value })}
             />
-          </div>
-          <div className="form-group">
-            <button className="btn btn-primary float-right">Submit</button>
-          </div>
-        </form>
+            <button className="default-button">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }
