@@ -5,30 +5,26 @@ import { addProduct } from "../redux/actions";
 import { fetchCategories } from "@/modules/category/redux/actions";
 import cancleImg from "../../../main/images/cancel.svg";
 
+const INITIAL_STATE = {
+  name: "",
+  description: "",
+  picture: null,
+  pictureUrl: null,
+  category: "",
+  price: ""
+};
 class ProductAdd extends Component {
-  state = {
-    name: "",
-    picture: null,
-    pictureUrl: null,
-    category: "",
-    price: ""
-  };
+  state = { ...INITIAL_STATE };
   closeModal(e) {
     e.preventDefault();
     this.props.closeModal({ modal: false });
   }
   submitAction = event => {
     const { addProduct } = this.props;
-    const { name, category, picture, price } = this.state;
+    const { name, description, category, picture, price } = this.state;
     event.preventDefault();
-    addProduct(name, category, picture, price);
-    this.setState({
-      name: "",
-      picture: null,
-      pictureUrl: null,
-      category: "",
-      price: ""
-    });
+    addProduct(name, description, category, picture, price);
+    this.setState({ ...INITIAL_STATE });
   };
   fileSelectedHandler = event => {
     let reader = new FileReader();
@@ -44,7 +40,7 @@ class ProductAdd extends Component {
   }
   render() {
     const { categories } = this.props;
-    const { name, pictureUrl, price } = this.state;
+    const { name, description, pictureUrl, price } = this.state;
     return (
       <div className="item-add">
         <div className="form-container">
@@ -54,7 +50,11 @@ class ProductAdd extends Component {
           >
             <img src={cancleImg} alt="Cancel" />
           </div>
-          <div>{pictureUrl && <img src={pictureUrl} alt="Product" />}</div>
+          {pictureUrl && (
+            <div className="item-add__image">
+              <img src={pictureUrl} alt="Product" />
+            </div>
+          )}
           <form className="form-container__form" onSubmit={this.submitAction}>
             <input
               className="form-container__form__input"
@@ -70,26 +70,35 @@ class ProductAdd extends Component {
               value={price}
               onChange={event => this.setState({ price: event.target.value })}
             />
-            <input type="file" onChange={this.fileSelectedHandler} />
-            <div className="input-group-prepend">
-              <label className="input-group-text" htmlFor="categorySelect">
-                Select Category
-              </label>
+            <div className="form-container__form__wrap">
+              <select
+                className="form-container__form__wrap__select"
+                id="categorySelect"
+                onChange={event =>
+                  this.setState({ category: event.target.value })
+                }
+              >
+                {categories &&
+                  Object.keys(categories).map(key => (
+                    <option
+                      key={categories[key].id}
+                      value={categories[key].name}
+                    >
+                      {categories[key].name}
+                    </option>
+                  ))}
+              </select>
             </div>
-            <select
-              className="custom-select"
-              id="categorySelect"
+            <textarea
+              className="form-container__form__textarea"
+              value={description}
               onChange={event =>
-                this.setState({ category: event.target.value })
+                this.setState({ description: event.target.value })
               }
-            >
-              {categories &&
-                Object.keys(categories).map(key => (
-                  <option key={categories[key].id} value={categories[key].name}>
-                    {categories[key].name}
-                  </option>
-                ))}
-            </select>
+              cols="30"
+              rows="10"
+            />
+            <input type="file" onChange={this.fileSelectedHandler} />
             <button className="default-button">Add product</button>
           </form>
         </div>

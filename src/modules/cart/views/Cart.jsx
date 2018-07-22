@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCartItems } from "../redux/actions";
 import CartList from "../components/CartList";
+import CartTotal from "../components/CartTotal";
 
 class Cart extends Component {
   componentWillMount() {
     const { fetchCartItems, authUser, cart } = this.props;
+    // fetch cart items
     fetchCartItems(authUser, cart);
   }
   componentDidUpdate(prevProps) {
     const { fetchCartItems, authUser, cart } = this.props;
+    // update cart with firebase if user authenticates
     if (authUser !== prevProps.authUser) {
       fetchCartItems(authUser, cart);
     }
@@ -17,8 +20,9 @@ class Cart extends Component {
   render() {
     const { cart, authUser } = this.props;
     return (
-      <div className="container-style">
+      <div className="container-style cart-list-helper">
         <CartList cart={cart} authUser={authUser} />
+        <CartTotal />
       </div>
     );
   }

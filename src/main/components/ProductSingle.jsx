@@ -13,7 +13,8 @@ class ProductSingle extends Component {
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
-      draggable: true
+      draggable: true,
+      draggablePercent: 60
     }
   };
   componentWillMount() {
@@ -39,10 +40,7 @@ class ProductSingle extends Component {
           <div className="product-single__info">
             <h1 className="product-single__info__title">{product.name}</h1>
             <p className="product-single__info__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-              voluptates maiores, cum molestiae quo, ipsa unde dolorem magnam
-              quos vel ratione possimus. Nulla nisi aliquid fuga beatae neque ut
-              quasi.
+              {product.description}
             </p>
             <div className="product-single__info__add-price">
               <p>{product.price} $</p>

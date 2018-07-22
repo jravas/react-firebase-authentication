@@ -26,6 +26,43 @@
       font-size: 16px;
       font-weight: 300;
     }
+    &__textarea {
+      width: 100%;
+      padding: 20px 25px;
+      margin-bottom: 25px;
+      outline: none;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: 300;
+      font-family: "Roboto", sans-serif;
+      resize: none;
+      box-sizing: border-box;
+    }
+    &__wrap {
+      position: relative;
+      &__select {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 100%;
+        padding: 0 25px;
+        margin-bottom: 25px;
+        box-sizing: border-box;
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 20px;
+        line-height: 42px;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      &::after {
+        content: "▼";
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        pointer-events: none;
+      }
+    }
     button {
       margin: 0 auto;
       margin-top: 25px;

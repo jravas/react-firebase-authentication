@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-  cart: []
+  cart: [],
+  cartTotal: 0
 };
 
 function cartReducer(state = INITIAL_STATE, action) {
@@ -13,19 +14,25 @@ function cartReducer(state = INITIAL_STATE, action) {
     case "REMOVE_FROM_CART": {
       return {
         ...state,
-        cart: state.cart.filter(element => element.cartId !== action.payload)
+        cart: state.cart.filter(
+          element => element.cartId !== action.payload.cartId
+        )
       };
     }
     case "FETCH_CART_ITEMS": {
+      let total = 0;
+      let arr = [];
       if (action.payload) {
-        var arr = [];
         Object.keys(action.payload).map(key => arr.push(action.payload[key]));
-        return {
-          ...state,
-          cart: [...arr]
-        };
+        arr.forEach(element => {
+          total += Number(element.price);
+        });
       }
-      return state;
+      return {
+        ...state,
+        cart: [...arr],
+        cartTotal: total
+      };
     }
     default:
       return state;

@@ -3,7 +3,13 @@ import { FETCH_PRODUCTS } from "../consts";
 import Product from "../models/product";
 
 // add Product
-export const addProduct = (name, category, image, price) => async dispatch => {
+export const addProduct = (
+  name,
+  description,
+  category,
+  image,
+  price
+) => async dispatch => {
   let key = productsRef.push().key;
   // upload image
   storage
@@ -15,7 +21,7 @@ export const addProduct = (name, category, image, price) => async dispatch => {
       imageUrl.then(imageUrl => {
         // add product
         productsRef.update({
-          [key]: Product(key, name, category, imageUrl, price)
+          [key]: Product(key, name, description, category, imageUrl, price)
         });
       });
     });
@@ -25,12 +31,13 @@ export const addProduct = (name, category, image, price) => async dispatch => {
 export const updateProduct = (
   productId,
   name,
+  description,
   category,
   price
 ) => async dispatch => {
   productsRef
     .child(productId)
-    .update(Product(productId, name, category, price));
+    .update(Product(productId, name, description, category, price));
 };
 
 // delete Product

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RemoveFromCart } from "../redux/actions";
-import "./CartItem.scss";
+import deleteImage from "@/main/images/cancel.svg";
 
 class CartItem extends Component {
   handleDelete = () => {
     const { RemoveFromCart, item, authUser } = this.props;
-    RemoveFromCart(item.cartId, authUser);
+    RemoveFromCart(item, authUser);
   };
   render() {
     const { item } = this.props;
@@ -19,7 +19,17 @@ class CartItem extends Component {
           <section className="cart-item__info">
             <div className="cart-item__info__header">
               <h1>{item.name}</h1>
-              <button onClick={this.handleDelete}>delte</button>
+              <div
+                className="cart-item__info__header__remove"
+                onClick={this.handleDelete}
+              >
+                <img src={deleteImage} alt="Delete button" />
+              </div>
+            </div>
+            <div className="cart-item__info__footer">
+              <span className="cart-item__info__footer__price">
+                {item.price}
+              </span>
             </div>
           </section>
         </li>

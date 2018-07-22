@@ -15,9 +15,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] default category
 - [ ] clear product ulpoad input, category
 - [x] products list right/middle click
-- [ ] product description
+- [x] product description
 - [ ] loading product/product animation
-- [ ] cart is empty message
+- [x] cart is empty message
 - [x] replace ../../ with @
 - [ ] auth action
 - [ ] non register user sign in redirect to register
@@ -26,6 +26,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] remove bootstrap
 - [ ] admin product add/edit, categories edit
 - [ ] close modal after category/product add
+- [ ] auto prefixer
 
 
 ## Table of Contents

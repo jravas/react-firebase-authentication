@@ -1,0 +1,16 @@
+.cart-list-helper {
+  flex-direction: column;
+}
+
+.cart-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cart-list-empty {
+  text-align: center;
+  font-size: 32px;
+  padding-top: 10%;
+  color: #343a40;
+}
