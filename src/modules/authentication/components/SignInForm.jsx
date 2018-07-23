@@ -11,14 +11,22 @@ const INITIAL_STATE = {
 };
 
 class SignInForm extends Component {
-  state = { ...INITIAL_STATE };
-  onSubmit = event => {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  onSubmit(event) {
     const { email, password } = this.state;
     const { history, SignIn, cart } = this.props;
     // sign in action
     SignIn(email, password, cart).then(() => history.push(routes.HOME));
     event.preventDefault();
-  };
+  }
   render() {
     const { email, password, error } = this.state;
     const isInvalid = password === "" || email === "";
@@ -28,15 +36,17 @@ class SignInForm extends Component {
         <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
             className="form-container__form__input"
+            name="email"
             value={email}
-            onChange={event => this.setState({ email: event.target.value })}
+            onChange={this.handleInput}
             type="text"
             placeholder="Email Address"
           />
           <input
             className="form-container__form__input"
+            name="password"
             value={password}
-            onChange={event => this.setState({ password: event.target.value })}
+            onChange={this.handleInput}
             type="password"
             placeholder="Password"
           />

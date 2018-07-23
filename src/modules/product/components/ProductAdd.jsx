@@ -14,26 +14,36 @@ const INITIAL_STATE = {
   price: ""
 };
 class ProductAdd extends Component {
-  state = { ...INITIAL_STATE };
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.closeModal = this.closeModal.bind(this);
+    this.submitAction = this.submitAction.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
   closeModal(e) {
     e.preventDefault();
     this.props.closeModal({ modal: false });
   }
-  submitAction = event => {
+  submitAction(event) {
     const { addProduct } = this.props;
     const { name, description, category, picture, price } = this.state;
     event.preventDefault();
     addProduct(name, description, category, picture, price);
     this.setState({ ...INITIAL_STATE });
-  };
-  fileSelectedHandler = event => {
+  }
+  fileSelectedHandler(event) {
     let reader = new FileReader();
     let file = event.target.files[0];
     reader.onloadend = () => {
       this.setState({ picture: file, pictureUrl: reader.result });
     };
     reader.readAsDataURL(file);
-  };
+  }
   componentWillMount() {
     const { fetchCategories } = this.props;
     fetchCategories();
@@ -44,10 +54,7 @@ class ProductAdd extends Component {
     return (
       <div className="item-add">
         <div className="form-container">
-          <div
-            className="item-add__cancel"
-            onClick={this.closeModal.bind(this)}
-          >
+          <div className="item-add__cancel" onClick={this.closeModal}>
             <img src={cancleImg} alt="Cancel" />
           </div>
           {pictureUrl && (
@@ -60,23 +67,24 @@ class ProductAdd extends Component {
               className="form-container__form__input"
               placeholder="Product name"
               type="text"
+              name="name"
               value={name}
-              onChange={event => this.setState({ name: event.target.value })}
+              onChange={this.handleInput}
             />
             <input
               className="form-container__form__input"
               placeholder="Product price"
               type="number"
+              name="price"
               value={price}
-              onChange={event => this.setState({ price: event.target.value })}
+              onChange={this.handleInput}
             />
             <div className="form-container__form__wrap">
               <select
                 className="form-container__form__wrap__select"
                 id="categorySelect"
-                onChange={event =>
-                  this.setState({ category: event.target.value })
-                }
+                name="category"
+                onChange={this.handleInput}
               >
                 {categories &&
                   Object.keys(categories).map(key => (
@@ -91,10 +99,9 @@ class ProductAdd extends Component {
             </div>
             <textarea
               className="form-container__form__textarea"
+              name="description"
               value={description}
-              onChange={event =>
-                this.setState({ description: event.target.value })
-              }
+              onChange={this.handleInput}
               cols="30"
               rows="10"
             />

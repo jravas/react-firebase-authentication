@@ -3,19 +3,25 @@ import { connect } from "react-redux";
 import { fetchProduct, updateProduct } from "../redux/actions";
 import { fetchCategories } from "@/modules/category/redux/actions";
 
+const INITIAL_STATE = { name: "", category: "", product: "" };
+
 class ProductEdit extends Component {
-  state = {
-    name: "",
-    category: "",
-    product: ""
-  };
-  submitAction = event => {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.submitAction = this.submitAction.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  submitAction(event) {
     const { id } = this.props.match.params;
     const { updateProduct } = this.props;
     const { name, category } = this.state;
     event.preventDefault();
     updateProduct(id, name, category);
-  };
+  }
   componentWillMount() {
     const { fetchCategories, fetchProduct } = this.props;
     const { id } = this.props.match.params;
@@ -42,10 +48,9 @@ class ProductEdit extends Component {
                 <input
                   className="form-control"
                   type="text"
+                  name="name"
                   value={name}
-                  onChange={event =>
-                    this.setState({ name: event.target.value })
-                  }
+                  onChange={this.handleInput}
                 />
               </div>
               <div className="input-group mb-3">
@@ -57,10 +62,9 @@ class ProductEdit extends Component {
                 <select
                   className="custom-select"
                   id="categorySelect"
+                  name="category"
                   value={category}
-                  onChange={event =>
-                    this.setState({ category: event.target.value })
-                  }
+                  onChange={this.handleInput}
                 >
                   {categories &&
                     Object.keys(categories).map(key => (

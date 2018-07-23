@@ -8,10 +8,10 @@ import AddCategory from "../components/CategoryAdd";
 import CategoriesList from "../components/CategoriesList";
 import AddButton from "@/main/components/AddButton";
 
+const INITIAL_STATE = { modal: false };
+
 class AdminCategoryPage extends Component {
-  state = {
-    modal: false
-  };
+  state = { ...INITIAL_STATE };
   componentDidMount() {
     const { fetchCategories } = this.props;
     fetchCategories();

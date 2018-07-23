@@ -7,8 +7,13 @@ const INITIAL_STATE = {
   error: null
 };
 class PasswordChangeForm extends Component {
-  state = { ...INITIAL_STATE };
-  onSubmit = event => {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+  onSubmit(event) {
     const { passwordOne } = this.state;
     const { ChangePassword } = this.props;
     ChangePassword(passwordOne).then(() => {
@@ -16,7 +21,10 @@ class PasswordChangeForm extends Component {
       console.log("success");
     });
     event.preventDefault();
-  };
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
@@ -26,19 +34,17 @@ class PasswordChangeForm extends Component {
         <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
             className="form-container__input"
+            name="passwordOne"
             value={passwordOne}
-            onChange={event =>
-              this.setState({ passwordOne: event.target.value })
-            }
+            onChange={this.handleInput}
             type="password"
             placeholder="New Password"
           />
           <input
             className="form-container__input"
+            name="passwordTwo"
             value={passwordTwo}
-            onChange={event =>
-              this.setState({ passwordTwo: event.target.value })
-            }
+            onChange={this.handleInput}
             type="password"
             placeholder="Confirm New Password"
           />

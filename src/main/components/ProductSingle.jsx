@@ -5,30 +5,32 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { fetchProduct } from "@/modules/product/redux/actions";
 import { AddToCart } from "@/modules/cart/redux/actions";
 
+const INITIAL_STATE = {
+  toastConfig: {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 60
+  }
+};
+
 class ProductSingle extends Component {
-  state = {
-    toastConfig: {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      draggablePercent: 60
-    }
-  };
+  state = { ...INITIAL_STATE };
   componentWillMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
     fetchProduct(id);
   }
-  addToCart = () => {
+  addToCart() {
     const { AddToCart, product, authUser } = this.props;
     const { toastConfig } = this.state;
     AddToCart(product, authUser).then(() => {
       toast(`${product.name} added to cart !`, toastConfig);
     });
-  };
+  }
   render() {
     const { product } = this.props;
     return (
@@ -44,7 +46,10 @@ class ProductSingle extends Component {
             </p>
             <div className="product-single__info__add-price">
               <p>{product.price} $</p>
-              <button className="default-button" onClick={this.addToCart}>
+              <button
+                className="default-button"
+                onClick={this.addToCart.bind(this)}
+              >
                 Add to cart
               </button>
             </div>

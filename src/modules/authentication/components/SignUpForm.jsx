@@ -12,8 +12,16 @@ const INITIAL_STATE = {
   error: null
 };
 class SignUpForm extends Component {
-  state = { ...INITIAL_STATE };
-  onSubmit = event => {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  onSubmit(event) {
     event.preventDefault();
     const { username, email, passwordOne } = this.state;
     const { history, AddUser } = this.props;
@@ -21,7 +29,7 @@ class SignUpForm extends Component {
     AddUser(username, email, passwordOne).then(() => {
       history.push(routes.HOME);
     });
-  };
+  }
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
     const isInvalid =
@@ -40,8 +48,9 @@ class SignUpForm extends Component {
             id="username"
             aria-describedby="usernamelHelp"
             placeholder="Enter username"
+            name="username"
             value={username}
-            onChange={event => this.setState({ username: event.target.value })}
+            onChange={this.handleInput}
           />
           <input
             type="email"
@@ -49,28 +58,27 @@ class SignUpForm extends Component {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            name="email"
             value={email}
-            onChange={event => this.setState({ email: event.target.value })}
+            onChange={this.handleInput}
           />
           <input
             type="password"
             className="form-container__form__input"
             id="exampleInputPassword"
             placeholder="Password"
+            name="passwordOne"
             value={passwordOne}
-            onChange={event =>
-              this.setState({ passwordOne: event.target.value })
-            }
+            onChange={this.handleInput}
           />
           <input
             type="password"
             className="form-container__form__input"
             id="exampleInputPassword1"
             placeholder="Password"
+            name="passwordTwo"
             value={passwordTwo}
-            onChange={event =>
-              this.setState({ passwordTwo: event.target.value })
-            }
+            onChange={this.handleInput}
           />
           <button disabled={isInvalid} type="submit" className="default-button">
             Submit

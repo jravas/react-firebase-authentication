@@ -2,17 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCategory, updateCategory } from "../redux/actions";
 
+const INITIAL_STATE = { name: "" };
+
 class CategoryEdit extends Component {
-  state = {
-    name: ""
-  };
-  submitAction = event => {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    this.submitAction = this.submitAction.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+  handleInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  submitAction(event) {
     const { id } = this.props.match.params;
     const { updateCategory } = this.props;
     const { name } = this.state;
     event.preventDefault();
     updateCategory(id, name);
-  };
+  }
   componentWillMount() {
     const { fetchCategory } = this.props;
     const { id } = this.props.match.params;
@@ -36,10 +44,9 @@ class CategoryEdit extends Component {
                 <input
                   className="form-control"
                   type="text"
+                  name="name"
                   value={name}
-                  onChange={event =>
-                    this.setState({ name: event.target.value })
-                  }
+                  onChange={this.handleInput}
                 />
               </div>
               <div className="form-group">

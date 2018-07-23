@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+const INITIAL_STATE = { imgLoading: true };
+
 class ProductPublic extends Component {
-  state = {
-    imgLoading: true
-  };
-  handleLoad = data => {
+  state = { ...INITIAL_STATE };
+  handleLoad(data) {
     this.setState(data);
-  };
+  }
   render() {
     const { product } = this.props;
     return (
@@ -15,7 +15,7 @@ class ProductPublic extends Component {
         <li className="product">
           <Link to={`/product/${product.id}`}>
             <section
-              onLoad={() => this.handleLoad({ imgLoading: false })}
+              onLoad={this.handleLoad.bind(this, { imgLoading: false })}
               className={`product__image ${this.state.imgLoading &&
                 "product__image--loading"}`}
             >

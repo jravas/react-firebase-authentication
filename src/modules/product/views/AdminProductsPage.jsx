@@ -6,11 +6,9 @@ import * as actions from "../redux/actions";
 import ProductsList from "../components/ProductsList";
 import ProductAdd from "../components/ProductAdd";
 import AddButton from "@/main/components/AddButton";
-
+const INITIAL_STATE = { modal: false };
 class AdminProductsPage extends Component {
-  state = {
-    modal: false
-  };
+  state = { ...INITIAL_STATE };
   componentDidMount() {
     const { fetchProducts } = this.props;
     fetchProducts();

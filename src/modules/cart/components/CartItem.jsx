@@ -4,10 +4,10 @@ import { RemoveFromCart } from "../redux/actions";
 import deleteImage from "@/main/images/cancel.svg";
 
 class CartItem extends Component {
-  handleDelete = () => {
+  handleDelete() {
     const { RemoveFromCart, item, authUser } = this.props;
     RemoveFromCart(item, authUser);
-  };
+  }
   render() {
     const { item } = this.props;
     return (
@@ -21,7 +21,7 @@ class CartItem extends Component {
               <h1>{item.name}</h1>
               <div
                 className="cart-item__info__header__remove"
-                onClick={this.handleDelete}
+                onClick={this.handleDelete.bind(this)}
               >
                 <img src={deleteImage} alt="Delete button" />
               </div>
