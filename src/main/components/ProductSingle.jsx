@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { toast } from "react-toastify";
 import { fetchProduct } from "@/modules/product/redux/actions";
 import { AddToCart } from "@/modules/cart/redux/actions";
 
@@ -54,7 +53,6 @@ class ProductSingle extends Component {
               </button>
             </div>
           </div>
-          <ToastContainer />
         </section>
       )
     );

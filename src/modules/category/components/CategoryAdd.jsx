@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
 import { addCategory } from "../redux/actions";
 import cancleImg from "../../../main/images/cancel.svg";
 
 const INITIAL_STATE = {
-  name: ""
+  name: "",
+  toastConfig: {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 60
+  }
 };
 
 class CategoryAdd extends Component {
@@ -19,15 +29,19 @@ class CategoryAdd extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   submitAction = event => {
-    const { addCategory } = this.props;
-    const { name } = this.state;
+    const { addCategory, closeModal } = this.props;
+    const { name, toastConfig } = this.state;
     event.preventDefault();
-    addCategory(name);
-    this.setState({ name: "" });
+    addCategory(name).then(() => {
+      this.setState({ ...INITIAL_STATE });
+      closeModal({ modal: false });
+      toast(`${name} added !`, toastConfig);
+    });
   };
   closeModal(e) {
+    const { closeModal } = this.props;
     e.preventDefault();
-    this.props.closeModal({ modal: false });
+    closeModal({ modal: false });
   }
   render() {
     const { name } = this.state;

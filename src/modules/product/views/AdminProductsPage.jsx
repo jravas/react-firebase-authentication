@@ -17,7 +17,7 @@ class AdminProductsPage extends Component {
     const { products } = this.props;
     const { modal } = this.state;
     return (
-      <div className="container">
+      <div>
         {modal && <ProductAdd closeModal={this.setState.bind(this)} />}
         <ProductsList products={products} />
         <AddButton openModal={this.setState.bind(this)} />

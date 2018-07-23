@@ -5,28 +5,27 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## TODO
 - [x] /modules/product/views controlled/uncontrolled error
-- [ ] router routes component
+- [x] router routes component
 - [x] remove ./src/views
 - [x] refactor password change
-- [ ] notifications
-- [ ] check products category after category delete & update
-- [ ] add categories -> remove uncategorised bug
-- [ ] action show errors
-- [ ] default category
-- [ ] clear product ulpoad input, category
+- [x] notifications
+- [x] add categories -> remove uncategorised bug
+- [x] default category
 - [x] products list right/middle click
 - [x] product description
-- [ ] loading product/product animation
 - [x] cart is empty message
 - [x] replace ../../ with @
-- [ ] auth action
-- [ ] non register user sign in redirect to register
-- [ ] add items to firebase cart after registration
-- [ ] counter on cart icon
 - [x] remove bootstrap
+- [x] close modal after category/product add
+- [x] add items to firebase cart after registration
+- [ ] check products category after category delete & update
+- [ ] action show errors
+- [ ] loading product/product animation
+- [ ] counter on cart icon
 - [ ] admin product add/edit, categories edit
-- [ ] close modal after category/product add
 - [ ] auto prefixer
+- [ ] consider cart when switching accounts
+- [ ] product/category add validation
 
 
 ## Table of Contents

@@ -7,10 +7,8 @@ class Admin extends Component {
     const { authUser } = this.props;
     console.log(authUser.email === "josip.ravas.broj@gmail.com");
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">test</div>
-        </div>
+      <div>
+        <div>test</div>
       </div>
     );
   }

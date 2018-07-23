@@ -11,6 +11,9 @@ export const addProduct = (
   price
 ) => async dispatch => {
   let key = productsRef.push().key;
+  if (category === "") {
+    category = "Uncategorised";
+  }
   // upload image
   storage
     .child(`images/${key}`)

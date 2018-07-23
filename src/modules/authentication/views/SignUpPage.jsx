@@ -4,7 +4,7 @@ import SignUpForm from "../components/SignUpForm";
 class SignUpPage extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <SignUpForm />
       </div>
     );

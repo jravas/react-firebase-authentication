@@ -20,7 +20,7 @@ class AdminCategoryPage extends Component {
     const { categories } = this.props;
     const { modal } = this.state;
     return (
-      <div className="container">
+      <div>
         {modal && <AddCategory closeModal={this.setState.bind(this)} />}
         <CategoriesList categories={categories} />
         <AddButton openModal={this.setState.bind(this)} />

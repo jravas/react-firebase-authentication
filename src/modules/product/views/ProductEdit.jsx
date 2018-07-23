@@ -39,7 +39,7 @@ class ProductEdit extends Component {
     const { categories } = this.props;
     const { name, category, imageUrl } = this.state;
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col">
             <img src={imageUrl} alt="Product" />

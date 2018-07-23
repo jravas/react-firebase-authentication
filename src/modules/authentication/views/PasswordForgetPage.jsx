@@ -1,7 +1,7 @@
 import React from "react";
 import PasswordForgetForm from "../components/PasswordForgetForm";
 const PasswordForgetPage = () => (
-  <div className="container">
+  <div>
     <PasswordForgetForm />
   </div>
 );

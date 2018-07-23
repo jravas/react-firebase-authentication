@@ -13,3 +13,4 @@ export const ADMIN_PRODUCT_EDIT = "/admin/products/edit/:id";
 // public pages
 export const SINGLE_PRODUCT = "/product/:id";
 export const CART = "/cart";
+export const NOT_FOUND = "/not-found";

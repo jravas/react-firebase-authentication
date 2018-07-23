@@ -24,9 +24,9 @@ class SignUpForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const { username, email, passwordOne } = this.state;
-    const { history, AddUser } = this.props;
+    const { history, AddUser, cart } = this.props;
     // pass
-    AddUser(username, email, passwordOne).then(() => {
+    AddUser(username, email, passwordOne, cart).then(() => {
       history.push(routes.HOME);
     });
   }
@@ -90,7 +90,11 @@ class SignUpForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  cart: state.cartState.cart
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(withRouter(SignUpForm));

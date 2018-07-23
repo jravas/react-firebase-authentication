@@ -4,15 +4,25 @@ import { db, usersRef } from "@/main/firebase/firebase";
 import User from "../models/user";
 
 // add user
-export const AddUser = (username, email, passwordOne) => async dispatch => {
+export const AddUser = (
+  username,
+  email,
+  passwordOne,
+  cart
+) => async dispatch => {
   auth
     // create user in firebase auth
     .doCreateUserWithEmailAndPassword(email, passwordOne)
     .then(authUser => {
       // create user in firebase database
-      db.ref(`users/${authUser.user.uid}`).set(
-        User(authUser.user.uid, username, email, 0)
-      );
+      db.ref(`users/${authUser.user.uid}`)
+        .set(User(authUser.user.uid, username, email, 0))
+        .then(() => {
+          // sync item added to cart with firebase
+          cart.forEach(el => {
+            usersRef.child(`${authUser.user.uid}/cart`).push(el);
+          });
+        });
     });
 };
 // sign in

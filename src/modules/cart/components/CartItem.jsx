@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
 import { RemoveFromCart } from "../redux/actions";
 import deleteImage from "@/main/images/cancel.svg";
 
+const INITIAL_STATE = {
+  toastConfig: {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 60
+  }
+};
+
 class CartItem extends Component {
+  state = { ...INITIAL_STATE };
   handleDelete() {
+    const { toastConfig } = this.state;
     const { RemoveFromCart, item, authUser } = this.props;
-    RemoveFromCart(item, authUser);
+    RemoveFromCart(item, authUser).then(() => {
+      toast(`${item.name} removed from cart !`, toastConfig);
+    });
   }
   render() {
     const { item } = this.props;

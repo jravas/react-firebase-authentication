@@ -1,17 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../redux/actions";
-// todo action for categories
+import { toast } from "react-toastify";
 import { fetchCategories } from "@/modules/category/redux/actions";
 import cancleImg from "../../../main/images/cancel.svg";
 
 const INITIAL_STATE = {
   name: "",
   description: "",
-  picture: null,
-  pictureUrl: null,
+  picture: "",
+  pictureUrl: "",
   category: "",
-  price: ""
+  price: "",
+  toastConfig: {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 60
+  }
 };
 class ProductAdd extends Component {
   constructor(props) {
@@ -22,20 +31,35 @@ class ProductAdd extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
   }
+  // setting inputs to product state
   handleInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+  // close modal action
   closeModal(e) {
+    const { closeModal } = this.props;
     e.preventDefault();
-    this.props.closeModal({ modal: false });
+    closeModal({ modal: false });
   }
+  // adding product
   submitAction(event) {
-    const { addProduct } = this.props;
-    const { name, description, category, picture, price } = this.state;
+    const { addProduct, closeModal } = this.props;
+    const {
+      name,
+      description,
+      category,
+      picture,
+      price,
+      toastConfig
+    } = this.state;
     event.preventDefault();
-    addProduct(name, description, category, picture, price);
-    this.setState({ ...INITIAL_STATE });
+    addProduct(name, description, category, picture, price).then(() => {
+      this.setState({ ...INITIAL_STATE });
+      closeModal({ modal: false });
+      toast(`${name} added !`, toastConfig);
+    });
   }
+  // product image upload
   fileSelectedHandler(event) {
     let reader = new FileReader();
     let file = event.target.files[0];
