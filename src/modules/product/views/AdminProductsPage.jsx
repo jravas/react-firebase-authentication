@@ -6,13 +6,19 @@ import * as actions from "../redux/actions";
 import ProductsList from "../components/ProductsList";
 import ProductAdd from "../components/ProductAdd";
 import AddButton from "@/main/components/AddButton";
+import admin from "@/main/constants/hardCodedAdmin";
+
+console.log(admin.mail);
+
 const INITIAL_STATE = { modal: false };
 class AdminProductsPage extends Component {
   state = { ...INITIAL_STATE };
+
   componentDidMount() {
     const { fetchProducts } = this.props;
     fetchProducts();
   }
+
   render() {
     const { products } = this.props;
     const { modal } = this.state;
@@ -30,7 +36,7 @@ const mapStateToProps = state => ({
   products: state.productsState.products
 });
 
-const authCondition = authUser => !!authUser;
+const authCondition = authUser => authUser.email === admin.mail;
 export default compose(
   withAuthorization(authCondition),
   connect(

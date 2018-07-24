@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { compose } from "recompose";
+import withAuthorization from "@/main/components/withAuthorization";
+import { withRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import { fetchCategory, updateCategory } from "../redux/actions";
+import * as routes from "@/main/constants/routes";
+import admin from "@/main/constants/hardCodedAdmin";
 
-const INITIAL_STATE = { name: "" };
+const INITIAL_STATE = { name: " ", toastConfig: defaultToastConfig };
 
 class CategoryEdit extends Component {
   constructor(props) {
@@ -16,10 +23,13 @@ class CategoryEdit extends Component {
   }
   submitAction(event) {
     const { id } = this.props.match.params;
-    const { updateCategory } = this.props;
-    const { name } = this.state;
+    const { updateCategory, history } = this.props;
+    const { name, toastConfig } = this.state;
     event.preventDefault();
-    updateCategory(id, name);
+    updateCategory(id, name).then(() => {
+      history.push(routes.ADMIN_CATEGORIES);
+      toast(`${name} edited !`, toastConfig);
+    });
   }
   componentWillMount() {
     const { fetchCategory } = this.props;
@@ -36,25 +46,17 @@ class CategoryEdit extends Component {
   render() {
     const { name } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <form onSubmit={this.submitAction}>
-              <div className="form-group">
-                <input
-                  className="form-control"
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={this.handleInput}
-                />
-              </div>
-              <div className="form-group">
-                <button className="btn btn-primary float-right">Update</button>
-              </div>
-            </form>
-          </div>
-        </div>
+      <div className="form-container">
+        <form className="form-container__form" onSubmit={this.submitAction}>
+          <input
+            className="form-container__form__input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleInput}
+          />
+          <button className="default-button">Update</button>
+        </form>
       </div>
     );
   }
@@ -66,7 +68,11 @@ const mapStateToProps = state => ({
   category: state.categoriesState.categories
 });
 
-export default connect(
-  mapStateToProps,
-  actions
-)(CategoryEdit);
+const authCondition = authUser => authUser.email === admin.mail;
+export default compose(
+  withAuthorization(authCondition),
+  connect(
+    mapStateToProps,
+    actions
+  )
+)(withRouter(CategoryEdit));

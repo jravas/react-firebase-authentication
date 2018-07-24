@@ -1,6 +1,7 @@
 import cuid from "cuid";
 import { usersRef } from "@/main/firebase/firebase";
 import CartItem from "../model/cartItem";
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "../consts";
 
 // add to cart
 export const AddToCart = (product, authUser) => async dispatch => {
@@ -12,7 +13,7 @@ export const AddToCart = (product, authUser) => async dispatch => {
     usersRef.child(`${authUser.uid}/cart`).push(model);
   }
   dispatch({
-    type: "ADD_TO_CART",
+    type: ADD_TO_CART,
     payload: model
   });
 };
@@ -31,7 +32,7 @@ export const RemoveFromCart = (cartItemId, authUser) => async dispatch => {
       });
   }
   dispatch({
-    type: "REMOVE_FROM_CART",
+    type: REMOVE_FROM_CART,
     payload: cartItemId
   });
 };
@@ -41,16 +42,9 @@ export const fetchCartItems = (authUser, cart) => async dispatch => {
   if (authUser) {
     usersRef.child(`${authUser.uid}/cart`).on("value", snapshot => {
       dispatch({
-        type: "FETCH_CART_ITEMS",
+        type: FETCH_CART_ITEMS,
         payload: snapshot.val()
       });
     });
   }
 };
-//
-// export const totalInCart = cart => async dispatch => {
-//   dispatch({
-//     type: "TOTAL_IN_CART",
-//     payload: cart
-//   });
-// };

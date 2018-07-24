@@ -1,3 +1,4 @@
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "../consts";
 const INITIAL_STATE = {
   cart: [],
   cartTotal: 0
@@ -5,13 +6,13 @@ const INITIAL_STATE = {
 
 function cartReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case "ADD_TO_CART": {
+    case ADD_TO_CART: {
       return {
         ...state,
         cart: [...state.cart, action.payload]
       };
     }
-    case "REMOVE_FROM_CART": {
+    case REMOVE_FROM_CART: {
       return {
         ...state,
         cart: state.cart.filter(
@@ -19,7 +20,7 @@ function cartReducer(state = INITIAL_STATE, action) {
         )
       };
     }
-    case "FETCH_CART_ITEMS": {
+    case FETCH_CART_ITEMS: {
       let total = 0;
       let arr = [];
       if (action.payload) {

@@ -32,15 +32,40 @@ export const addProduct = (
 
 //update Product
 export const updateProduct = (
-  productId,
+  id,
   name,
   description,
   category,
+  image,
   price
 ) => async dispatch => {
-  productsRef
-    .child(productId)
-    .update(Product(productId, name, description, category, price));
+  // if image didn't updated send iamgeUrl string
+  if (typeof image === "string") {
+    productsRef
+      .child(id)
+      .update(Product(id, name, description, category, image, price));
+  } else if (typeof image === "object") {
+    // if image is updated send image object and delete old image
+    storage
+      .child(`images/${id}`)
+      .delete()
+      .then(() => {
+        // upload new image and update product
+        storage
+          .child(`images/${id}`)
+          .put(image)
+          .then(snapshot => {
+            // get image url
+            let imageUrl = snapshot.ref.getDownloadURL();
+            imageUrl.then(imageUrl => {
+              // add product
+              productsRef.update({
+                [id]: Product(id, name, description, category, imageUrl, price)
+              });
+            });
+          });
+      });
+  }
 };
 
 // delete Product

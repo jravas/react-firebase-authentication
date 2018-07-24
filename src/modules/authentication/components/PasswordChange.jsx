@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
 import * as actions from "../redux/actions";
+import defaultToastConfig from "@/main/constants/defaultToastConfig";
+
 const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
-  error: null
+  error: null,
+  toastConfig: defaultToastConfig
 };
 class PasswordChangeForm extends Component {
   constructor(props) {
@@ -14,11 +18,11 @@ class PasswordChangeForm extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
   onSubmit(event) {
-    const { passwordOne } = this.state;
+    const { passwordOne, toastConfig } = this.state;
     const { ChangePassword } = this.props;
     ChangePassword(passwordOne).then(() => {
       this.setState({ passwordOne: "", passwordTwo: "" });
-      console.log("success");
+      toast(`Password changed successfully !`, toastConfig);
     });
     event.preventDefault();
   }
@@ -30,7 +34,7 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
     return (
       <div className="form-container">
-        <h1 className="form-container__title">Sing In</h1>
+        <h1 className="form-container__title">Change password</h1>
         <form className="form-container__form" onSubmit={this.onSubmit}>
           <input
             className="form-container__input"

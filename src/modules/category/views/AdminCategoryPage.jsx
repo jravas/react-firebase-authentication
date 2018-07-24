@@ -7,6 +7,7 @@ import * as actions from "../redux/actions";
 import AddCategory from "../components/CategoryAdd";
 import CategoriesList from "../components/CategoriesList";
 import AddButton from "@/main/components/AddButton";
+import admin from "@/main/constants/hardCodedAdmin";
 
 const INITIAL_STATE = { modal: false };
 
@@ -33,7 +34,7 @@ const mapStateToProps = state => ({
   categories: state.categoriesState.categories
 });
 
-const authCondition = authUser => !!authUser;
+const authCondition = authUser => authUser.email === admin.mail;
 export default compose(
   withAuthorization(authCondition),
   connect(

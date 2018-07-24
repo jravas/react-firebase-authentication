@@ -4,17 +4,10 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import * as actions from "../redux/actions";
 import deleteImage from "@/main/images/delete.svg";
+import defaultToastConfig from "@/main/constants/defaultToastConfig";
 
 const INITIAL_STATE = {
-  toastConfig: {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    draggablePercent: 60
-  }
+  toastConfig: defaultToastConfig
 };
 
 class CategoryItem extends Component {

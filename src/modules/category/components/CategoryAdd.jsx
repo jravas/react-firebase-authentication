@@ -3,18 +3,11 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import { addCategory } from "../redux/actions";
 import cancleImg from "../../../main/images/cancel.svg";
+import defaultToastConfig from "@/main/constants/defaultToastConfig";
 
 const INITIAL_STATE = {
   name: "",
-  toastConfig: {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    draggablePercent: 60
-  }
+  toastConfig: defaultToastConfig
 };
 
 class CategoryAdd extends Component {

@@ -18,14 +18,19 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] remove bootstrap
 - [x] close modal after category/product add
 - [x] add items to firebase cart after registration
+- [x] cart consts
+- [x] delete product image after image change
+- [x] set categories and products edit to be restircted
+- [x] admin product add/edit, categories edit
 - [ ] check products category after category delete & update
-- [ ] action show errors
+- [ ] firebase actions show errors
 - [ ] loading product/product animation
 - [ ] counter on cart icon
-- [ ] admin product add/edit, categories edit
 - [ ] auto prefixer
 - [ ] consider cart when switching accounts
-- [ ] product/category add validation
+- [ ] product/category add !!! VALIDATION !!!
+- [ ] consider quick fix [itemname]: "  " for product and category edit
+- [ ] authenticated unauthorised redirecting
 
 
 ## Table of Contents
