@@ -7,7 +7,6 @@ class ProductsFilter extends Component {
   filter(event) {
     const { original } = this.state;
     const { filter } = this.props;
-    // let original = products;
     let filtered = original;
     filtered.sort((obj1, obj2) => {
       switch (event.target.value) {

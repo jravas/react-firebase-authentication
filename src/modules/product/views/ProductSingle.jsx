@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import { fetchProduct } from "@/modules/product/redux/actions";
@@ -10,7 +11,13 @@ const INITIAL_STATE = {
 };
 
 class ProductSingle extends Component {
-  state = { ...INITIAL_STATE };
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+    // this.props.history.listen((location, action) => {
+    //   this.props.fetchProduct(this.props.match.params.id);
+    // });
+  }
   componentWillMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
@@ -22,6 +29,12 @@ class ProductSingle extends Component {
     AddToCart(product, authUser).then(() => {
       toast(`${product.name} added to cart !`, toastConfig);
     });
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.fetchProduct(nextProps.match.params.id);
+      console.log(nextProps.match.params.id);
+    }
   }
   render() {
     const { product } = this.props;
@@ -62,4 +75,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions
-)(ProductSingle);
+)(withRouter(ProductSingle));
