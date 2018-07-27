@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../product/redux/actions";
-import ProductsListPublic from "@/main/components/ProductsListPublic";
+import { ProductsListPublic } from "@/modules/product";
 
 class HomePage extends Component {
   componentDidMount() {

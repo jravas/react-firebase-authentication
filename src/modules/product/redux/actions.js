@@ -1,5 +1,5 @@
 import { productsRef, storage } from "@/main/firebase/firebase";
-import { FETCH_PRODUCTS } from "../consts";
+import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "../consts";
 import Product from "../models/product";
 
 // add Product
@@ -88,6 +88,16 @@ export const fetchProducts = () => async dispatch => {
   productsRef.on("value", snapshot => {
     dispatch({
       type: FETCH_PRODUCTS,
+      payload: snapshot.val()
+    });
+  });
+};
+
+// list products
+export const fetchProductsArr = () => async dispatch => {
+  productsRef.on("value", snapshot => {
+    dispatch({
+      type: FETCH_PRODUCTS_ARR,
       payload: snapshot.val()
     });
   });

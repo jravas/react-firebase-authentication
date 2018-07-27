@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import * as routes from "@/main/constants/routes";
 import homeImage from "@/main/images/home.svg";
 import cartImage from "@/main/images/shopping-basket.svg";
+import storeImage from "../../../main/images/store.svg";
 
 const NavigationNonAuth = () => (
   <nav className="main-navigation">
@@ -21,6 +22,14 @@ const NavigationNonAuth = () => (
           to={routes.HOME}
         >
           <img src={homeImage} alt="Home" />
+        </Link>
+      </li>
+      <li className="main-navigation__links__item">
+        <Link
+          className="main-navigation__links__item__link icon"
+          to={routes.PRODUCTS}
+        >
+          <img src={storeImage} alt="Home" />
         </Link>
       </li>
       <li className="main-navigation__links__item">

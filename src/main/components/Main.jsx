@@ -6,6 +6,8 @@ import {
   HomePage,
   AdminProductsPage,
   ProductEdit,
+  ProductSingle,
+  ProductPagePublic,
   AdminCategoryPage,
   CategoryEdit,
   SignUpPage,
@@ -16,13 +18,13 @@ import {
   Cart
 } from "@/modules";
 // publc
-import ProductSingle from "@/main/components/ProductSingle";
 import NotFound from "@/main/views/NotFound";
 
 const Main = () => (
   <main className="container">
     <Switch>
       <Route exact path={routes.HOME} component={HomePage} />
+      <Route exact path={routes.PRODUCTS} component={ProductPagePublic} />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route

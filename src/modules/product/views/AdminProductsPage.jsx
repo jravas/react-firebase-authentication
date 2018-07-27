@@ -8,13 +8,11 @@ import ProductAdd from "../components/ProductAdd";
 import AddButton from "@/main/components/AddButton";
 import admin from "@/main/constants/hardCodedAdmin";
 
-console.log(admin.mail);
-
 const INITIAL_STATE = { modal: false };
 class AdminProductsPage extends Component {
   state = { ...INITIAL_STATE };
 
-  componentDidMount() {
+  componentWillMount() {
     const { fetchProducts } = this.props;
     fetchProducts();
   }

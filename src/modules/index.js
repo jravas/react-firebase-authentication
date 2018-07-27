@@ -1,4 +1,9 @@
-import { AdminProductsPage, ProductEdit } from "./product";
+import {
+  AdminProductsPage,
+  ProductEdit,
+  ProductPagePublic,
+  ProductSingle
+} from "./product";
 import { AdminCategoryPage, CategoryEdit } from "./category";
 import { SignUpPage, SignInPage, PasswordForgetPage } from "./authentication";
 import Navigation from "./navigation";
@@ -11,6 +16,8 @@ import AccountPage from "./account";
 export {
   AdminProductsPage,
   ProductEdit,
+  ProductPagePublic,
+  ProductSingle,
   AdminCategoryPage,
   CategoryEdit,
   SignUpPage,

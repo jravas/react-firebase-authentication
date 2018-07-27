@@ -70,7 +70,7 @@ class ProductEdit extends Component {
         }
       );
     } else {
-      // else send image url
+      // else send old image url
       updateProduct(id, name, description, category, imageUrl, price).then(
         () => {
           history.push(routes.ADMIN_PRODUCTS);

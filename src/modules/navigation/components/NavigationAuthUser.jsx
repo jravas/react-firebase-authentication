@@ -4,6 +4,7 @@ import { auth } from "@/main/firebase";
 import * as routes from "@/main/constants/routes";
 import homeImage from "@/main/images/home.svg";
 import cartImage from "@/main/images/shopping-basket.svg";
+import storeImage from "../../../main/images/store.svg";
 
 const NavigationAuthUser = () => (
   <nav className="main-navigation">
@@ -22,6 +23,14 @@ const NavigationAuthUser = () => (
           to={routes.HOME}
         >
           <img src={homeImage} alt="Home" />
+        </Link>
+      </li>
+      <li className="main-navigation__links__item">
+        <Link
+          className="main-navigation__links__item__link icon"
+          to={routes.PRODUCTS}
+        >
+          <img src={storeImage} alt="Home" />
         </Link>
       </li>
       <li className="main-navigation__links__item">

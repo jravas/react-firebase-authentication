@@ -31,6 +31,10 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] product/category add !!! VALIDATION !!!
 - [ ] consider quick fix [itemname]: "  " for product and category edit
 - [ ] authenticated unauthorised redirecting
+- [ ] cart checkout
+- [ ] unauthenticated cart total
+- [ ] button selected with tab
+- [ ] empty categories
 
 
 ## Table of Contents

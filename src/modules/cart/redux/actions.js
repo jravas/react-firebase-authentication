@@ -47,4 +47,7 @@ export const fetchCartItems = (authUser, cart) => async dispatch => {
       });
     });
   }
+  // dispatch({
+  //   type: FETCH_CART_ITEMS
+  // });
 };
