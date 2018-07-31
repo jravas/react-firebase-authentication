@@ -2,9 +2,10 @@ import {
   AdminProductsPage,
   ProductEdit,
   ProductPagePublic,
-  ProductSingle
+  ProductSingle,
+  AdminCategoryPage,
+  CategoryEdit
 } from "./product";
-import { AdminCategoryPage, CategoryEdit } from "./category";
 import { SignUpPage, SignInPage, PasswordForgetPage } from "./authentication";
 import Navigation from "./navigation";
 import HomePage from "./home";

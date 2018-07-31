@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import * as actions from "../redux/actions";
-import * as routes from "@/main/constants/routes";
 
 const INITIAL_STATE = {
   email: "",
@@ -18,10 +16,9 @@ class SignInForm extends Component {
   };
   onSubmit = event => {
     const { email, password } = this.state;
-    const { history, SignIn, cart } = this.props;
+    const { SignIn, cart } = this.props;
     // sign in action
-    SignIn(email, password, cart).then(() => history.push(routes.HOME));
-    event.preventDefault();
+    SignIn(email, password, cart);
   };
   render() {
     const { email, password, error } = this.state;
@@ -29,7 +26,7 @@ class SignInForm extends Component {
     return (
       <div className="form-container">
         <h1 className="form-container__title">Sing In</h1>
-        <form className="form-container__form" onSubmit={this.onSubmit}>
+        <form className="form-container__form">
           <input
             className="form-container__form__input"
             name="email"
@@ -49,7 +46,8 @@ class SignInForm extends Component {
           <button
             className="form-container__form__button default-button"
             disabled={isInvalid}
-            type="submit"
+            type="button"
+            onClick={this.onSubmit}
           >
             Sign In
           </button>
@@ -66,4 +64,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions
-)(withRouter(SignInForm));
+)(SignInForm);

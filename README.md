@@ -5,19 +5,23 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## TODO
 - [x] importi / exporti
-  - [ ] except components connected to redux and views
+  - [?] except components connected to redux and views
 - [ ] index.js fileovi
+  - [?] entry point index.jsx
 - [x] es5 / es6
-- [ ] helper funkcije
+- [x] helper funkcije
 - [ ] main/constants
+  - [?] merge with firebase folder -> constants are not related to firebase
 - [x] main/reducers
 - [ ] withAuthentication
 - [ ] jednostavni moduli
-- [ ] category modul
+- [x] category modul
 - [x] redux tipovi
 - [x] componentDidMount vs componentWillMount
 - [ ] defaultne state vrijednosti
-- [ ] es6 handleri
+- [x] es6 handleri
+  - [?] function without prevent default if form was submited with enter
+  - [ ] check all buttons
 - [ ] defaultna null vrijednost
 - [ ] resolvanje promisea unutar komponente
 - [x] conditional check za cijelu komponentu
@@ -64,8 +68,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] product add/delete  updates only after reload
 - [ ] total rounded
 - [ ] product list action changed once -> on
-- [ ] cart leav animation
+- [ ] cart item leave animation
 - [ ] change class components in functional if possible
+- [ ] actions authorised unauthorised
 
 
 ## Table of Contents

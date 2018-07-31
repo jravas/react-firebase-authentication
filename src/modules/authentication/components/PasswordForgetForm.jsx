@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import * as routes from "@/main/constants/routes";
 import * as actions from "../redux/actions";
 
-const INITIAL_STATE = {
-  email: "",
-  error: null
-};
 class PasswordForgetForm extends Component {
-  state = { ...INITIAL_STATE };
+  state = { email: "", error: null };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -17,11 +11,8 @@ class PasswordForgetForm extends Component {
 
   onSubmit = event => {
     const { email } = this.state;
-    const { history, ResetPassword } = this.props;
-    event.preventDefault();
-    ResetPassword(email).then(() => {
-      history.push(routes.SIGN_IN);
-    });
+    const { ResetPassword } = this.props;
+    ResetPassword(email);
   };
   render() {
     const { email, error } = this.state;
@@ -29,7 +20,7 @@ class PasswordForgetForm extends Component {
     return (
       <div className="form-container">
         <h1 className="form-container__title">Send password reset mail</h1>
-        <form className="form-container__form" onSubmit={this.onSubmit}>
+        <form className="form-container__form">
           <input
             className="form-container__form__input"
             name="email"
@@ -38,7 +29,12 @@ class PasswordForgetForm extends Component {
             type="email"
             placeholder="Email Address"
           />
-          <button className="default-button" disabled={isInvalid} type="submit">
+          <button
+            className="default-button"
+            disabled={isInvalid}
+            type="button"
+            onClick={this.onSubmit}
+          >
             Reset password
           </button>
           {!error ? null : <p>{error.message}</p>}
@@ -51,4 +47,4 @@ class PasswordForgetForm extends Component {
 export default connect(
   null,
   actions
-)(withRouter(PasswordForgetForm));
+)(PasswordForgetForm);

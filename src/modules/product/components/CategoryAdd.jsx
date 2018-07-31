@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
 import { addCategory } from "../redux/actions";
 import cancleImg from "../../../main/assets/images/cancel.svg";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
-
-const INITIAL_STATE = {
-  name: "",
-  toastConfig: defaultToastConfig
-};
 
 class CategoryAdd extends Component {
-  state = { ...INITIAL_STATE };
+  state = { name: "" };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -19,13 +12,10 @@ class CategoryAdd extends Component {
 
   submitAction = event => {
     const { addCategory, closeModal } = this.props;
-    const { name, toastConfig } = this.state;
+    const { name } = this.state;
 
-    addCategory(name).then(() => {
-      this.setState({ ...INITIAL_STATE });
-      closeModal({ modal: false });
-      toast(`${name} added !`, toastConfig);
-    });
+    addCategory(name);
+    closeModal({ modal: false });
   };
 
   closeModal = event => {
@@ -41,7 +31,7 @@ class CategoryAdd extends Component {
           <div className="item-add__cancel" onClick={this.closeModal}>
             <img src={cancleImg} alt="Cancel" />
           </div>
-          <form className="form-container__form" onSubmit={this.submitAction}>
+          <form className="form-container__form">
             <input
               className="form-container__form__input"
               type="text"
@@ -50,7 +40,13 @@ class CategoryAdd extends Component {
               value={name}
               onChange={this.handleInput}
             />
-            <button className="default-button">Submit</button>
+            <button
+              className="default-button"
+              type="button"
+              onClick={this.submitAction}
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>

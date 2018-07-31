@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
 import { RemoveFromCart } from "../redux/actions";
 import deleteImage from "@/main/assets/images/cancel.svg";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
-
-const INITIAL_STATE = {
-  toastConfig: defaultToastConfig
-};
 
 class CartItem extends Component {
-  state = { ...INITIAL_STATE };
-
   handleDelete = () => {
-    const { toastConfig } = this.state;
     const { RemoveFromCart, item, authUser } = this.props;
-    RemoveFromCart(item, authUser).then(() => {
-      toast(`${item.name} removed from cart !`, toastConfig);
-    });
+    RemoveFromCart(item, authUser);
   };
 
   render() {

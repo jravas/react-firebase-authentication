@@ -1,9 +1,6 @@
 import { USERS_SET } from "./types";
-const INITIAL_STATE = {
-  users: {}
-};
 
-export const authenticationReducer = (state = INITIAL_STATE, action) => {
+export const authenticationReducer = (state = { users: {} }, action) => {
   switch (action.type) {
     case USERS_SET: {
       return {

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import * as routes from "@/main/constants/routes";
 import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
@@ -19,13 +17,10 @@ class SignUpForm extends Component {
   };
 
   onSubmit = event => {
-    event.preventDefault();
     const { username, email, passwordOne } = this.state;
-    const { history, AddUser, cart } = this.props;
-    // pass
-    AddUser(username, email, passwordOne, cart).then(() => {
-      history.push(routes.HOME);
-    });
+    const { AddUser, cart } = this.props;
+    // pass data to action
+    AddUser(username, email, passwordOne, cart);
   };
 
   render() {
@@ -39,7 +34,7 @@ class SignUpForm extends Component {
     return (
       <div className="form-container">
         <h1 className="form-container__title">Sign Up</h1>
-        <form className="form-container__form" onSubmit={this.onSubmit}>
+        <form className="form-container__form">
           <input
             type="text"
             className="form-container__form__input"
@@ -78,7 +73,12 @@ class SignUpForm extends Component {
             value={passwordTwo}
             onChange={this.handleInput}
           />
-          <button disabled={isInvalid} type="submit" className="default-button">
+          <button
+            disabled={isInvalid}
+            type="button"
+            className="default-button"
+            onClick={this.onSubmit}
+          >
             Submit
           </button>
           {!error ? null : <p>{error.message} </p>}
@@ -95,4 +95,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions
-)(withRouter(SignUpForm));
+)(SignUpForm);

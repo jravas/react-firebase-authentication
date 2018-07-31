@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import withAuthorization from "@/main/components/withAuthorization";
 import { withRouter } from "react-router-dom";
-import { toast } from "react-toastify";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import { fetchProduct, updateProduct } from "../redux/actions";
-import { fetchCategories } from "@/modules/category/redux/actions";
-import * as routes from "@/main/constants/routes";
+import { fetchCategories } from "@/modules/product/redux/actions";
 import admin from "@/main/constants/hardCodedAdmin";
 
 const INITIAL_STATE = {
@@ -18,8 +15,7 @@ const INITIAL_STATE = {
   product: " ",
   picture: " ",
   imageUrl: " ",
-  imageChanged: false,
-  toastConfig: defaultToastConfig
+  imageChanged: false
 };
 
 class ProductEdit extends Component {
@@ -46,7 +42,7 @@ class ProductEdit extends Component {
 
   submitAction = event => {
     const { id } = this.props.match.params;
-    const { updateProduct, history } = this.props;
+    const { updateProduct } = this.props;
     const {
       name,
       description,
@@ -54,27 +50,14 @@ class ProductEdit extends Component {
       picture,
       imageUrl,
       price,
-      imageChanged,
-      toastConfig
+      imageChanged
     } = this.state;
 
     // if image changed send image
-    if (imageChanged) {
-      updateProduct(id, name, description, category, picture, price).then(
-        () => {
-          history.push(routes.ADMIN_PRODUCTS);
-          toast(`${name} edited !`, toastConfig);
-        }
-      );
-    } else {
-      // else send old image url
-      updateProduct(id, name, description, category, imageUrl, price).then(
-        () => {
-          history.push(routes.ADMIN_PRODUCTS);
-          toast(`${name} edited !`, toastConfig);
-        }
-      );
-    }
+    imageChanged
+      ? updateProduct(id, name, description, category, picture, price)
+      : // else send old image url
+        updateProduct(id, name, description, category, imageUrl, price);
   };
 
   componentDidMount() {
@@ -105,7 +88,7 @@ class ProductEdit extends Component {
           <img src={imageUrl} alt="Product" />
         </div>
         <div className="product-single__info">
-          <form onSubmit={this.submitAction} className="form-container__form">
+          <form className="form-container__form">
             <input
               className="form-container__form__input"
               type="text"
@@ -147,7 +130,13 @@ class ProductEdit extends Component {
               rows="10"
             />
             <input type="file" onChange={this.fileSelectedHandler} />
-            <button className="default-button">Update</button>
+            <button
+              type="button"
+              className="default-button"
+              onClick={this.submitAction}
+            >
+              Update
+            </button>
           </form>
         </div>
       </div>

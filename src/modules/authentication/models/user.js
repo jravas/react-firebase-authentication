@@ -1,4 +1,4 @@
-export default (id, username, email, cart) => ({
+export const User = (id, username, email, cart) => ({
   id: id,
   username: username,
   email: email,

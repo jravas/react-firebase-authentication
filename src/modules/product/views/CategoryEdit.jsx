@@ -3,16 +3,11 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import withAuthorization from "@/main/components/withAuthorization";
 import { withRouter } from "react-router-dom";
-import { toast } from "react-toastify";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import { fetchCategory, updateCategory } from "../redux/actions";
-import * as routes from "@/main/constants/routes";
 import admin from "@/main/constants/hardCodedAdmin";
 
-const INITIAL_STATE = { name: " ", toastConfig: defaultToastConfig };
-
 class CategoryEdit extends Component {
-  state = { ...INITIAL_STATE };
+  state = { name: " " };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -20,13 +15,10 @@ class CategoryEdit extends Component {
 
   submitAction = event => {
     const { id } = this.props.match.params;
-    const { updateCategory, history } = this.props;
-    const { name, toastConfig } = this.state;
+    const { updateCategory } = this.props;
+    const { name } = this.state;
 
-    updateCategory(id, name).then(() => {
-      history.push(routes.ADMIN_CATEGORIES);
-      toast(`${name} edited !`, toastConfig);
-    });
+    updateCategory(id, name);
   };
 
   componentDidMount() {
@@ -46,7 +38,7 @@ class CategoryEdit extends Component {
     const { name } = this.state;
     return (
       <div className="form-container">
-        <form className="form-container__form" onSubmit={this.submitAction}>
+        <form className="form-container__form">
           <input
             className="form-container__form__input"
             type="text"
@@ -54,7 +46,13 @@ class CategoryEdit extends Component {
             value={name}
             onChange={this.handleInput}
           />
-          <button className="default-button">Update</button>
+          <button
+            className="default-button"
+            type="button"
+            onClick={this.submitAction}
+          >
+            Update
+          </button>
         </form>
       </div>
     );

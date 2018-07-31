@@ -1,11 +1,9 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR, FETCH_CATEGORIES } from "./types";
 
-const INITIAL_STATE = {
-  products: {},
-  productsArr: []
-};
-
-export const productsReducer = (state = INITIAL_STATE, action) => {
+export const productsReducer = (
+  state = { products: {}, productsArr: [] },
+  action
+) => {
   switch (action.type) {
     case FETCH_PRODUCTS: {
       return {
@@ -21,6 +19,21 @@ export const productsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         productsArr: arr
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+// categories reducer
+
+export const categoriesReducer = (state = { categories: {} }, action) => {
+  switch (action.type) {
+    case FETCH_CATEGORIES: {
+      return {
+        ...state,
+        categories: action.payload
       };
     }
     default:

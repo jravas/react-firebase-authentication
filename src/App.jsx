@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 // authentication hoc
 import withAuthentication from "./main/components/withAuthentication";
 // toast notifications
@@ -10,10 +10,12 @@ import { Main } from "./main/components/Main";
 import { Navigation } from "./modules";
 // loading bar
 import LoadingBar from "react-redux-loading-bar";
+//
+import history from "./main/constants/history";
 
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Navigation />
         <LoadingBar

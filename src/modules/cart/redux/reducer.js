@@ -1,10 +1,6 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "./types";
-const INITIAL_STATE = {
-  cart: [],
-  cartTotal: 0
-};
 
-export const cartReducer = (state = INITIAL_STATE, action) => {
+export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       return {

@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
 import { fetchProduct } from "@/modules/product/redux/actions";
 import { AddToCart } from "@/modules/cart/redux/actions";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
-
-const INITIAL_STATE = {
-  toastConfig: defaultToastConfig
-};
 
 class ProductSingle extends Component {
-  state = { ...INITIAL_STATE };
-
   // adding product to cart
   addToCart = () => {
     const { AddToCart, product, authUser } = this.props;
-    const { toastConfig } = this.state;
-
-    AddToCart(product, authUser).then(() => {
-      toast(`${product.name} added to cart !`, toastConfig);
-    });
+    AddToCart(product, authUser);
   };
 
   // get product data by id

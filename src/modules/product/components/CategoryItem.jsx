@@ -1,26 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
 import * as actions from "../redux/actions";
 import deleteImage from "@/main/assets/images/delete.svg";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
-
-const INITIAL_STATE = {
-  toastConfig: defaultToastConfig
-};
 
 class CategoryItem extends Component {
-  state = { ...INITIAL_STATE };
-
   // delete category
   handleClickAction = () => {
-    const { toastConfig } = this.state;
     const { deleteCategory, item } = this.props;
 
-    deleteCategory(item.id).then(() => {
-      toast(`${item.name} deleted !`, toastConfig);
-    });
+    deleteCategory(item.id);
   };
 
   render() {

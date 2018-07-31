@@ -2,7 +2,11 @@ import { auth } from "@/main/firebase";
 // todo
 import { db, usersRef } from "@/main/firebase/firebase";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import User from "../models/user";
+import { User } from "../models/user";
+import { toast } from "react-toastify";
+import defaultToastConfig from "@/main/constants/defaultToastConfig";
+import history from "@/main/constants/history";
+import * as routes from "@/main/constants/routes";
 
 // add user
 export const AddUser = (
@@ -24,6 +28,7 @@ export const AddUser = (
           cart.forEach(el => {
             usersRef.child(`${authUser.user.uid}/cart`).push(el);
           });
+          history.push(routes.HOME);
           dispatch(hideLoading());
         });
     });
@@ -50,6 +55,7 @@ export const SignIn = (email, password, cart) => async dispatch => {
           usersRef.child(`${user.user.uid}/cart`).push(el);
         });
       }
+      history.push(routes.HOME);
       dispatch(hideLoading());
     });
   });
@@ -62,11 +68,16 @@ export const ResetPassword = email => async dispatch => {
     .doPasswordReset(email)
     .then(() => {
       dispatch(hideLoading());
+      toast(`Password reset link sent to ${email}`, defaultToastConfig);
+      history.push(routes.SIGN_IN);
     })
     .catch(error => {
       console.log("error");
     });
 };
 // change password
-export const ChangePassword = password => async dispatch =>
-  auth.doPasswordUpdate(password);
+export const ChangePassword = password => async dispatch => {
+  auth.doPasswordUpdate(password).then(() => {
+    toast(`Password changed successfully !`, defaultToastConfig);
+  });
+};

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../redux/actions";
-import { toast } from "react-toastify";
-import defaultToastConfig from "@/main/constants/defaultToastConfig";
-import { fetchCategories } from "@/modules/category/redux/actions";
+import { fetchCategories } from "@/modules/product/redux/actions";
 import cancleImg from "@/main/assets/images/cancel.svg";
 
 const INITIAL_STATE = {
@@ -12,8 +10,7 @@ const INITIAL_STATE = {
   picture: "",
   pictureUrl: "",
   category: "",
-  price: "",
-  toastConfig: defaultToastConfig
+  price: ""
 };
 class ProductAdd extends Component {
   state = { ...INITIAL_STATE };
@@ -32,20 +29,10 @@ class ProductAdd extends Component {
   // adding product
   submitAction = event => {
     const { addProduct, closeModal } = this.props;
-    const {
-      name,
-      description,
-      category,
-      picture,
-      price,
-      toastConfig
-    } = this.state;
+    const { name, description, category, picture, price } = this.state;
 
-    addProduct(name, description, category, picture, price).then(() => {
-      this.setState({ ...INITIAL_STATE });
-      closeModal({ modal: false });
-      toast(`${name} added !`, toastConfig);
-    });
+    addProduct(name, description, category, picture, price);
+    closeModal({ modal: false });
   };
 
   // product image upload

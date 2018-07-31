@@ -1,4 +1,4 @@
-export default (id, name, description, category, imageUrl, price) => ({
+export const Product = (id, name, description, category, imageUrl, price) => ({
   id: id,
   name: name,
   description: description,
