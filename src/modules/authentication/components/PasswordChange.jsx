@@ -11,13 +11,9 @@ const INITIAL_STATE = {
   toastConfig: defaultToastConfig
 };
 class PasswordChangeForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-  onSubmit(event) {
+  state = { ...INITIAL_STATE };
+
+  onSubmit = event => {
     const { passwordOne, toastConfig } = this.state;
     const { ChangePassword } = this.props;
     ChangePassword(passwordOne).then(() => {
@@ -25,10 +21,12 @@ class PasswordChangeForm extends Component {
       toast(`Password changed successfully !`, toastConfig);
     });
     event.preventDefault();
-  }
-  handleInput(event) {
+  };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
+
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
@@ -55,7 +53,7 @@ class PasswordChangeForm extends Component {
           <button className="default-button" disabled={isInvalid} type="submit">
             Change Password
           </button>
-          {error && <p>{error.message}</p>}
+          {!error ? null : <p>{error.message}</p>}
         </form>
       </div>
     );

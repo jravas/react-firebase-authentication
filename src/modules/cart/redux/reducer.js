@@ -1,10 +1,10 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "../consts";
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "./types";
 const INITIAL_STATE = {
   cart: [],
   cartTotal: 0
 };
 
-function cartReducer(state = INITIAL_STATE, action) {
+export const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       return {
@@ -38,5 +38,4 @@ function cartReducer(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
-export default cartReducer;
+};

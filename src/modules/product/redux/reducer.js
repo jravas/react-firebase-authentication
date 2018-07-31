@@ -1,22 +1,22 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "../consts";
+import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "./types";
 
 const INITIAL_STATE = {
   products: {},
   productsArr: []
 };
-const applySetProducts = (state, action) => ({
-  ...state,
-  products: action.payload
-});
-function productsReducer(state = INITIAL_STATE, action) {
+
+export const productsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS: {
-      return applySetProducts(state, action);
+      return {
+        ...state,
+        products: action.payload
+      };
     }
     case FETCH_PRODUCTS_ARR: {
       let arr = [];
       Object.keys(action.payload).map(key => {
-        arr.push(action.payload[key]);
+        return arr.push(action.payload[key]);
       });
       return {
         ...state,
@@ -26,5 +26,4 @@ function productsReducer(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
-export default productsReducer;
+};

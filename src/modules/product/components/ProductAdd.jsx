@@ -4,7 +4,7 @@ import { addProduct } from "../redux/actions";
 import { toast } from "react-toastify";
 import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import { fetchCategories } from "@/modules/category/redux/actions";
-import cancleImg from "@/main/images/cancel.svg";
+import cancleImg from "@/main/assets/images/cancel.svg";
 
 const INITIAL_STATE = {
   name: "",
@@ -16,26 +16,21 @@ const INITIAL_STATE = {
   toastConfig: defaultToastConfig
 };
 class ProductAdd extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.closeModal = this.closeModal.bind(this);
-    this.submitAction = this.submitAction.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
-  }
+  state = { ...INITIAL_STATE };
+
   // setting inputs to product state
-  handleInput(event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
+
   // close modal action
-  closeModal(e) {
+  closeModal = e => {
     const { closeModal } = this.props;
-    e.preventDefault();
     closeModal({ modal: false });
-  }
+  };
+
   // adding product
-  submitAction(event) {
+  submitAction = event => {
     const { addProduct, closeModal } = this.props;
     const {
       name,
@@ -45,26 +40,30 @@ class ProductAdd extends Component {
       price,
       toastConfig
     } = this.state;
-    event.preventDefault();
+
     addProduct(name, description, category, picture, price).then(() => {
       this.setState({ ...INITIAL_STATE });
       closeModal({ modal: false });
       toast(`${name} added !`, toastConfig);
     });
-  }
+  };
+
   // product image upload
-  fileSelectedHandler(event) {
+  fileSelectedHandler = event => {
     let reader = new FileReader();
     let file = event.target.files[0];
+
     reader.onloadend = () => {
       this.setState({ picture: file, pictureUrl: reader.result });
     };
     reader.readAsDataURL(file);
-  }
-  componentWillMount() {
+  };
+
+  componentDidMount() {
     const { fetchCategories } = this.props;
     fetchCategories();
   }
+
   render() {
     const { categories } = this.props;
     const { name, description, pictureUrl, price } = this.state;
@@ -74,7 +73,7 @@ class ProductAdd extends Component {
           <div className="item-add__cancel" onClick={this.closeModal}>
             <img src={cancleImg} alt="Cancel" />
           </div>
-          {pictureUrl && (
+          {!pictureUrl ? null : (
             <div className="item-add__image">
               <img src={pictureUrl} alt="Product" />
             </div>
@@ -103,15 +102,16 @@ class ProductAdd extends Component {
                 name="category"
                 onChange={this.handleInput}
               >
-                {categories &&
-                  Object.keys(categories).map(key => (
-                    <option
-                      key={categories[key].id}
-                      value={categories[key].name}
-                    >
-                      {categories[key].name}
-                    </option>
-                  ))}
+                {!categories
+                  ? null
+                  : Object.keys(categories).map(key => (
+                      <option
+                        key={categories[key].id}
+                        value={categories[key].name}
+                      >
+                        {categories[key].name}
+                      </option>
+                    ))}
               </select>
             </div>
             <textarea

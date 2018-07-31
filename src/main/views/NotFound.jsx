@@ -1,7 +1,7 @@
 import React from "react";
-import Maze from "@/main/images/maze.svg";
+import Maze from "@/main/assets/images/maze.svg";
 
-export default () => {
+export const NotFound = () => {
   return (
     <div className="page-not-found">
       <h1>Page not found</h1>

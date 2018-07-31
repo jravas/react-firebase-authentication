@@ -4,8 +4,6 @@ import { compose } from "recompose";
 import withAuthorization from "@/main/components/withAuthorization";
 class Admin extends Component {
   render() {
-    const { authUser } = this.props;
-    console.log(authUser.email === "josip.ravas.broj@gmail.com");
     return (
       <div>
         <div>test</div>

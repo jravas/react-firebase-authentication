@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCartItems } from "../redux/actions";
-import CartList from "../components/CartList";
+import { CartList } from "../components/CartList";
 import CartTotal from "../components/CartTotal";
 
 class Cart extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchCartItems, authUser, cart } = this.props;
     // fetch cart items
     fetchCartItems(authUser, cart);

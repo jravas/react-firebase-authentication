@@ -12,16 +12,13 @@ const INITIAL_STATE = {
   error: null
 };
 class SignUpForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-  handleInput(event) {
+  state = { ...INITIAL_STATE };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
-  onSubmit(event) {
+  };
+
+  onSubmit = event => {
     event.preventDefault();
     const { username, email, passwordOne } = this.state;
     const { history, AddUser, cart } = this.props;
@@ -29,7 +26,8 @@ class SignUpForm extends Component {
     AddUser(username, email, passwordOne, cart).then(() => {
       history.push(routes.HOME);
     });
-  }
+  };
+
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
     const isInvalid =
@@ -83,7 +81,7 @@ class SignUpForm extends Component {
           <button disabled={isInvalid} type="submit" className="default-button">
             Submit
           </button>
-          {error && <p>{error.message} </p>}
+          {!error ? null : <p>{error.message} </p>}
         </form>
       </div>
     );

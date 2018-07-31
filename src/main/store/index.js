@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from "redux";
+import { loadingBarMiddleware } from "react-redux-loading-bar";
 import reduxThunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -13,7 +14,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(reduxThunk))
+  composeEnhancers(applyMiddleware(reduxThunk, loadingBarMiddleware()))
 );
 let persistor = persistStore(store);
 

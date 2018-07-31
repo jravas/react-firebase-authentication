@@ -6,23 +6,23 @@ import * as actions from "../redux/actions";
 // add category component
 import AddCategory from "../components/CategoryAdd";
 import CategoriesList from "../components/CategoriesList";
-import AddButton from "@/main/components/AddButton";
+import { AddButton } from "@/main/components/AddButton";
 import admin from "@/main/constants/hardCodedAdmin";
 
-const INITIAL_STATE = { modal: false };
-
 class AdminCategoryPage extends Component {
-  state = { ...INITIAL_STATE };
+  state = { modal: false };
+
   componentDidMount() {
     const { fetchCategories } = this.props;
     fetchCategories();
   }
+
   render() {
     const { categories } = this.props;
     const { modal } = this.state;
     return (
       <div>
-        {modal && <AddCategory closeModal={this.setState.bind(this)} />}
+        {modal ? <AddCategory closeModal={this.setState.bind(this)} /> : null}
         <CategoriesList categories={categories} />
         <AddButton openModal={this.setState.bind(this)} />
       </div>

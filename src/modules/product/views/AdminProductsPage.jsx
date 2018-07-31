@@ -5,14 +5,13 @@ import withAuthorization from "@/main/components/withAuthorization";
 import * as actions from "../redux/actions";
 import ProductsList from "../components/ProductsList";
 import ProductAdd from "../components/ProductAdd";
-import AddButton from "@/main/components/AddButton";
+import { AddButton } from "@/main/components/AddButton";
 import admin from "@/main/constants/hardCodedAdmin";
 
-const INITIAL_STATE = { modal: false };
 class AdminProductsPage extends Component {
-  state = { ...INITIAL_STATE };
+  state = { modal: false };
 
-  componentWillMount() {
+  componentDidMount() {
     const { fetchProducts } = this.props;
     fetchProducts();
   }
@@ -22,7 +21,7 @@ class AdminProductsPage extends Component {
     const { modal } = this.state;
     return (
       <div>
-        {modal && <ProductAdd closeModal={this.setState.bind(this)} />}
+        {!modal ? null : <ProductAdd closeModal={this.setState.bind(this)} />}
         <ProductsList products={products} />
         <AddButton openModal={this.setState.bind(this)} />
       </div>

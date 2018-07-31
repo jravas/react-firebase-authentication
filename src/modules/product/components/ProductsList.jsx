@@ -6,10 +6,9 @@ class ProductsList extends Component {
     const { products } = this.props;
     return (
       <ul className="items-list-admin container-style">
-        {products &&
-          Object.keys(products).map(key => (
-            <ProductItem key={key} item={products[key]} />
-          ))}
+        {Object.keys(products).map(key => (
+          <ProductItem key={key} item={products[key]} />
+        ))}
       </ul>
     );
   }

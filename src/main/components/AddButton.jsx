@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import Plus from "@/main/images/plus.svg";
+import React from "react";
+import Plus from "@/main/assets/images/plus.svg";
 
-export default class AddButon extends Component {
-  openModal(e) {
-    e.preventDefault();
-    this.props.openModal({ modal: true });
-  }
-  render() {
-    return (
-      <div className="add-button" onClick={this.openModal.bind(this)}>
-        <img src={Plus} alt="Add icon" />
-      </div>
-    );
-  }
-}
+export const AddButton = props => {
+  const openModal = e => {
+    const { openModal } = props;
+    openModal({ modal: true });
+  };
+  return (
+    <div className="add-button" onClick={openModal}>
+      <img src={Plus} alt="Add icon" />
+    </div>
+  );
+};

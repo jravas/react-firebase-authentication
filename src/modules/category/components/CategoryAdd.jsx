@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import { addCategory } from "../redux/actions";
-import cancleImg from "../../../main/images/cancel.svg";
+import cancleImg from "../../../main/assets/images/cancel.svg";
 import defaultToastConfig from "@/main/constants/defaultToastConfig";
 
 const INITIAL_STATE = {
@@ -11,31 +11,28 @@ const INITIAL_STATE = {
 };
 
 class CategoryAdd extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.submitAction = this.submitAction.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-  handleInput(event) {
+  state = { ...INITIAL_STATE };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
+
   submitAction = event => {
     const { addCategory, closeModal } = this.props;
     const { name, toastConfig } = this.state;
-    event.preventDefault();
+
     addCategory(name).then(() => {
       this.setState({ ...INITIAL_STATE });
       closeModal({ modal: false });
       toast(`${name} added !`, toastConfig);
     });
   };
-  closeModal(e) {
+
+  closeModal = event => {
     const { closeModal } = this.props;
-    e.preventDefault();
     closeModal({ modal: false });
-  }
+  };
+
   render() {
     const { name } = this.state;
     return (

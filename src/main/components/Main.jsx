@@ -18,9 +18,9 @@ import {
   Cart
 } from "@/modules";
 // publc
-import NotFound from "@/main/views/NotFound";
+import { NotFound } from "@/main/views/NotFound";
 
-const Main = () => (
+export const Main = () => (
   <main className="container">
     <Switch>
       <Route exact path={routes.HOME} component={HomePage} />
@@ -48,5 +48,3 @@ const Main = () => (
     </Switch>
   </main>
 );
-
-export default Main;

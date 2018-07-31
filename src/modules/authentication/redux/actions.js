@@ -1,6 +1,7 @@
 import { auth } from "@/main/firebase";
 // todo
 import { db, usersRef } from "@/main/firebase/firebase";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 import User from "../models/user";
 
 // add user
@@ -10,6 +11,7 @@ export const AddUser = (
   passwordOne,
   cart
 ) => async dispatch => {
+  dispatch(showLoading());
   auth
     // create user in firebase auth
     .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -22,11 +24,13 @@ export const AddUser = (
           cart.forEach(el => {
             usersRef.child(`${authUser.user.uid}/cart`).push(el);
           });
+          dispatch(hideLoading());
         });
     });
 };
 // sign in
 export const SignIn = (email, password, cart) => async dispatch => {
+  dispatch(showLoading());
   auth.doSignInWithEmailAndPassword(email, password).then(user => {
     // sync cart & firebase
     usersRef.child(`${user.user.uid}/cart`).once("value", snapshot => {
@@ -46,16 +50,18 @@ export const SignIn = (email, password, cart) => async dispatch => {
           usersRef.child(`${user.user.uid}/cart`).push(el);
         });
       }
+      dispatch(hideLoading());
     });
   });
 };
 
 // send password reset mail
 export const ResetPassword = email => async dispatch => {
+  dispatch(showLoading());
   auth
     .doPasswordReset(email)
     .then(() => {
-      console.log("success");
+      dispatch(hideLoading());
     })
     .catch(error => {
       console.log("error");

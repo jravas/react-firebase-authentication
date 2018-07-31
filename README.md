@@ -4,6 +4,30 @@ Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## TODO
+- [x] importi / exporti
+  - [ ] except components connected to redux and views
+- [ ] index.js fileovi
+- [x] es5 / es6
+- [ ] helper funkcije
+- [ ] main/constants
+- [x] main/reducers
+- [ ] withAuthentication
+- [ ] jednostavni moduli
+- [ ] category modul
+- [x] redux tipovi
+- [x] componentDidMount vs componentWillMount
+- [ ] defaultne state vrijednosti
+- [ ] es6 handleri
+- [ ] defaultna null vrijednost
+- [ ] resolvanje promisea unutar komponente
+- [x] conditional check za cijelu komponentu
+- [ ] map funkcija
+- [x] anonimne funkcije u renderu
+- [ ] Buttoni
+- [ ] Prettier
+
+
+## testing
 - [x] /modules/product/views controlled/uncontrolled error
 - [x] router routes component
 - [x] remove ./src/views
@@ -35,6 +59,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] unauthenticated cart total
 - [ ] button selected with tab
 - [ ] empty categories
+- [ ] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
+- [ ] category edit -> A component is changing a controlled input of type text to be uncontrolled.
+- [x] product add/delete  updates only after reload
+- [ ] total rounded
+- [ ] product list action changed once -> on
+- [ ] cart leav animation
+- [ ] change class components in functional if possible
 
 
 ## Table of Contents

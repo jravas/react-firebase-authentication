@@ -1,19 +1,18 @@
-import { FETCH_CATEGORIES } from "../consts";
+import { FETCH_CATEGORIES } from "./types";
 
 const INITIAL_STATE = {
   categories: {}
 };
-const applySetCategories = (state, action) => ({
-  ...state,
-  categories: action.payload
-});
-function categoriesReducer(state = INITIAL_STATE, action) {
+
+export const categoriesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_CATEGORIES: {
-      return applySetCategories(state, action);
+      return {
+        ...state,
+        categories: action.payload
+      };
     }
     default:
       return state;
   }
-}
-export default categoriesReducer;
+};

@@ -1,7 +1,7 @@
 import cuid from "cuid";
 import { usersRef } from "@/main/firebase/firebase";
 import CartItem from "../model/cartItem";
-import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "../consts";
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "./types";
 
 // add to cart
 export const AddToCart = (product, authUser) => async dispatch => {
@@ -47,7 +47,4 @@ export const fetchCartItems = (authUser, cart) => async dispatch => {
       });
     });
   }
-  // dispatch({
-  //   type: FETCH_CART_ITEMS
-  // });
 };

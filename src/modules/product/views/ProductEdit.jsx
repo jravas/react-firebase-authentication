@@ -23,20 +23,17 @@ const INITIAL_STATE = {
 };
 
 class ProductEdit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.submitAction = this.submitAction.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
-  }
-  handleInput(event) {
+  state = { ...INITIAL_STATE };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
+
   // product image upload
-  fileSelectedHandler(event) {
+  fileSelectedHandler = event => {
     let reader = new FileReader();
     let file = event.target.files[0];
+
     reader.onloadend = () => {
       this.setState({
         picture: file,
@@ -45,8 +42,9 @@ class ProductEdit extends Component {
       });
     };
     reader.readAsDataURL(file);
-  }
-  submitAction(event) {
+  };
+
+  submitAction = event => {
     const { id } = this.props.match.params;
     const { updateProduct, history } = this.props;
     const {
@@ -60,7 +58,6 @@ class ProductEdit extends Component {
       toastConfig
     } = this.state;
 
-    event.preventDefault();
     // if image changed send image
     if (imageChanged) {
       updateProduct(id, name, description, category, picture, price).then(
@@ -78,13 +75,15 @@ class ProductEdit extends Component {
         }
       );
     }
-  }
-  componentWillMount() {
+  };
+
+  componentDidMount() {
     const { fetchCategories, fetchProduct } = this.props;
     const { id } = this.props.match.params;
     fetchCategories();
     fetchProduct(id);
   }
+
   componentDidUpdate(prevProps) {
     const { name, description, category, price, imageUrl } = this.props.product;
     if (this.props.product !== prevProps.product) {
@@ -130,12 +129,13 @@ class ProductEdit extends Component {
                 value={category}
                 onChange={this.handleInput}
               >
-                {categories &&
-                  Object.keys(categories).map(key => (
-                    <option key={key} value={categories[key].name}>
-                      {categories[key].name}
-                    </option>
-                  ))}
+                {!categories
+                  ? null
+                  : Object.keys(categories).map(key => (
+                      <option key={key} value={categories[key].name}>
+                        {categories[key].name}
+                      </option>
+                    ))}
               </select>
             </div>
             <textarea

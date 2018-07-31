@@ -9,23 +9,20 @@ const INITIAL_STATE = {
   error: null
 };
 class PasswordForgetForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-  handleInput(event) {
+  state = { ...INITIAL_STATE };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
-  onSubmit(event) {
+  };
+
+  onSubmit = event => {
     const { email } = this.state;
     const { history, ResetPassword } = this.props;
     event.preventDefault();
     ResetPassword(email).then(() => {
       history.push(routes.SIGN_IN);
     });
-  }
+  };
   render() {
     const { email, error } = this.state;
     const isInvalid = email === "";
@@ -44,7 +41,7 @@ class PasswordForgetForm extends Component {
           <button className="default-button" disabled={isInvalid} type="submit">
             Reset password
           </button>
-          {error && <p>{error.message}</p>}
+          {!error ? null : <p>{error.message}</p>}
         </form>
       </div>
     );

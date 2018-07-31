@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Search from "@/main/components/Search";
 import * as routes from "@/main/constants/routes";
-import homeImage from "@/main/images/home.svg";
-import cartImage from "@/main/images/shopping-basket.svg";
-import storeImage from "../../../main/images/store.svg";
+import homeImage from "@/main/assets/images/home.svg";
+import cartImage from "@/main/assets/images/shopping-basket.svg";
+import storeImage from "@/main/assets/images/store.svg";
 
 const NavigationNonAuth = () => (
   <nav className="main-navigation">
@@ -13,7 +13,6 @@ const NavigationNonAuth = () => (
     </div>
     <div className="main-navigation__search">
       <div className="main-navigation__search__item">
-        {/* <input type="text" name="search" placeholder="Search products" /> */}
         <Search />
       </div>
     </div>

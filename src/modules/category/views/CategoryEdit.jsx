@@ -12,30 +12,29 @@ import admin from "@/main/constants/hardCodedAdmin";
 const INITIAL_STATE = { name: " ", toastConfig: defaultToastConfig };
 
 class CategoryEdit extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-    this.submitAction = this.submitAction.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-  handleInput(event) {
+  state = { ...INITIAL_STATE };
+
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
-  submitAction(event) {
+  };
+
+  submitAction = event => {
     const { id } = this.props.match.params;
     const { updateCategory, history } = this.props;
     const { name, toastConfig } = this.state;
-    event.preventDefault();
+
     updateCategory(id, name).then(() => {
       history.push(routes.ADMIN_CATEGORIES);
       toast(`${name} edited !`, toastConfig);
     });
-  }
-  componentWillMount() {
+  };
+
+  componentDidMount() {
     const { fetchCategory } = this.props;
     const { id } = this.props.match.params;
     fetchCategory(id);
   }
+
   componentDidUpdate(prevProps) {
     const { name } = this.props.category;
     if (this.props.category !== prevProps.category) {

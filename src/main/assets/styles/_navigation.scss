@@ -112,6 +112,7 @@
 .search-list {
   position: absolute;
   width: 100%;
+  z-index: 4;
   box-shadow: 0 0 7px 0 rgba(90, 90, 90, 0.33);
   background-color: #fff;
   li {

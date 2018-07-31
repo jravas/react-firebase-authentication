@@ -1,5 +1,6 @@
 import { productsRef, storage } from "@/main/firebase/firebase";
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "../consts";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
+import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR } from "./types";
 import Product from "../models/product";
 
 // add Product
@@ -75,12 +76,18 @@ export const deleteProduct = productId => async dispatch => {
 
 // get product by id
 export const fetchProduct = productId => async dispatch => {
-  productsRef.child(productId).on("value", snapshot => {
-    dispatch({
-      type: FETCH_PRODUCTS,
-      payload: snapshot.val()
+  dispatch(showLoading());
+  productsRef
+    .child(productId)
+    .once("value", snapshot => {
+      dispatch({
+        type: FETCH_PRODUCTS,
+        payload: snapshot.val()
+      });
+    })
+    .then(() => {
+      dispatch(hideLoading());
     });
-  });
 };
 
 // list products
@@ -95,10 +102,15 @@ export const fetchProducts = () => async dispatch => {
 
 // list products
 export const fetchProductsArr = () => async dispatch => {
-  productsRef.on("value", snapshot => {
-    dispatch({
-      type: FETCH_PRODUCTS_ARR,
-      payload: snapshot.val()
+  dispatch(showLoading());
+  productsRef
+    .once("value", snapshot => {
+      dispatch({
+        type: FETCH_PRODUCTS_ARR,
+        payload: snapshot.val()
+      });
+    })
+    .then(() => {
+      dispatch(hideLoading());
     });
-  });
 };
