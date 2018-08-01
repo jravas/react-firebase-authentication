@@ -4,7 +4,7 @@ import NavigationAuthUser from "./NavigationAuthUser";
 import admin from "@/main/constants/hardCodedAdmin";
 
 const NavigationAuth = user =>
-  user.authUser.email === admin.mail ? (
+  user.authUser.email === admin.email ? (
     <NavigationAuthAdmin />
   ) : (
     <NavigationAuthUser />

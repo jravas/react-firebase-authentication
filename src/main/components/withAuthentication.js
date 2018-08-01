@@ -5,17 +5,20 @@ import { connect } from "react-redux";
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     state = {
-      authUser: null
+      authUser: null,
+      loading: true
     };
     componentDidMount() {
       const { onSetAuthUser } = this.props;
       firebase.auth.onAuthStateChanged(authUser => {
         authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+        this.setState({ loading: false });
       });
     }
 
     render() {
-      return <Component />;
+      const { loading } = this.state;
+      return loading ? <div className="loader" /> : <Component />;
     }
   }
   const mapDispatchToProps = dispatch => ({

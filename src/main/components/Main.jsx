@@ -19,12 +19,16 @@ import {
 } from "@/modules";
 // publc
 import { NotFound } from "@/main/views/NotFound";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const Main = () => (
   <main className="container">
     <Switch>
       <Route exact path={routes.HOME} component={HomePage} />
       <Route exact path={routes.PRODUCTS} component={ProductPagePublic} />
+      <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
+      <Route exact path={routes.CART} component={Cart} />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route
@@ -32,18 +36,28 @@ export const Main = () => (
         path={routes.PASSWORD_FORGET}
         component={PasswordForgetPage}
       />
-      <Route exact path={routes.ACCOUNT} component={AccountPage} />
-      <Route exact path={routes.ADMIN} component={Admin} />
-      <Route
+      <PrivateRoute exact path={routes.ACCOUNT} component={AccountPage} />
+      <AdminRoute exact path={routes.ADMIN} component={Admin} />
+      <AdminRoute
         exact
         path={routes.ADMIN_CATEGORIES}
         component={AdminCategoryPage}
       />
-      <Route exact path={routes.ADMIN_CATEGORY_EDIT} component={CategoryEdit} />
-      <Route exact path={routes.ADMIN_PRODUCTS} component={AdminProductsPage} />
-      <Route exact path={routes.ADMIN_PRODUCT_EDIT} component={ProductEdit} />
-      <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
-      <Route exact path={routes.CART} component={Cart} />
+      <AdminRoute
+        exact
+        path={routes.ADMIN_CATEGORY_EDIT}
+        component={CategoryEdit}
+      />
+      <AdminRoute
+        exact
+        path={routes.ADMIN_PRODUCTS}
+        component={AdminProductsPage}
+      />
+      <AdminRoute
+        exact
+        path={routes.ADMIN_PRODUCT_EDIT}
+        component={ProductEdit}
+      />
       <Route component={NotFound} />
     </Switch>
   </main>

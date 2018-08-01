@@ -1,5 +1,5 @@
 const admin = {
-  mail: "josip.ravas.broj@gmail.com"
+  email: "josip.ravas.broj@gmail.com"
 };
 
 export default admin;

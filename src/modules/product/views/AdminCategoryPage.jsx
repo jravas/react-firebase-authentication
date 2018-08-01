@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { compose } from "recompose";
-import withAuthorization from "@/main/components/withAuthorization";
 import * as actions from "../redux/actions";
 // add category component
 import AddCategory from "../components/CategoryAdd";
 import CategoriesList from "../components/CategoriesList";
 import { AddButton } from "@/main/components/AddButton";
-import admin from "@/main/constants/hardCodedAdmin";
 
 class AdminCategoryPage extends Component {
   state = { modal: false };
@@ -34,11 +31,7 @@ const mapStateToProps = state => ({
   categories: state.categoriesState.categories
 });
 
-const authCondition = authUser => authUser.email === admin.mail;
-export default compose(
-  withAuthorization(authCondition),
-  connect(
-    mapStateToProps,
-    actions
-  )
+export default connect(
+  mapStateToProps,
+  actions
 )(AdminCategoryPage);
