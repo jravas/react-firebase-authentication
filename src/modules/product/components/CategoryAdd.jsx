@@ -4,18 +4,33 @@ import { addCategory } from "../redux/actions";
 import cancleImg from "../../../main/assets/images/cancel.svg";
 
 class CategoryAdd extends Component {
-  state = { name: "" };
+  state = { form: { name: "" }, errors: { name: false } };
 
   handleInput = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ form: { [event.target.name]: event.target.value } });
+  };
+
+  // check if inputs are filled
+  checkInputs = () => {
+    const { form, errors } = this.state;
+    let inputs = {};
+
+    Object.keys(form).map(
+      key =>
+        form[key].length === 0 ? (inputs[key] = true) : (inputs[key] = false)
+    );
+    this.setState({ errors: { ...errors, ...inputs } });
   };
 
   submitAction = event => {
     const { addCategory, closeModal } = this.props;
-    const { name } = this.state;
+    const { name } = this.state.form;
 
-    addCategory(name);
-    closeModal({ modal: false });
+    this.checkInputs();
+    if (name.length) {
+      addCategory(name);
+      closeModal({ modal: false });
+    }
   };
 
   closeModal = event => {
@@ -24,7 +39,8 @@ class CategoryAdd extends Component {
   };
 
   render() {
-    const { name } = this.state;
+    const { name } = this.state.form;
+    const { errors } = this.state;
     return (
       <div className="item-add">
         <div className="form-container">
@@ -40,6 +56,11 @@ class CategoryAdd extends Component {
               value={name}
               onChange={this.handleInput}
             />
+            {errors.name ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <button
               className="default-button"
               type="button"

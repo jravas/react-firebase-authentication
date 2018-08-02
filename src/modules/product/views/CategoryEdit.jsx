@@ -4,18 +4,33 @@ import { withRouter } from "react-router-dom";
 import { fetchCategory, updateCategory } from "../redux/actions";
 
 class CategoryEdit extends Component {
-  state = { name: "" };
+  state = { form: { name: "" }, errors: { name: false } };
 
   handleInput = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ form: { [event.target.name]: event.target.value } });
+  };
+
+  // check if inputs are filled
+  checkInputs = () => {
+    const { form, errors } = this.state;
+    let inputs = {};
+
+    Object.keys(form).map(
+      key =>
+        form[key].length === 0 ? (inputs[key] = true) : (inputs[key] = false)
+    );
+    this.setState({ errors: { ...errors, ...inputs } });
   };
 
   submitAction = event => {
     const { id } = this.props.match.params;
     const { updateCategory } = this.props;
-    const { name } = this.state;
+    const { name } = this.state.form;
 
-    updateCategory(id, name);
+    this.checkInputs();
+    if (name.length) {
+      updateCategory(id, name);
+    }
   };
 
   componentDidMount() {
@@ -27,12 +42,13 @@ class CategoryEdit extends Component {
   componentDidUpdate(prevProps) {
     const { name } = this.props.category;
     if (this.props.category !== prevProps.category) {
-      this.setState({ name: name });
+      this.setState({ form: { name: name } });
     }
   }
 
   render() {
-    const { name } = this.state;
+    const { name } = this.state.form;
+    const { errors } = this.state;
     return (
       <div className="form-container">
         <form className="form-container__form">
@@ -43,6 +59,11 @@ class CategoryEdit extends Component {
             value={name}
             onChange={this.handleInput}
           />
+          {errors.name ? (
+            <p className="form-container__form__error">
+              This field is required !
+            </p>
+          ) : null}
           <button
             className="default-button"
             type="button"

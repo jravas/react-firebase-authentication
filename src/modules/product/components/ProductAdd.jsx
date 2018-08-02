@@ -5,19 +5,30 @@ import { fetchCategories } from "@/modules/product/redux/actions";
 import cancleImg from "@/main/assets/images/cancel.svg";
 
 const INITIAL_STATE = {
-  name: "",
-  description: "",
-  picture: "",
   pictureUrl: "",
-  category: "",
-  price: ""
+  form: {
+    name: "",
+    description: "",
+    picture: "",
+    category: "Uncategorised",
+    price: ""
+  },
+  errors: {
+    name: false,
+    description: false,
+    picture: false,
+    category: false,
+    price: false
+  }
 };
 class ProductAdd extends Component {
   state = { ...INITIAL_STATE };
 
   // setting inputs to product state
   handleInput = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      form: { ...this.state.form, [event.target.name]: event.target.value }
+    });
   };
 
   // close modal action
@@ -26,13 +37,35 @@ class ProductAdd extends Component {
     closeModal({ modal: false });
   };
 
+  // check if inputs are filled
+  checkInputs = () => {
+    const { form, errors } = this.state;
+    let inputs = {};
+
+    Object.keys(form).map(
+      key =>
+        form[key].length === 0 ? (inputs[key] = true) : (inputs[key] = false)
+    );
+    this.setState({ errors: { ...errors, ...inputs } });
+  };
+
   // adding product
   submitAction = event => {
     const { addProduct, closeModal } = this.props;
-    const { name, description, category, picture, price } = this.state;
-
-    addProduct(name, description, category, picture, price);
-    closeModal({ modal: false });
+    const { name, description, category, picture, price } = this.state.form;
+    // image is object and doesn't have length
+    let img = typeof picture === "object" ? true : false;
+    this.checkInputs();
+    if (
+      name.length &&
+      description.length &&
+      category.length &&
+      img &&
+      price.length
+    ) {
+      addProduct(name, description, category, picture, price);
+      closeModal({ modal: false });
+    }
   };
 
   // product image upload
@@ -41,7 +74,10 @@ class ProductAdd extends Component {
     let file = event.target.files[0];
 
     reader.onloadend = () => {
-      this.setState({ picture: file, pictureUrl: reader.result });
+      this.setState({
+        pictureUrl: reader.result,
+        form: { ...this.state.form, picture: file }
+      });
     };
     reader.readAsDataURL(file);
   };
@@ -53,7 +89,8 @@ class ProductAdd extends Component {
 
   render() {
     const { categories } = this.props;
-    const { name, description, pictureUrl, price } = this.state;
+    const { pictureUrl, errors } = this.state;
+    const { name, description, price, category } = this.state.form;
     return (
       <div className="item-add">
         <div className="form-container">
@@ -74,6 +111,11 @@ class ProductAdd extends Component {
               value={name}
               onChange={this.handleInput}
             />
+            {errors.name ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <input
               className="form-container__form__input"
               placeholder="Product price"
@@ -82,12 +124,18 @@ class ProductAdd extends Component {
               value={price}
               onChange={this.handleInput}
             />
+            {errors.price ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <div className="form-container__form__wrap">
               <select
                 className="form-container__form__wrap__select"
                 id="categorySelect"
                 name="category"
                 onChange={this.handleInput}
+                value={category}
               >
                 {!categories
                   ? null
@@ -109,7 +157,21 @@ class ProductAdd extends Component {
               cols="30"
               rows="10"
             />
-            <input type="file" onChange={this.fileSelectedHandler} />
+            {errors.description ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
+            <input
+              className="form-container__form__file"
+              type="file"
+              onChange={this.fileSelectedHandler}
+            />
+            {errors.picture ? (
+              <p className="form-container__form__error">
+                Product image is required !
+              </p>
+            ) : null}
             <button
               className="default-button"
               type="button"

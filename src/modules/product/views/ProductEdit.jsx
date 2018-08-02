@@ -12,7 +12,12 @@ const INITIAL_STATE = {
   product: "",
   picture: "",
   imageUrl: "",
-  imageChanged: false
+  imageChanged: false,
+  errors: {
+    name: false,
+    description: false,
+    price: false
+  }
 };
 
 class ProductEdit extends Component {
@@ -37,6 +42,21 @@ class ProductEdit extends Component {
     reader.readAsDataURL(file);
   };
 
+  // check if inputs are filled
+  checkInputs = () => {
+    const { errors } = this.state;
+    const { name, description, price } = this.state;
+    let form = { name, description, price };
+    let inputs = {};
+
+    Object.keys(form).map(
+      key =>
+        form[key].length === 0 ? (inputs[key] = true) : (inputs[key] = false)
+    );
+    this.setState({ errors: { ...errors, ...inputs } });
+  };
+
+  // edit product submit action
   submitAction = event => {
     const { id } = this.props.match.params;
     const { updateProduct } = this.props;
@@ -49,12 +69,14 @@ class ProductEdit extends Component {
       price,
       imageChanged
     } = this.state;
-
-    // if image changed send image
-    imageChanged
-      ? updateProduct(id, name, description, category, picture, price)
-      : // else send old image url
-        updateProduct(id, name, description, category, imageUrl, price);
+    this.checkInputs();
+    if (name.length && description.length && price.length) {
+      // if image changed send image
+      imageChanged
+        ? updateProduct(id, name, description, category, picture, price)
+        : // else send old image url
+          updateProduct(id, name, description, category, imageUrl, price);
+    }
   };
 
   componentDidMount() {
@@ -78,7 +100,8 @@ class ProductEdit extends Component {
   }
   render() {
     const { categories } = this.props;
-    const { name, description, price, category, imageUrl } = this.state;
+    const { name, description, price, category, imageUrl, errors } = this.state;
+    console.log(this.state.errors);
     return (
       <div className="product-single container-style">
         <div className="product-single__image">
@@ -93,6 +116,11 @@ class ProductEdit extends Component {
               value={name}
               onChange={this.handleInput}
             />
+            {errors.name ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <input
               className="form-container__form__input"
               placeholder="Product price"
@@ -101,6 +129,11 @@ class ProductEdit extends Component {
               value={price}
               onChange={this.handleInput}
             />
+            {errors.price ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <div className="form-container__form__wrap">
               <select
                 className="form-container__form__wrap__select"
@@ -126,6 +159,11 @@ class ProductEdit extends Component {
               cols="30"
               rows="10"
             />
+            {errors.description ? (
+              <p className="form-container__form__error">
+                This field is required !
+              </p>
+            ) : null}
             <input type="file" onChange={this.fileSelectedHandler} />
             <button
               type="button"

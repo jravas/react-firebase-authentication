@@ -51,23 +51,22 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] delete product image after image change
 - [x] set categories and products edit to be restircted
 - [x] admin product add/edit, categories edit
-- [ ] check products category after category delete & update
-- [ ] firebase actions show errors
 - [x] loading product/product animation
-- [ ] counter on cart icon
-- [ ] auto prefixer
-- [ ] product/category add !!! VALIDATION !!!
+- [x] product/category add !!! VALIDATION !!!
 - [x] consider quick fix [itemname]: "  " for product and category edit
 - [x] authenticated unauthorised redirecting
-- [ ] cart checkout
 - [x] unauthenticated cart total
-- [ ] button selected with tab
 - [x] empty categories
-- [ ] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
-- [ ] category edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [x] product add/delete  updates only after reload
 - [x] total rounded
-- [ ] product list action changed once -> on
+- [ ] check products category after category delete & update
+- [ ] firebase actions show errors
+- [ ] counter on cart icon
+- [ ] auto prefixer
+- [ ] cart checkout
+- [ ] button selected with tab
+- [ ] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
+- [ ] category edit && product edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [ ] cart item leave animation
 - [ ] change class components in functional if possible
 
