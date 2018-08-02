@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { fetchCategory, updateCategory } from "../redux/actions";
 
 class CategoryEdit extends Component {
-  state = { name: " " };
+  state = { name: "" };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });

@@ -5,6 +5,12 @@ import { fetchProduct } from "@/modules/product/redux/actions";
 import { AddToCart } from "@/modules/cart/redux/actions";
 
 class ProductSingle extends Component {
+  state = { imgLoading: true };
+
+  handleLoad = () => {
+    this.setState({ imgLoading: false });
+  };
+
   // adding product to cart
   addToCart = () => {
     const { AddToCart, product, authUser } = this.props;
@@ -29,10 +35,18 @@ class ProductSingle extends Component {
   }
 
   render() {
+    const { imgLoading } = this.state;
     const { product } = this.props;
     return !product ? null : (
       <section className="product-single container-style">
-        <div className="product-single__image">
+        <div
+          onLoad={this.handleLoad}
+          className={`product-single__image ${
+            imgLoading
+              ? "product-single__image--loading"
+              : "product-single__image"
+          }`}
+        >
           <img src={product.imageUrl} alt="Product" />
         </div>
         <div className="product-single__info">

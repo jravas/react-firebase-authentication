@@ -65,7 +65,7 @@ class ProductAdd extends Component {
               <img src={pictureUrl} alt="Product" />
             </div>
           )}
-          <form className="form-container__form" onSubmit={this.submitAction}>
+          <form className="form-container__form">
             <input
               className="form-container__form__input"
               placeholder="Product name"
@@ -110,7 +110,13 @@ class ProductAdd extends Component {
               rows="10"
             />
             <input type="file" onChange={this.fileSelectedHandler} />
-            <button className="default-button">Add product</button>
+            <button
+              className="default-button"
+              type="button"
+              onClick={this.submitAction}
+            >
+              Add product
+            </button>
           </form>
         </div>
       </div>

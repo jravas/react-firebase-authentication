@@ -5,13 +5,13 @@ import { fetchProduct, updateProduct } from "../redux/actions";
 import { fetchCategories } from "@/modules/product/redux/actions";
 
 const INITIAL_STATE = {
-  name: " ",
-  description: " ",
-  price: " ",
-  category: " ",
-  product: " ",
-  picture: " ",
-  imageUrl: " ",
+  name: "",
+  description: "",
+  price: "",
+  category: "",
+  product: "",
+  picture: "",
+  imageUrl: "",
   imageChanged: false
 };
 

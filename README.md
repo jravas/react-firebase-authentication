@@ -13,17 +13,18 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] main/constants
   - [?] merge with firebase folder -> constants are not related to firebase
 - [x] main/reducers
-- [ ] withAuthentication
+- [x] withAuthentication
 - [ ] jednostavni moduli
 - [x] category modul
 - [x] redux tipovi
 - [x] componentDidMount vs componentWillMount
-- [ ] defaultne state vrijednosti
+- [x] defaultne state vrijednosti
+  - [?] A component is changing a controlled input of type text to be uncontrolled.
 - [x] es6 handleri
   - [?] function without prevent default if form was submited with enter
   - [ ] check all buttons
-- [ ] defaultna null vrijednost
-- [ ] resolvanje promisea unutar komponente
+- [?] defaultna null vrijednost
+- [x] resolvanje promisea unutar komponente
 - [x] conditional check za cijelu komponentu
 - [ ] map funkcija
 - [x] anonimne funkcije u renderu
@@ -52,25 +53,23 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] admin product add/edit, categories edit
 - [ ] check products category after category delete & update
 - [ ] firebase actions show errors
-- [ ] loading product/product animation
+- [x] loading product/product animation
 - [ ] counter on cart icon
 - [ ] auto prefixer
-- [ ] consider cart when switching accounts
 - [ ] product/category add !!! VALIDATION !!!
-- [ ] consider quick fix [itemname]: "  " for product and category edit
-- [ ] authenticated unauthorised redirecting
+- [x] consider quick fix [itemname]: "  " for product and category edit
+- [x] authenticated unauthorised redirecting
 - [ ] cart checkout
-- [ ] unauthenticated cart total
+- [x] unauthenticated cart total
 - [ ] button selected with tab
-- [ ] empty categories
+- [x] empty categories
 - [ ] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
 - [ ] category edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [x] product add/delete  updates only after reload
-- [ ] total rounded
+- [x] total rounded
 - [ ] product list action changed once -> on
 - [ ] cart item leave animation
 - [ ] change class components in functional if possible
-- [ ] actions authorised unauthorised
 
 
 ## Table of Contents

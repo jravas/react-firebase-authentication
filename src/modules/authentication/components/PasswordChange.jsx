@@ -13,6 +13,7 @@ class PasswordChangeForm extends Component {
   onSubmit = event => {
     const { passwordOne } = this.state;
     const { ChangePassword } = this.props;
+
     ChangePassword(passwordOne);
     this.setState({ passwordOne: "", passwordTwo: "" });
   };
@@ -24,6 +25,7 @@ class PasswordChangeForm extends Component {
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
+
     return (
       <div className="form-container">
         <h1 className="form-container__title">Change password</h1>

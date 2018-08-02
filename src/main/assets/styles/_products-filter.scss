@@ -4,7 +4,6 @@
   padding-bottom: 20px;
   &__wrap {
     position: relative;
-    margin-left: auto;
     &__select {
       appearance: none;
       -webkit-appearance: none;
@@ -33,5 +32,8 @@
       top: 15px;
       pointer-events: none;
     }
+  }
+  .price-select {
+    margin-left: auto;
   }
 }

@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 class CartTotal extends Component {
   render() {
     const { total } = this.props;
+
     return !total ? null : (
       <div className="cart-total">
-        <h1>Total: {total}</h1>
+        <h1>Total: {total.toFixed(2)}</h1>
       </div>
     );
   }

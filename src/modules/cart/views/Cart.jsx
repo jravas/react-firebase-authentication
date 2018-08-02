@@ -16,6 +16,10 @@ class Cart extends Component {
     if (authUser !== prevProps.authUser) {
       fetchCartItems(authUser, cart);
     }
+    // nonauth quick fix
+    if (!authUser && cart.length !== prevProps.cart.length) {
+      fetchCartItems(authUser, cart);
+    }
   }
   render() {
     const { cart, authUser } = this.props;

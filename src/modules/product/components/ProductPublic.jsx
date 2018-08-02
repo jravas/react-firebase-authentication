@@ -17,7 +17,7 @@ class ProductPublic extends Component {
           <section
             onLoad={this.handleLoad}
             className={`product__image ${
-              !imgLoading ? null : "product__image--loading"
+              imgLoading ? "product__image--loading" : ""
             }`}
           >
             <img src={product.imageUrl} alt="Product" />
