@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../product/redux/actions";
+import * as actions from "@/modules/product/redux/actions";
 import { ProductsListPublic } from "@/modules/product";
 
 class HomePage extends Component {
   componentDidMount() {
-    const { fetchProducts } = this.props;
-    fetchProducts();
+    const { fetchProductsArr } = this.props;
+    fetchProductsArr();
   }
   render() {
     const { products } = this.props;
@@ -19,7 +19,7 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.productsState.products
+  products: state.productsState.productsArr
 });
 
 export default connect(

@@ -13,11 +13,12 @@ export const AddToCart = (product, authUser) => async dispatch => {
   if (authUser) {
     // add cart item to firebase
     usersRef.child(`${authUser.uid}/cart`).push(model);
+  } else {
+    dispatch({
+      type: ADD_TO_CART,
+      payload: model
+    });
   }
-  dispatch({
-    type: ADD_TO_CART,
-    payload: model
-  });
   toast(`${name} added to cart !`, defaultToastConfig);
 };
 // delete from cart
@@ -33,11 +34,12 @@ export const RemoveFromCart = (cartItemId, authUser) => async dispatch => {
           usersRef.child(`${authUser.uid}/cart/${element.key}`).remove();
         });
       });
+  } else {
+    dispatch({
+      type: REMOVE_FROM_CART,
+      payload: cartItemId
+    });
   }
-  dispatch({
-    type: REMOVE_FROM_CART,
-    payload: cartItemId
-  });
   toast(`${cartItemId.name} removed from cart !`, defaultToastConfig);
 };
 

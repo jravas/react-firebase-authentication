@@ -6,13 +6,14 @@ import {
   AdminCategoryPage,
   CategoryEdit
 } from "./product";
-import { SignUpPage, SignInPage, PasswordForgetPage } from "./authentication";
-import Navigation from "./navigation";
-import HomePage from "./home";
-import Admin from "./admin";
+import {
+  SignUpPage,
+  SignInPage,
+  PasswordForgetPage,
+  AccountPage
+} from "./authentication";
+import { Navigation } from "./navigation";
 import { Cart } from "./cart";
-//
-import AccountPage from "./account";
 
 export {
   AdminProductsPage,
@@ -26,7 +27,5 @@ export {
   PasswordForgetPage,
   AccountPage,
   Navigation,
-  HomePage,
-  Admin,
   Cart
 };

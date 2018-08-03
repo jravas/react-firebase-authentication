@@ -6,8 +6,7 @@ const INITIAL_STATE = {
   username: "",
   email: "",
   passwordOne: "",
-  passwordTwo: "",
-  error: null
+  passwordTwo: ""
 };
 class SignUpForm extends Component {
   state = { ...INITIAL_STATE };
@@ -24,7 +23,7 @@ class SignUpForm extends Component {
   };
 
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    const { username, email, passwordOne, passwordTwo } = this.state;
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
@@ -81,7 +80,6 @@ class SignUpForm extends Component {
           >
             Submit
           </button>
-          {!error ? null : <p>{error.message} </p>}
         </form>
       </div>
     );

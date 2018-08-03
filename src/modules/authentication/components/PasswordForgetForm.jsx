@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../redux/actions";
 
 class PasswordForgetForm extends Component {
-  state = { email: "", error: null };
+  state = { email: "" };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -15,11 +15,11 @@ class PasswordForgetForm extends Component {
     ResetPassword(email);
   };
   render() {
-    const { email, error } = this.state;
+    const { email } = this.state;
     const isInvalid = email === "";
     return (
-      <div className="form-container">
-        <h1 className="form-container__title">Send password reset mail</h1>
+      <div className="account-form">
+        <h1 className="form-container__title">Send reset password mail</h1>
         <form className="form-container__form">
           <input
             className="form-container__form__input"
@@ -37,7 +37,6 @@ class PasswordForgetForm extends Component {
           >
             Reset password
           </button>
-          {!error ? null : <p>{error.message}</p>}
         </form>
       </div>
     );

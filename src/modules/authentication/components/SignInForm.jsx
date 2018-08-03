@@ -4,8 +4,7 @@ import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
   email: "",
-  password: "",
-  error: null
+  password: ""
 };
 
 class SignInForm extends Component {
@@ -21,7 +20,7 @@ class SignInForm extends Component {
     SignIn(email, password, cart);
   };
   render() {
-    const { email, password, error } = this.state;
+    const { email, password } = this.state;
     const isInvalid = password === "" || email === "";
     return (
       <div className="form-container">
@@ -51,7 +50,6 @@ class SignInForm extends Component {
           >
             Sign In
           </button>
-          {!error ? null : <p>{error.message}</p>}
         </form>
       </div>
     );

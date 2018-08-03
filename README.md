@@ -14,7 +14,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [?] merge with firebase folder -> constants are not related to firebase
 - [x] main/reducers
 - [x] withAuthentication
-- [ ] jednostavni moduli
+- [x] jednostavni moduli
 - [x] category modul
 - [x] redux tipovi
 - [x] componentDidMount vs componentWillMount
@@ -26,7 +26,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [?] defaultna null vrijednost
 - [x] resolvanje promisea unutar komponente
 - [x] conditional check za cijelu komponentu
-- [ ] map funkcija
+- [x] map funkcija
 - [x] anonimne funkcije u renderu
 - [ ] Buttoni
 - [ ] Prettier
@@ -69,6 +69,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] category edit && product edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [ ] cart item leave animation
 - [ ] change class components in functional if possible
+- [ ] registration validation & messages
+- [ ] product single animation glitch
 
 
 ## Table of Contents

@@ -2,7 +2,7 @@ import React from "react";
 import { firebase } from "../firebase";
 import { connect } from "react-redux";
 
-const withAuthentication = Component => {
+export const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     state = {
       authUser: null,
@@ -30,5 +30,3 @@ const withAuthentication = Component => {
     mapDispatchToProps
   )(WithAuthentication);
 };
-
-export default withAuthentication;

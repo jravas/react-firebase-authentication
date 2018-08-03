@@ -5,7 +5,7 @@ export const CartList = props => {
   const { cart } = props;
   return cart.length ? (
     <ul className="cart-list">
-      {cart.map((item, i) => <CartItem item={item} key={i} />)}
+      {cart.map(item => <CartItem item={item} key={item.cartId} />)}
     </ul>
   ) : (
     <div className="cart-list-empty">

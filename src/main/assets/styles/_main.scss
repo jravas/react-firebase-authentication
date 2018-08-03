@@ -123,9 +123,21 @@ body {
   }
 }
 
-// .loading-bar {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-// }
+.account-page {
+  flex-direction: column;
+  &__content {
+    align-self: center;
+    h1 {
+      font-size: 24px;
+      font-weight: 300;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+    }
+  }
+}
+
+.account-form {
+  margin: 30px auto;
+}

@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 // routes
 import * as routes from "@/main/constants/routes";
 import {
-  HomePage,
   AdminProductsPage,
   ProductEdit,
   ProductSingle,
@@ -14,10 +13,10 @@ import {
   SignInPage,
   PasswordForgetPage,
   AccountPage,
-  Admin,
   Cart
 } from "@/modules";
 // publc
+import HomePage from "@/main/views/Home";
 import { NotFound } from "@/main/views/NotFound";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
@@ -37,7 +36,6 @@ export const Main = () => (
         component={PasswordForgetPage}
       />
       <PrivateRoute exact path={routes.ACCOUNT} component={AccountPage} />
-      <AdminRoute exact path={routes.ADMIN} component={Admin} />
       <AdminRoute
         exact
         path={routes.ADMIN_CATEGORIES}

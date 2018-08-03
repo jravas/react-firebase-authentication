@@ -5,9 +5,7 @@ class ProductsListPublic extends Component {
     const { products } = this.props;
     return !products ? null : (
       <ul className="product-list">
-        {Object.keys(products).map(key => (
-          <ProductPublic key={key} product={products[key]} />
-        ))}
+        {products.map(item => <ProductPublic key={item.id} product={item} />)}
       </ul>
     );
   }

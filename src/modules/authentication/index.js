@@ -9,6 +9,7 @@ import SignUpLink from "./components/SignUpLink";
 import SignUpPage from "./views/SignUpPage";
 import SignInPage from "./views/SignInPage";
 import PasswordForgetPage from "./views/PasswordForgetPage";
+import AccountPage from "./views/AccountPage";
 
 export {
   PasswordChange,
@@ -19,5 +20,6 @@ export {
   SignUpLink,
   SignUpPage,
   SignInPage,
-  PasswordForgetPage
+  PasswordForgetPage,
+  AccountPage
 };

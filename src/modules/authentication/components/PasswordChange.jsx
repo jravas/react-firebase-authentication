@@ -4,8 +4,7 @@ import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
   passwordOne: "",
-  passwordTwo: "",
-  error: null
+  passwordTwo: ""
 };
 class PasswordChangeForm extends Component {
   state = { ...INITIAL_STATE };
@@ -23,15 +22,15 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
-    const { passwordOne, passwordTwo, error } = this.state;
+    const { passwordOne, passwordTwo } = this.state;
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
-      <div className="form-container">
+      <div className="account-form">
         <h1 className="form-container__title">Change password</h1>
         <form className="form-container__form">
           <input
-            className="form-container__input"
+            className="form-container__form__input"
             name="passwordOne"
             value={passwordOne}
             onChange={this.handleInput}
@@ -39,7 +38,7 @@ class PasswordChangeForm extends Component {
             placeholder="New Password"
           />
           <input
-            className="form-container__input"
+            className="form-container__form__input"
             name="passwordTwo"
             value={passwordTwo}
             onChange={this.handleInput}
@@ -54,7 +53,6 @@ class PasswordChangeForm extends Component {
           >
             Change Password
           </button>
-          {!error ? null : <p>{error.message}</p>}
         </form>
       </div>
     );

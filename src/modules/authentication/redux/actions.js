@@ -31,34 +31,48 @@ export const AddUser = (
           history.push(routes.HOME);
           dispatch(hideLoading());
         });
+    })
+    .catch(error => {
+      toast(error.message, defaultToastConfig);
+      dispatch(hideLoading());
     });
 };
 // sign in
 export const SignIn = (email, password, cart) => async dispatch => {
   dispatch(showLoading());
-  auth.doSignInWithEmailAndPassword(email, password).then(user => {
-    // sync cart & firebase
-    usersRef.child(`${user.user.uid}/cart`).once("value", snapshot => {
-      let arr = [];
-      let firebaseCart = snapshot.val();
-      if (firebaseCart) {
-        Object.keys(firebaseCart).map(key => arr.push(firebaseCart[key]));
-        // check difference between cart and firebase
-        const diffBy = pred => (a, b) =>
-          a.filter(x => !b.some(y => pred(x, y)));
-        const makeSymmDiffFunc = pred => (a, b) =>
-          diffBy(pred)(a, b).concat(diffBy(pred)(b, a));
-        const myDiff = makeSymmDiffFunc((x, y) => x.cartId === y.cartId);
-        const result = myDiff(arr, cart);
-        // add items from cart to firebase
-        result.forEach(el => {
-          usersRef.child(`${user.user.uid}/cart`).push(el);
-        });
-      }
-      history.push(routes.HOME);
+  auth
+    .doSignInWithEmailAndPassword(email, password)
+    .then(user => {
+      // sync cart & firebase
+      usersRef.child(`${user.user.uid}/cart`).once("value", snapshot => {
+        let arr = [];
+        let firebaseCart = snapshot.val();
+        if (firebaseCart) {
+          Object.keys(firebaseCart).map(key => arr.push(firebaseCart[key]));
+          // check difference between cart and firebase
+          const diffBy = pred => (a, b) =>
+            a.filter(x => !b.some(y => pred(x, y)));
+          const makeSymmDiffFunc = pred => (a, b) =>
+            diffBy(pred)(a, b).concat(diffBy(pred)(b, a));
+          const myDiff = makeSymmDiffFunc((x, y) => x.cartId === y.cartId);
+          const result = myDiff(arr, cart);
+          // add items from cart to firebase
+          result.forEach(el => {
+            usersRef.child(`${user.user.uid}/cart`).push(el);
+          });
+        } else {
+          cart.forEach(el => {
+            usersRef.child(`${user.user.uid}/cart`).push(el);
+          });
+        }
+        history.push(routes.HOME);
+        dispatch(hideLoading());
+      });
+    })
+    .catch(error => {
+      toast(error.message, defaultToastConfig);
       dispatch(hideLoading());
     });
-  });
 };
 
 // send password reset mail
@@ -72,12 +86,19 @@ export const ResetPassword = email => async dispatch => {
       history.push(routes.SIGN_IN);
     })
     .catch(error => {
-      console.log("error");
+      toast(error.message, defaultToastConfig);
+      dispatch(hideLoading());
     });
 };
 // change password
 export const ChangePassword = password => async dispatch => {
-  auth.doPasswordUpdate(password).then(() => {
-    toast(`Password changed successfully !`, defaultToastConfig);
-  });
+  auth
+    .doPasswordUpdate(password)
+    .then(() => {
+      toast(`Password changed successfully !`, defaultToastConfig);
+    })
+    .catch(error => {
+      toast(error.message, defaultToastConfig);
+      dispatch(hideLoading());
+    });
 };

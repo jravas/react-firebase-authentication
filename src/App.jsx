@@ -1,7 +1,7 @@
 import React from "react";
 import { Router } from "react-router-dom";
 // authentication hoc
-import withAuthentication from "./main/components/withAuthentication";
+import { withAuthentication } from "./main/components/withAuthentication";
 // toast notifications
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -31,6 +31,7 @@ const App = () => {
         />
         <Main />
         <ToastContainer />
+        <footer>footer</footer>
       </div>
     </Router>
   );

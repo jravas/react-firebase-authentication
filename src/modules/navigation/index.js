@@ -1,17 +1,3 @@
-import React from "react";
-import { connect } from "react-redux";
+import Navigation from "./components/Navigation";
 
-// components
-import NavigationNonAuth from "./components/NavigationNonAuth";
-import NavigationAuth from "./components/NavigationAuth";
-
-const Navigation = ({ authUser }) => (
-  <div>
-    {authUser ? <NavigationAuth authUser={authUser} /> : <NavigationNonAuth />}
-  </div>
-);
-
-const mapStateToProps = state => ({
-  authUser: state.sessionState.authUser
-});
-export default connect(mapStateToProps)(Navigation);
+export { Navigation };
