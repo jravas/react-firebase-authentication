@@ -5,7 +5,7 @@ export const authenticationReducer = (state = { users: {} }, action) => {
     case USERS_SET: {
       return {
         ...state,
-        users: action.users
+        users: action.payload
       };
     }
     default:

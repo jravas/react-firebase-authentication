@@ -31,6 +31,14 @@ const NavigationAuthAdmin = () => (
           Categories
         </Link>
       </li>
+      <li className="main-navigation__links__item">
+        <Link
+          className="main-navigation__links__item__link"
+          to={routes.ADMIN_USERS}
+        >
+          Users
+        </Link>
+      </li>
     </SharedLinks>
   </nav>
 );

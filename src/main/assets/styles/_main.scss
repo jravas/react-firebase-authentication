@@ -40,6 +40,8 @@ body {
 }
 
 .default-button {
+  position: relative;
+  overflow: hidden;
   border: 3px solid #343a40;
   border-radius: 35px;
   background-color: #343a40;
@@ -53,11 +55,41 @@ body {
   outline: none;
   transition: box-shadow 1s ease, border 1s ease;
   &:not([disabled]):hover {
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 3px #343a40;
+    box-shadow: none;
   }
   &:disabled {
     opacity: 0.7;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+  &:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(60, 60);
   }
 }
 

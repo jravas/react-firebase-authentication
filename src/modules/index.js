@@ -10,7 +10,8 @@ import {
   SignUpPage,
   SignInPage,
   PasswordForgetPage,
-  AccountPage
+  AccountPage,
+  UsersList
 } from "./authentication";
 import { Navigation } from "./navigation";
 import { Cart } from "./cart";
@@ -27,5 +28,6 @@ export {
   PasswordForgetPage,
   AccountPage,
   Navigation,
-  Cart
+  Cart,
+  UsersList
 };

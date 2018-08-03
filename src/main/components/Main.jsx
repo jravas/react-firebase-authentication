@@ -13,7 +13,8 @@ import {
   SignInPage,
   PasswordForgetPage,
   AccountPage,
-  Cart
+  Cart,
+  UsersList
 } from "@/modules";
 // publc
 import HomePage from "@/main/views/Home";
@@ -56,6 +57,7 @@ export const Main = () => (
         path={routes.ADMIN_PRODUCT_EDIT}
         component={ProductEdit}
       />
+      <AdminRoute exact path={routes.ADMIN_USERS} component={UsersList} />
       <Route component={NotFound} />
     </Switch>
   </main>

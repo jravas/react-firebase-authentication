@@ -10,6 +10,7 @@ import SignUpPage from "./views/SignUpPage";
 import SignInPage from "./views/SignInPage";
 import PasswordForgetPage from "./views/PasswordForgetPage";
 import AccountPage from "./views/AccountPage";
+import UsersList from "./views/UsersList";
 
 export {
   PasswordChange,
@@ -21,5 +22,6 @@ export {
   SignUpPage,
   SignInPage,
   PasswordForgetPage,
-  AccountPage
+  AccountPage,
+  UsersList
 };

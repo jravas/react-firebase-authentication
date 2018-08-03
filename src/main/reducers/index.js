@@ -7,7 +7,7 @@ import { cartReducer } from "@/modules/cart/redux/reducer";
 import { loadingBarReducer } from "react-redux-loading-bar";
 const rootReducer = combineReducers({
   sessionState: sessionReducer,
-  userState: authenticationReducer,
+  usersState: authenticationReducer,
   productsState: productsReducer,
   categoriesState: categoriesReducer,
   cartState: cartReducer,

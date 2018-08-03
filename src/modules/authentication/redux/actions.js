@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import history from "@/main/constants/history";
 import * as routes from "@/main/constants/routes";
+import { USERS_SET } from "./types";
 
 // add user
 export const AddUser = (
@@ -92,6 +93,7 @@ export const ResetPassword = email => async dispatch => {
 };
 // change password
 export const ChangePassword = password => async dispatch => {
+  dispatch(showLoading());
   auth
     .doPasswordUpdate(password)
     .then(() => {
@@ -99,6 +101,21 @@ export const ChangePassword = password => async dispatch => {
     })
     .catch(error => {
       toast(error.message, defaultToastConfig);
+      dispatch(hideLoading());
+    });
+};
+
+// list users
+export const ListUsers = () => async dispatch => {
+  dispatch(showLoading());
+  usersRef
+    .once("value", snapshot => {
+      dispatch({
+        type: USERS_SET,
+        payload: snapshot.val()
+      });
+    })
+    .then(() => {
       dispatch(hideLoading());
     });
 };

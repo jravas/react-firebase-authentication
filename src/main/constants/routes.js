@@ -11,6 +11,7 @@ export const ADMIN_CATEGORIES = "/admin/categories";
 export const ADMIN_CATEGORY_EDIT = "/admin/categories/edit/:id";
 export const ADMIN_PRODUCTS = "/admin/products";
 export const ADMIN_PRODUCT_EDIT = "/admin/products/edit/:id";
+export const ADMIN_USERS = "/admin/users";
 // public pages
 export const SINGLE_PRODUCT = "/product/:id";
 export const CART = "/cart";

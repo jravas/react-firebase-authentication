@@ -10,8 +10,8 @@ import { Main } from "./main/components/Main";
 import { Navigation } from "./modules";
 // loading bar
 import LoadingBar from "react-redux-loading-bar";
-//
 import history from "./main/constants/history";
+// import { Footer } from "./main/components/Footer";
 
 const App = () => {
   return (
@@ -30,8 +30,8 @@ const App = () => {
           }}
         />
         <Main />
+        {/* <Footer /> */}
         <ToastContainer />
-        <footer>footer</footer>
       </div>
     </Router>
   );
