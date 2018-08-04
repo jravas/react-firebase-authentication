@@ -28,7 +28,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] conditional check za cijelu komponentu
 - [x] map funkcija
 - [x] anonimne funkcije u renderu
-- [ ] Buttoni
+- [ ] Buttoni - add button component
 - [ ] Prettier
 
 
@@ -59,18 +59,22 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] empty categories
 - [x] product add/delete  updates only after reload
 - [x] total rounded
+- [x] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
+- [x] firebase actions show errors
 - [ ] check products category after category delete & update
-- [ ] firebase actions show errors
 - [ ] counter on cart icon
 - [ ] auto prefixer
 - [ ] cart checkout
 - [ ] button selected with tab
-- [ ] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
 - [ ] category edit && product edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [ ] cart item leave animation
 - [ ] change class components in functional if possible
 - [ ] registration validation & messages
 - [ ] product single animation glitch
+- [ ] for array .length
+- [ ]  setup or remove "react-addons-css-transition-group"
+- [ ] fonts
+- [ ] currency
 
 
 ## Table of Contents

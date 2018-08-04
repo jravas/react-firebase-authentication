@@ -17,8 +17,22 @@
       }
     }
     &__delete {
+      background-image: url("../images/delete.svg");
       margin-left: auto;
       cursor: pointer;
+      border: none;
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.5;
+      transition: opacity 0.25s ease-in;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

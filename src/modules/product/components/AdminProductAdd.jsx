@@ -21,7 +21,7 @@ const INITIAL_STATE = {
     price: false
   }
 };
-class ProductAdd extends Component {
+class AdminProductAdd extends Component {
   state = { ...INITIAL_STATE };
 
   // setting inputs to product state
@@ -195,4 +195,4 @@ const actions = { fetchCategories, addProduct };
 export default connect(
   mapStateToProps,
   actions
-)(ProductAdd);
+)(AdminProductAdd);

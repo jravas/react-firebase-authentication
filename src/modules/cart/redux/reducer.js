@@ -9,11 +9,10 @@ export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
       };
     }
     case REMOVE_FROM_CART: {
+      console.log(action.payload);
       return {
         ...state,
-        cart: state.cart.filter(
-          element => element.cartId !== action.payload.cartId
-        )
+        cart: state.cart.filter(element => element.cartId !== action.payload)
       };
     }
     case FETCH_CART_ITEMS: {

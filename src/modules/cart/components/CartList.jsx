@@ -1,11 +1,12 @@
 import React from "react";
-import CartItem from "./CartItem";
+import { CartItem } from "./CartItem";
 
-export const CartList = props => {
-  const { cart } = props;
+export const CartList = ({ cart, handleDelete }) => {
   return cart.length ? (
     <ul className="cart-list">
-      {cart.map(item => <CartItem item={item} key={item.cartId} />)}
+      {cart.map(item => (
+        <CartItem item={item} key={item.cartId} handleDelete={handleDelete} />
+      ))}
     </ul>
   ) : (
     <div className="cart-list-empty">

@@ -6,7 +6,7 @@ import cartImage from "@/main/assets/images/shopping-basket.svg";
 import storeImage from "@/main/assets/images/store.svg";
 import userImage from "@/main/assets/images/user.svg";
 
-export const SharedLinks = props => {
+export const SharedLinks = ({ children }) => {
   return (
     <ul className="main-navigation__links">
       <li className="main-navigation__links__item">
@@ -33,7 +33,7 @@ export const SharedLinks = props => {
           <img src={cartImage} alt="Shopping basket" />
         </Link>
       </li>
-      {props.children}
+      {children}
       <li className="main-navigation__links__item">
         <Link
           className="main-navigation__links__item__link icon"

@@ -1,7 +1,7 @@
 import React from "react";
 
-export const UserItem = props => {
-  const { username, email } = props.user;
+export const UserItem = ({ user }) => {
+  const { username, email } = user;
   return (
     <li className="items-list-admin__item">
       <p>

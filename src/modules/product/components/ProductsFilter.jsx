@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ onFilter, onCategoryFilter, categories }) => (
+export const ProductsFilter = ({ onFilter, onCategoryFilter, categories }) => (
   <div className="filter-container">
     <div className="filter-container__wrap category-select">
       <select

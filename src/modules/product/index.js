@@ -3,7 +3,7 @@ import ProductEdit from "./views/ProductEdit";
 import ProductSingle from "./views/ProductSingle";
 import ProductPagePublic from "./views/ProductPagePublic";
 // components
-import ProductsListPublic from "./components/ProductsListPublic";
+import { ProductsListPublic } from "./components/ProductsListPublic";
 // categories
 import AdminCategoryPage from "./views/AdminCategoryPage";
 import CategoryEdit from "./views/CategoryEdit";

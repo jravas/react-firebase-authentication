@@ -1,23 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 
-class CartTotal extends Component {
-  render() {
-    const { total } = this.props;
-
-    return !total ? null : (
-      <div className="cart-total">
-        <h1>Total: {total.toFixed(2)}</h1>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  total: state.cartState.cartTotal,
-  cart: state.cartState.cart
-});
-export default connect(
-  mapStateToProps,
-  null
-)(CartTotal);
+export const CartTotal = ({ total }) => {
+  return !total ? null : (
+    <div className="cart-total">
+      <h1>Total: {total.toFixed(2)}</h1>
+    </div>
+  );
+};

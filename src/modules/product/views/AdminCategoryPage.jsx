@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
 // add category component
-import AddCategory from "../components/CategoryAdd";
-import CategoriesList from "../components/CategoriesList";
+import AdminCategoryAdd from "../components/AdminCategoryAdd";
+import { AdminCategoriesList } from "../components/AdminCategoriesList";
 import { AddButton } from "@/main/components/AddButton";
 
 class AdminCategoryPage extends Component {
   state = { modal: false };
+
+  // delete category
+  handleClickAction = event => {
+    const { deleteCategory } = this.props;
+    const { itemId } = event.target.dataset;
+    deleteCategory(itemId);
+  };
 
   componentDidMount() {
     const { fetchCategories } = this.props;
@@ -19,8 +26,13 @@ class AdminCategoryPage extends Component {
     const { modal } = this.state;
     return (
       <div>
-        {modal ? <AddCategory closeModal={this.setState.bind(this)} /> : null}
-        <CategoriesList categories={categories} />
+        {modal ? (
+          <AdminCategoryAdd closeModal={this.setState.bind(this)} />
+        ) : null}
+        <AdminCategoriesList
+          categories={categories}
+          handleClickAction={this.handleClickAction}
+        />
         <AddButton openModal={this.setState.bind(this)} />
       </div>
     );

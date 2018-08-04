@@ -27,7 +27,7 @@ export const RemoveFromCart = (cartItemId, authUser) => async dispatch => {
     usersRef
       .child(`${authUser.uid}/cart`)
       .orderByChild("cartId")
-      .equalTo(cartItemId.cartId)
+      .equalTo(cartItemId)
       .once("value")
       .then(snapshot => {
         snapshot.forEach(element => {
@@ -40,7 +40,7 @@ export const RemoveFromCart = (cartItemId, authUser) => async dispatch => {
       payload: cartItemId
     });
   }
-  toast(`${cartItemId.name} removed from cart !`, defaultToastConfig);
+  toast(`Product removed from cart !`, defaultToastConfig);
 };
 
 // list cart items

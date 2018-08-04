@@ -27,9 +27,17 @@
         font-weight: 300;
       }
       &__remove {
-        width: 15px;
+        background-image: url("../images/cancel.svg");
         margin-left: auto;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
       }
     }
     &__footer {

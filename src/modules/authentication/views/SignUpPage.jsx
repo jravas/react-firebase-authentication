@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import SignUpForm from "../components/SignUpForm";
 
-class SignUpPage extends Component {
-  render() {
-    return (
-      <div>
-        <SignUpForm />
-      </div>
-    );
-  }
-}
+const SignUpPage = () => {
+  return (
+    <div>
+      <SignUpForm />
+    </div>
+  );
+};
 
 export default SignUpPage;

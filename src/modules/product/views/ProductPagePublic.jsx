@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
-import ProductsListPublic from "../components/ProductsListPublic";
-import ProductsFilter from "../components/ProductsFilter";
+import { ProductsListPublic } from "../components/ProductsListPublic";
+import { ProductsFilter } from "../components/ProductsFilter";
 
 class ProductPagePublic extends Component {
   state = {
@@ -52,7 +52,7 @@ class ProductPagePublic extends Component {
   getCategoriesed = (category, products) => {
     return category === "All" || !category
       ? products
-      : products.map(item => (item.category === category ? item : null));
+      : products.filter(item => (item.category === category ? item : null));
   };
 
   // filter products by selected price filter
@@ -74,7 +74,6 @@ class ProductPagePublic extends Component {
     const categories = this.getCategories(products);
     let currentProducts = this.getFiltered(filter, products);
     currentProducts = this.getCategoriesed(category, currentProducts);
-
     return (
       <div>
         <ProductsFilter

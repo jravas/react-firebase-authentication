@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addCategory } from "../redux/actions";
 import cancleImg from "../../../main/assets/images/cancel.svg";
 
-class CategoryAdd extends Component {
+class AdminCategoryAdd extends Component {
   state = { form: { name: "" }, errors: { name: false } };
 
   handleInput = event => {
@@ -78,4 +78,4 @@ class CategoryAdd extends Component {
 export default connect(
   null,
   { addCategory }
-)(CategoryAdd);
+)(AdminCategoryAdd);
