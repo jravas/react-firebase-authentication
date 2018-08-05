@@ -1,9 +1,18 @@
 import cuid from "cuid";
-import { usersRef } from "@/main/firebase/firebase";
+import { usersRef, ordersRef } from "@/main/firebase/firebase";
 import { CartItem } from "../model/cartItem";
-import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "./types";
+import { cartCheckout } from "../model/cartCheckout";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  FETCH_CART_ITEMS,
+  CART_CHECKOUT
+} from "./types";
 import { toast } from "react-toastify";
 import defaultToastConfig from "@/main/constants/defaultToastConfig";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
+import history from "@/main/constants/history";
+import * as routes from "@/main/constants/routes";
 
 // add to cart
 export const AddToCart = (product, authUser) => async dispatch => {
@@ -58,4 +67,46 @@ export const fetchCartItems = (authUser, cart) => async dispatch => {
       payload: cart
     });
   }
+};
+
+// Checkout
+export const CheckOutOrder = (
+  firstName,
+  lastName,
+  email,
+  address,
+  state,
+  phone,
+  city,
+  zipCode,
+  cart
+) => async dispatch => {
+  const model = cartCheckout(
+    firstName,
+    lastName,
+    email,
+    address,
+    state,
+    phone,
+    city,
+    zipCode,
+    cart
+  );
+  // add cart item to firebase
+  dispatch(showLoading());
+  let key = ordersRef.push().key;
+  ordersRef
+    .update({ [key]: model })
+    .then(() => {
+      dispatch({
+        type: CART_CHECKOUT
+      });
+      toast(`Order sent!`, defaultToastConfig);
+      history.push(routes.HOME);
+      dispatch(hideLoading());
+    })
+    .catch(error => {
+      toast(error.message, defaultToastConfig);
+      dispatch(hideLoading());
+    });
 };

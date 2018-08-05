@@ -74,7 +74,7 @@ body {
     transform-origin: 50% 50%;
   }
   &:focus:not(:active)::after {
-    animation: ripple 1s ease-out;
+    animation: ripple 0.5s ease-out;
   }
 }
 
@@ -122,13 +122,18 @@ body {
   z-index: 2;
   right: 10%;
   bottom: 10%;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   background: #343a40;
-  padding: 15px;
   border-radius: 50%;
   box-shadow: 0 0 7px 0 rgba(90, 90, 90, 0.33);
+  box-sizing: border-box;
   cursor: pointer;
+  border: none;
+  background-image: url("../images/plus.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px;
 }
 
 .product-list {

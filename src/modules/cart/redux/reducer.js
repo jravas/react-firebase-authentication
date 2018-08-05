@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART_ITEMS } from "./types";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  FETCH_CART_ITEMS,
+  CART_CHECKOUT
+} from "./types";
 
 export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
   switch (action.type) {
@@ -9,7 +14,6 @@ export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
       };
     }
     case REMOVE_FROM_CART: {
-      console.log(action.payload);
       return {
         ...state,
         cart: state.cart.filter(element => element.cartId !== action.payload)
@@ -28,6 +32,13 @@ export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
         ...state,
         cart: [...arr],
         cartTotal: total
+      };
+    }
+    case CART_CHECKOUT: {
+      console.log("test");
+      return {
+        cart: 0,
+        total: 0
       };
     }
     default:

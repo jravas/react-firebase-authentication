@@ -30,5 +30,17 @@
     right: 50px;
     top: 50px;
     cursor: pointer;
+    border: none;
+    padding: 0;
+    background-image: url("../images/cancel.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.8;
+    transition: opacity 0.25s ease-in;
+    &:hover {
+      opacity: 1;
+    }
   }
 }

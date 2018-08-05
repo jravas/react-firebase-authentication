@@ -28,7 +28,6 @@ class ProductSingle extends Component {
   // update product on url change
   componentWillReceiveProps(nextProps) {
     const { fetchProduct } = this.props;
-
     if (nextProps.match.params.id !== this.props.match.params.id) {
       fetchProduct(nextProps.match.params.id);
     }

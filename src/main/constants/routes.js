@@ -15,3 +15,4 @@ export const ADMIN_USERS = "/admin/users";
 // public pages
 export const SINGLE_PRODUCT = "/product/:id";
 export const CART = "/cart";
+export const CART_CHECKOUT = "/cart/checkout";

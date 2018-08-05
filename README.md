@@ -5,13 +5,10 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## TODO
 - [x] importi / exporti
-  - [?] except components connected to redux and views
 - [ ] index.js fileovi
-  - [?] entry point index.jsx
 - [x] es5 / es6
 - [x] helper funkcije
 - [ ] main/constants
-  - [?] merge with firebase folder -> constants are not related to firebase
 - [x] main/reducers
 - [x] withAuthentication
 - [x] jednostavni moduli
@@ -19,16 +16,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] redux tipovi
 - [x] componentDidMount vs componentWillMount
 - [x] defaultne state vrijednosti
-  - [?] A component is changing a controlled input of type text to be uncontrolled.
 - [x] es6 handleri
-  - [?] function without prevent default if form was submited with enter
-  - [ ] check all buttons
 - [?] defaultna null vrijednost
 - [x] resolvanje promisea unutar komponente
 - [x] conditional check za cijelu komponentu
 - [x] map funkcija
 - [x] anonimne funkcije u renderu
-- [ ] Buttoni - add button component
+- [x] Buttoni - add button component
 - [ ] Prettier
 
 
@@ -61,20 +55,33 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] total rounded
 - [x] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
 - [x] firebase actions show errors
+- [x] change class components in functional if possible
 - [ ] check products category after category delete & update
 - [ ] counter on cart icon
-- [ ] auto prefixer
+- [ ] auto prefixer --> then remove prefixes
 - [ ] cart checkout
 - [ ] button selected with tab
-- [ ] category edit && product edit -> A component is changing a controlled input of type text to be uncontrolled.
 - [ ] cart item leave animation
-- [ ] change class components in functional if possible
 - [ ] registration validation & messages
 - [ ] product single animation glitch
 - [ ] for array .length
 - [ ]  setup or remove "react-addons-css-transition-group"
 - [ ] fonts
 - [ ] currency
+- [ ] ? passing cart to fetchCartItems
+- [ ]  cart checkout login users auto fill -> delivery options -> review and checkout
+- [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
+- [ ] if user access checkout page from url -> cart checkout emty cart message
+- [ ] empty cart after successful order if if user is auth empty firebase cart
+
+## questions
+- [x] shared links unable to detect route change
+  - // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
+- [ ] howw to setup entry point to be .jsx extension
+- [ ] main/constant -> merge with firebase folder -> constants are not related to firebase
+- [ ] after product/category edit (name edited) A component is changing a controlled input of type text to be uncontrolled.
+- [ ] function without prevent default if form was submited with enter
+
 
 
 ## Table of Contents

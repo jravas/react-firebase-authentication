@@ -14,6 +14,7 @@ import {
   PasswordForgetPage,
   AccountPage,
   Cart,
+  CartCheckOut,
   UsersList
 } from "@/modules";
 // publc
@@ -29,6 +30,7 @@ export const Main = () => (
       <Route exact path={routes.PRODUCTS} component={ProductPagePublic} />
       <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
       <Route exact path={routes.CART} component={Cart} />
+      <Route exact path={routes.CART_CHECKOUT} component={CartCheckOut} />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route

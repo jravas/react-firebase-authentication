@@ -25,8 +25,8 @@ const App = () => {
             position: "absolute",
             width: "100%",
             top: 0,
-            backgroundColor: "#33691E",
-            height: "5px"
+            backgroundColor: "rgb(66, 183, 42)",
+            height: "2px"
           }}
         />
         <Main />

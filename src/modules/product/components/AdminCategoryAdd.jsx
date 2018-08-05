@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCategory } from "../redux/actions";
-import cancleImg from "../../../main/assets/images/cancel.svg";
 
 class AdminCategoryAdd extends Component {
   state = { form: { name: "" }, errors: { name: false } };
@@ -33,20 +32,18 @@ class AdminCategoryAdd extends Component {
     }
   };
 
-  closeModal = event => {
-    const { closeModal } = this.props;
-    closeModal({ modal: false });
-  };
-
   render() {
     const { name } = this.state.form;
     const { errors } = this.state;
+    const { onClick } = this.props;
     return (
       <div className="item-add">
         <div className="form-container">
-          <div className="item-add__cancel" onClick={this.closeModal}>
-            <img src={cancleImg} alt="Cancel" />
-          </div>
+          <button
+            type="button"
+            className="item-add__cancel"
+            onClick={onClick}
+          />
           <form className="form-container__form">
             <input
               className="form-container__form__input"

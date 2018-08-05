@@ -13,7 +13,7 @@ class ProductPublic extends Component {
     const { product } = this.props;
     return !product ? null : (
       <li className="product">
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/product/${product.id}`} params={{ id: product.id }}>
           <section
             onLoad={this.handleLoad}
             className={`product__image ${

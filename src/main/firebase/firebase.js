@@ -26,6 +26,7 @@ export const categoriesRef = dbRef.child("categories");
 export const productsRef = dbRef.child("products");
 export const userCartsRef = dbRef.child("user-carts");
 export const usersRef = dbRef.child("users");
+export const ordersRef = dbRef.child("orders");
 export const storage = fireStore.storage().ref();
 
 export { auth, db };

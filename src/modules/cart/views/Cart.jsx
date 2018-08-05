@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../redux/actions";
 import { CartList } from "../components/CartList";
 import { CartTotal } from "../components/CartTotal";
+import { CheckOutLink } from "../components/CheckOutLink";
 
 class Cart extends Component {
   // cart item delete
@@ -40,6 +41,7 @@ class Cart extends Component {
           handleDelete={this.handleDelete}
         />
         <CartTotal total={total} />
+        {!cart.length ? null : <CheckOutLink />}
       </div>
     );
   }

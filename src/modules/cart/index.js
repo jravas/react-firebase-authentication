@@ -1,3 +1,4 @@
 import Cart from "./views/Cart";
+import CartCheckOut from "./views/CartCheckOut";
 
-export { Cart };
+export { Cart, CartCheckOut };

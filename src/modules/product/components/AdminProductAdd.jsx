@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../redux/actions";
 import { fetchCategories } from "@/modules/product/redux/actions";
-import cancleImg from "@/main/assets/images/cancel.svg";
 
 const INITIAL_STATE = {
   pictureUrl: "",
@@ -29,12 +28,6 @@ class AdminProductAdd extends Component {
     this.setState({
       form: { ...this.state.form, [event.target.name]: event.target.value }
     });
-  };
-
-  // close modal action
-  closeModal = e => {
-    const { closeModal } = this.props;
-    closeModal({ modal: false });
   };
 
   // check if inputs are filled
@@ -88,15 +81,17 @@ class AdminProductAdd extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, onClick } = this.props;
     const { pictureUrl, errors } = this.state;
     const { name, description, price, category } = this.state.form;
     return (
       <div className="item-add">
         <div className="form-container">
-          <div className="item-add__cancel" onClick={this.closeModal}>
-            <img src={cancleImg} alt="Cancel" />
-          </div>
+          <button
+            type="button"
+            className="item-add__cancel"
+            onClick={onClick}
+          />
           {!pictureUrl ? null : (
             <div className="item-add__image">
               <img src={pictureUrl} alt="Product" />

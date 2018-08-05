@@ -4,7 +4,7 @@ import Search from "@/main/components/Search";
 import * as routes from "@/main/constants/routes";
 import { SharedLinks } from "./SharedLinks";
 
-const NavigationAuthAdmin = () => (
+export const NavigationAuthAdmin = () => (
   <nav className="main-navigation">
     <div className="main-navigation__logo">
       <Link to={routes.HOME}>Stolen memes</Link>
@@ -42,5 +42,3 @@ const NavigationAuthAdmin = () => (
     </SharedLinks>
   </nav>
 );
-
-export default NavigationAuthAdmin;

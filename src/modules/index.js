@@ -14,7 +14,7 @@ import {
   UsersList
 } from "./authentication";
 import { Navigation } from "./navigation";
-import { Cart } from "./cart";
+import { Cart, CartCheckOut } from "./cart";
 
 export {
   AdminProductsPage,
@@ -29,5 +29,6 @@ export {
   AccountPage,
   Navigation,
   Cart,
+  CartCheckOut,
   UsersList
 };

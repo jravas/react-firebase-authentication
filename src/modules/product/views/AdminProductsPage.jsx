@@ -13,6 +13,14 @@ class AdminProductsPage extends Component {
     const { itemId } = event.target.dataset;
     deleteProduct(itemId);
   };
+  // open add product modal
+  openModal = event => {
+    this.setState({ modal: true });
+  };
+  // close modal action
+  closeModal = event => {
+    this.setState({ modal: false });
+  };
 
   componentDidMount() {
     const { fetchProducts } = this.props;
@@ -24,14 +32,12 @@ class AdminProductsPage extends Component {
     const { modal } = this.state;
     return (
       <div>
-        {!modal ? null : (
-          <AdminProductAdd closeModal={this.setState.bind(this)} />
-        )}
+        {!modal ? null : <AdminProductAdd onClick={this.closeModal} />}
         <AdminProductsList
           products={products}
           handleClickAction={this.handleClickAction}
         />
-        <AddButton openModal={this.setState.bind(this)} />
+        <AddButton onClick={this.openModal} />
       </div>
     );
   }

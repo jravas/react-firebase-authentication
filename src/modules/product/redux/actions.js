@@ -16,6 +16,7 @@ export const addProduct = (
   image,
   price
 ) => async dispatch => {
+  dispatch(showLoading());
   let key = productsRef.push().key;
   if (category === "") {
     category = "Uncategorised";
@@ -35,6 +36,7 @@ export const addProduct = (
           })
           .then(() => {
             toast(`${name} added !`, defaultToastConfig);
+            dispatch(hideLoading());
           });
       });
     });
@@ -50,6 +52,7 @@ export const updateProduct = (
   price
 ) => async dispatch => {
   // if image didn't updated send iamgeUrl string
+  dispatch(showLoading());
   if (typeof image === "string") {
     productsRef
       .child(id)
@@ -57,6 +60,7 @@ export const updateProduct = (
       .then(() => {
         history.push(routes.ADMIN_PRODUCTS);
         toast(`${name} edited !`, defaultToastConfig);
+        dispatch(hideLoading());
       });
   } else if (typeof image === "object") {
     // if image is updated send image object and delete old image
@@ -87,6 +91,7 @@ export const updateProduct = (
                 .then(() => {
                   history.push(routes.ADMIN_PRODUCTS);
                   toast(`${name} edited !`, defaultToastConfig);
+                  dispatch(hideLoading());
                 });
             });
           });
@@ -96,11 +101,13 @@ export const updateProduct = (
 
 // delete Product
 export const deleteProduct = productId => async dispatch => {
+  dispatch(showLoading());
   productsRef
     .child(productId)
     .remove()
     .then(() => {
       toast(`Product deleted !`, defaultToastConfig);
+      dispatch(hideLoading());
     });
 };
 
@@ -122,11 +129,13 @@ export const fetchProduct = productId => async dispatch => {
 
 // list products
 export const fetchProducts = () => async dispatch => {
+  dispatch(showLoading());
   productsRef.on("value", snapshot => {
     dispatch({
       type: FETCH_PRODUCTS,
       payload: snapshot.val()
     });
+    dispatch(hideLoading());
   });
 };
 
@@ -149,45 +158,54 @@ export const fetchProductsArr = () => async dispatch => {
 
 // add category
 export const addCategory = name => async dispatch => {
+  dispatch(showLoading());
   let key = categoriesRef.push().key;
   categoriesRef.update({ [key]: Category(key, name) }).then(() => {
     toast(`${name} added !`, defaultToastConfig);
+    dispatch(hideLoading());
   });
 };
 
 //update category
 export const updateCategory = (categoryId, name) => async dispatch => {
+  dispatch(showLoading());
   categoriesRef
     .child(categoryId)
     .update(Category(categoryId, name))
     .then(() => {
       history.push(routes.ADMIN_CATEGORIES);
       toast(`${name} edited !`, defaultToastConfig);
+      dispatch(hideLoading());
     });
 };
 
 // delete category
 export const deleteCategory = categoryId => async dispatch => {
+  dispatch(showLoading());
   categoriesRef
     .child(categoryId)
     .remove()
     .then(() => {
       toast(`Category deleted !`, defaultToastConfig);
+      dispatch(hideLoading());
     });
 };
 
 // get category by id
 export const fetchCategory = categoryId => async dispatch => {
+  dispatch(showLoading());
   categoriesRef.child(categoryId).on("value", snapshot => {
     dispatch({
       type: FETCH_CATEGORIES,
       payload: snapshot.val()
     });
+    dispatch(hideLoading());
   });
 };
 
 // list categories
 export const fetchCategories = () => async dispatch => {
+  dispatch(showLoading());
   // add Uncategorised if there is no categories
   categoriesRef.once("value", snapshot => {
     let value = snapshot.val();
@@ -201,5 +219,6 @@ export const fetchCategories = () => async dispatch => {
       type: FETCH_CATEGORIES,
       payload: snapshot.val()
     });
+    dispatch(hideLoading());
   });
 };
