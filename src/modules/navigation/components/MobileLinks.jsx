@@ -11,8 +11,14 @@ export class MobileLinks extends Component {
     document.body.style.overflow = "auto";
   }
   render() {
+    const { onClick } = this.props;
     return (
       <ul className="main-navigation__mobile">
+        <button
+          className="main-navigation__mobile__close"
+          type="button"
+          onClick={onClick}
+        />
         <div className="main-navigation__mobile__wrap">
           <Search />
         </div>

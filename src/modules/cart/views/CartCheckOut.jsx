@@ -49,7 +49,7 @@ class CartCheckOut extends Component {
 
   // submit order
   handleSubmit = () => {
-    const { cart, CheckOutOrder } = this.props;
+    const { cart, CheckOutOrder, authUser } = this.props;
     const {
       firstName,
       lastName,
@@ -82,7 +82,8 @@ class CartCheckOut extends Component {
         phone,
         city,
         zipCode,
-        cart
+        cart,
+        authUser
       );
     }
   };
@@ -229,8 +230,7 @@ class CartCheckOut extends Component {
 
 const mapStateToProps = state => ({
   cart: state.cartState.cart,
-  authUser: state.sessionState.authUser,
-  total: state.cartState.cartTotal
+  authUser: state.sessionState.authUser
 });
 
 export default connect(

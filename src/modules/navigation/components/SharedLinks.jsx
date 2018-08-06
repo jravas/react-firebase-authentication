@@ -11,7 +11,7 @@ class Links extends Component {
   state = { navigationVisible: false };
 
   mobileNavigation = () => {
-    this.setState({ navigationVisible: true });
+    this.setState({ navigationVisible: !this.state.navigationVisible });
     //
   };
   componentDidUpdate(prevProps) {
@@ -82,7 +82,7 @@ class Links extends Component {
         </li>
       </ul>
     ) : (
-      <MobileLinks />
+      <MobileLinks onClick={this.mobileNavigation} />
     );
   }
 }

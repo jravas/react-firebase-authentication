@@ -27,14 +27,15 @@
         font-weight: 300;
       }
       &__remove {
-        background-image: url("../images/cancel.svg");
+        // background-image: url("../images/cancel.svg");
+        -webkit-mask-image: url("../images/cancel.svg");
         margin-left: auto;
         cursor: pointer;
         border: none;
         padding: 0;
         width: 15px;
         height: 15px;
-        background-color: transparent;
+        background-color: #343a40;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;

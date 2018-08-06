@@ -79,7 +79,8 @@ export const CheckOutOrder = (
   phone,
   city,
   zipCode,
-  cart
+  cart,
+  authUser
 ) => async dispatch => {
   const model = cartCheckout(
     firstName,
@@ -104,6 +105,9 @@ export const CheckOutOrder = (
       toast(`Order sent!`, defaultToastConfig);
       history.push(routes.HOME);
       dispatch(hideLoading());
+      if (authUser) {
+        usersRef.child(`${authUser.uid}/cart`).set(0);
+      }
     })
     .catch(error => {
       toast(error.message, defaultToastConfig);

@@ -32,8 +32,9 @@
     cursor: pointer;
     border: none;
     padding: 0;
-    background-image: url("../images/cancel.svg");
-    background-color: transparent;
+    -webkit-mask-image: url("../images/cancel.svg");
+    // background-image: url("../images/cancel.svg");
+    background-color: #343a40;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

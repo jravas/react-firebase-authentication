@@ -65,7 +65,7 @@ class Search extends Component {
                               style: {
                                 backgroundColor:
                                   highlightedIndex === index
-                                    ? "rgba(0,0,0,0.1)"
+                                    ? "rgba(0,0,0,0.5)"
                                     : "white",
                                 fontWeight:
                                   selectedItem === item ? "bold" : "normal"

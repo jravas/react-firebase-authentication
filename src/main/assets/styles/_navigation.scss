@@ -233,6 +233,22 @@
     z-index: 999;
     background-color: #343a40;
     opacity: 0.9;
+    &__close {
+      position: absolute;
+      z-index: 999;
+      top: 20px;
+      right: 20px;
+      -webkit-mask-image: url("../images/cancel.svg");
+      background-color: #fff;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      width: 15px;
+      height: 15px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
     &__wrap {
       margin: 0;
       position: absolute;

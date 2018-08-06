@@ -57,22 +57,19 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] firebase actions show errors
 - [x] change class components in functional if possible
 - [ ] check products category after category delete & update
-- [ ] counter on cart icon
 - [ ] auto prefixer --> then remove prefixes
-- [ ] cart checkout
+- [x] cart checkout
 - [ ] button selected with tab
 - [ ] cart item leave animation
 - [ ] registration validation & messages
-- [ ] product single animation glitch
 - [ ] for array .length
-- [ ]  setup or remove "react-addons-css-transition-group"
 - [ ] fonts
 - [ ] currency
 - [ ] ? passing cart to fetchCartItems
 - [ ]  cart checkout login users auto fill -> delivery options -> review and checkout
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
 - [ ] if user access checkout page from url -> cart checkout emty cart message
-- [ ] empty cart after successful order if if user is auth empty firebase cart
+- [x] empty cart after successful order if if user is auth empty firebase cart
 
 ## questions
 - [x] shared links unable to detect route change
