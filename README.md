@@ -77,7 +77,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ## questions
 - [x] shared links unable to detect route change
   - // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
-- [ ] howw to setup entry point to be .jsx extension
+- [ ] how to setup entry point to .jsx extension
 - [ ] main/constant -> merge with firebase folder -> constants are not related to firebase
 - [ ] after product/category edit (name edited) A component is changing a controlled input of type text to be uncontrolled.
 - [ ] function without prevent default if form was submited with enter

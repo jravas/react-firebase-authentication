@@ -1,3 +1,3 @@
-import Navigation from "./components/Navigation";
+import Navigation from "./views/Navigation";
 
 export { Navigation };

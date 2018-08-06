@@ -1,14 +1,19 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import admin from "@/main/constants/hardCodedAdmin";
 
 // components
-import { NavigationNonAuth } from "./NavigationNonAuth";
-import { NavigationAuth } from "./NavigationAuth";
+import { NavigationUser } from "../components/NavigationUser";
+import { NavigationAuthAdmin } from "../components/NavigationAuthAdmin";
 
 const Navigation = ({ authUser }) => (
   <header>
-    {authUser ? <NavigationAuth authUser={authUser} /> : <NavigationNonAuth />}
+    {authUser && authUser.email === admin.email ? (
+      <NavigationAuthAdmin />
+    ) : (
+      <NavigationUser />
+    )}
   </header>
 );
 
