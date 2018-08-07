@@ -200,3 +200,46 @@ body {
 .account-form {
   margin: 30px auto;
 }
+
+.home-product-wrap {
+  margin-top: 100px;
+  /* padding: 25px; */
+  .product {
+    padding: 5%;
+    padding-bottom: 0;
+    &__image {
+      height: 380px;
+      &--loading {
+        /* loading errorfix after infinity loop added*/
+        background: transparent;
+        animation: none;
+      }
+    }
+    &--action {
+      margin: 0 auto;
+      max-width: 420px;
+      &__image {
+        position: absolute;
+        top: -25px;
+        right: -25px;
+        width: 70px;
+        z-index: 999;
+      }
+    }
+  }
+}
+
+.swiper-container {
+  padding-top: 60px;
+}
+
+.swiper-slide {
+  transition: margin 0.5s ease-in, opacity 0.75s ease-in;
+  opacity: 0.8;
+}
+
+.swiper-slide-active {
+  margin-top: -30px;
+  margin-bottom: 60px;
+  opacity: 1;
+}

@@ -4,8 +4,8 @@
   margin: 1.5% 1%;
   padding: 1.5%;
   padding-bottom: 0;
-  /* width: calc(100% / 4); */
-  width: 260px;
+  max-width: 260px;
+  width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 15px;
@@ -90,12 +90,6 @@
       right: -15px;
       width: 50px;
       z-index: 999;
-      /*
-      -webkit-mask-image: url("../images/percentage.svg");
-      background-color: #343a40;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;*/
       img {
         max-width: 100%;
         max-height: 100%;

@@ -39,6 +39,7 @@
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.1",
+    "react-id-swiper": "^1.6.6",
     "react-redux": "^5.0.7",
     "react-redux-loading-bar": "^4.0.5",
     "react-router-dom": "^4.3.1",

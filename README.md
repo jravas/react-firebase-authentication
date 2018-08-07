@@ -71,6 +71,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] if user access checkout page from url -> cart checkout emty cart message
 - [x] empty cart after successful order if if user is auth empty firebase cart
 - [ ] add product/category modal overflow
+- [ ] product single action price -> cart checkout
+- [ ] object inside public item a params
 
 ## questions
 - [x] shared links unable to detect route change
