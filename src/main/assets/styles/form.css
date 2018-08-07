@@ -26,6 +26,15 @@
       font-size: 16px;
       font-weight: 300;
     }
+    &__discount {
+      margin-bottom: 25px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: auto;
+      }
+    }
     &__error {
       margin-bottom: 25px;
       padding: 0 25px;

@@ -14,7 +14,9 @@ export const addProduct = (
   description,
   category,
   image,
-  price
+  price,
+  actionPrice,
+  discountActive
 ) => async dispatch => {
   dispatch(showLoading());
   let key = productsRef.push().key;
@@ -32,7 +34,16 @@ export const addProduct = (
         // add product
         productsRef
           .update({
-            [key]: Product(key, name, description, category, imageUrl, price)
+            [key]: Product(
+              key,
+              name,
+              description,
+              category,
+              imageUrl,
+              price,
+              actionPrice,
+              discountActive
+            )
           })
           .then(() => {
             toast(`${name} added !`, defaultToastConfig);
@@ -49,14 +60,27 @@ export const updateProduct = (
   description,
   category,
   image,
-  price
+  price,
+  actionPrice,
+  discountActive
 ) => async dispatch => {
   // if image didn't updated send iamgeUrl string
   dispatch(showLoading());
   if (typeof image === "string") {
     productsRef
       .child(id)
-      .update(Product(id, name, description, category, image, price))
+      .update(
+        Product(
+          id,
+          name,
+          description,
+          category,
+          image,
+          price,
+          actionPrice,
+          discountActive
+        )
+      )
       .then(() => {
         history.push(routes.ADMIN_PRODUCTS);
         toast(`${name} edited !`, defaultToastConfig);
@@ -85,7 +109,9 @@ export const updateProduct = (
                     description,
                     category,
                     imageUrl,
-                    price
+                    price,
+                    actionPrice,
+                    discountActive
                   )
                 })
                 .then(() => {

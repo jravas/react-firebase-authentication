@@ -22,13 +22,14 @@ class AdminCategoryAdd extends Component {
   };
 
   submitAction = event => {
-    const { addCategory, closeModal } = this.props;
+    const { addCategory, onClick } = this.props;
     const { name } = this.state.form;
 
     this.checkInputs();
     if (name.length) {
       addCategory(name);
-      closeModal({ modal: false });
+      // close modal
+      onClick();
     }
   };
 

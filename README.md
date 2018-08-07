@@ -70,6 +70,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
 - [ ] if user access checkout page from url -> cart checkout emty cart message
 - [x] empty cart after successful order if if user is auth empty firebase cart
+- [ ] add product/category modal overflow
 
 ## questions
 - [x] shared links unable to detect route change

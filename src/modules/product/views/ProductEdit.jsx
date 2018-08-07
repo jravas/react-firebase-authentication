@@ -13,6 +13,8 @@ const INITIAL_STATE = {
   picture: "",
   imageUrl: "",
   imageChanged: false,
+  actionPrice: 0,
+  discountActive: false,
   errors: {
     name: false,
     description: false,
@@ -25,6 +27,12 @@ class ProductEdit extends Component {
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  // add action price
+  handleRadio = event => {
+    const { discountActive } = this.state;
+    this.setState({ discountActive: !discountActive });
   };
 
   // product image upload
@@ -67,15 +75,44 @@ class ProductEdit extends Component {
       picture,
       imageUrl,
       price,
-      imageChanged
+      imageChanged,
+      actionPrice,
+      discountActive
     } = this.state;
+    // set action price if price is empyt string
+    let aPrice = actionPrice;
+    if (!actionPrice && actionPrice.length === 0) {
+      aPrice = 0;
+    }
+    // if no disscount set price to 0
+    if (!discountActive) {
+      aPrice = 0;
+    }
     this.checkInputs();
     if (name.length && description.length && price.length) {
       // if image changed send image
       imageChanged
-        ? updateProduct(id, name, description, category, picture, price)
+        ? updateProduct(
+            id,
+            name,
+            description,
+            category,
+            picture,
+            price,
+            aPrice,
+            discountActive
+          )
         : // else send old image url
-          updateProduct(id, name, description, category, imageUrl, price);
+          updateProduct(
+            id,
+            name,
+            description,
+            category,
+            imageUrl,
+            price,
+            aPrice,
+            discountActive
+          );
     }
   };
 
@@ -87,21 +124,39 @@ class ProductEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { name, description, category, price, imageUrl } = this.props.product;
+    const {
+      name,
+      description,
+      category,
+      price,
+      imageUrl,
+      actionPrice,
+      discountActive
+    } = this.props.product;
     if (this.props.product !== prevProps.product) {
       this.setState({
         name: name,
         description: description,
         category: category,
         price: price,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        actionPrice: actionPrice,
+        discountActive: discountActive
       });
     }
   }
   render() {
     const { categories } = this.props;
-    const { name, description, price, category, imageUrl, errors } = this.state;
-    console.log(this.state.errors);
+    const {
+      name,
+      description,
+      price,
+      category,
+      imageUrl,
+      errors,
+      actionPrice,
+      discountActive
+    } = this.state;
     return (
       <div className="product-single container-style">
         <div className="product-single__image">
@@ -133,6 +188,39 @@ class ProductEdit extends Component {
               <p className="form-container__form__error">
                 This field is required !
               </p>
+            ) : null}
+            <div className="form-container__form__discount">
+              <span>Discount:</span>
+              <label htmlFor="action">
+                <input
+                  type="radio"
+                  name="action"
+                  value={discountActive}
+                  onChange={this.handleRadio}
+                  checked={discountActive === true}
+                />
+                Yes
+              </label>
+              <label htmlFor="action">
+                <input
+                  type="radio"
+                  name="action"
+                  value={discountActive}
+                  onChange={this.handleRadio}
+                  checked={discountActive === false}
+                />
+                No
+              </label>
+            </div>
+            {discountActive ? (
+              <input
+                className="form-container__form__input"
+                placeholder="Discount price"
+                type="number"
+                name="actionPrice"
+                value={actionPrice}
+                onChange={this.handleInput}
+              />
             ) : null}
             <div className="form-container__form__wrap">
               <select

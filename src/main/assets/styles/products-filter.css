@@ -2,6 +2,7 @@
   display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   padding-bottom: 20px;
+  margin-bottom: 1.25%;
   &__wrap {
     position: relative;
     &__select {

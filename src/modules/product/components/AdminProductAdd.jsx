@@ -4,20 +4,23 @@ import { addProduct } from "../redux/actions";
 import { fetchCategories } from "@/modules/product/redux/actions";
 
 const INITIAL_STATE = {
+  discountActive: false,
   pictureUrl: "",
   form: {
     name: "",
     description: "",
     picture: "",
     category: "Uncategorised",
-    price: ""
+    price: "",
+    actionPrice: 0
   },
   errors: {
     name: false,
     description: false,
     picture: false,
     category: false,
-    price: false
+    price: false,
+    actionPrice: false
   }
 };
 class AdminProductAdd extends Component {
@@ -28,6 +31,11 @@ class AdminProductAdd extends Component {
     this.setState({
       form: { ...this.state.form, [event.target.name]: event.target.value }
     });
+  };
+  // add action price
+  handleRadio = event => {
+    const { discountActive } = this.state;
+    this.setState({ discountActive: !discountActive });
   };
 
   // check if inputs are filled
@@ -44,11 +52,31 @@ class AdminProductAdd extends Component {
 
   // adding product
   submitAction = event => {
-    const { addProduct, closeModal } = this.props;
-    const { name, description, category, picture, price } = this.state.form;
+    const { addProduct, onClick } = this.props;
+    const { discountActive } = this.state;
+    const {
+      name,
+      description,
+      category,
+      picture,
+      price,
+      actionPrice
+    } = this.state.form;
+
+    // set action price if price is empyt string
+    let aPrice = actionPrice;
+    if (!actionPrice && actionPrice.length === 0) {
+      aPrice = 0;
+    }
+    // if no disscount set price to 0
+    if (!discountActive) {
+      aPrice = 0;
+    }
+
     // image is object and doesn't have length
     let img = typeof picture === "object" ? true : false;
     this.checkInputs();
+
     if (
       name.length &&
       description.length &&
@@ -56,8 +84,17 @@ class AdminProductAdd extends Component {
       img &&
       price.length
     ) {
-      addProduct(name, description, category, picture, price);
-      closeModal({ modal: false });
+      addProduct(
+        name,
+        description,
+        category,
+        picture,
+        price,
+        aPrice,
+        discountActive
+      );
+      // close modal
+      onClick();
     }
   };
 
@@ -82,8 +119,8 @@ class AdminProductAdd extends Component {
 
   render() {
     const { categories, onClick } = this.props;
-    const { pictureUrl, errors } = this.state;
-    const { name, description, price, category } = this.state.form;
+    const { pictureUrl, errors, discountActive } = this.state;
+    const { name, description, price, category, actionPrice } = this.state.form;
     return (
       <div className="item-add">
         <div className="form-container">
@@ -123,6 +160,39 @@ class AdminProductAdd extends Component {
               <p className="form-container__form__error">
                 This field is required !
               </p>
+            ) : null}
+            <div className="form-container__form__discount">
+              <span>Discount:</span>
+              <label htmlFor="action">
+                <input
+                  type="radio"
+                  name="action"
+                  value={discountActive}
+                  onChange={this.handleRadio}
+                  checked={discountActive === true}
+                />
+                Yes
+              </label>
+              <label htmlFor="action">
+                <input
+                  type="radio"
+                  name="action"
+                  value={discountActive}
+                  onChange={this.handleRadio}
+                  checked={discountActive === false}
+                />
+                No
+              </label>
+            </div>
+            {discountActive ? (
+              <input
+                className="form-container__form__input"
+                placeholder="Discount price"
+                type="number"
+                name="actionPrice"
+                value={actionPrice}
+                onChange={this.handleInput}
+              />
             ) : null}
             <div className="form-container__form__wrap">
               <select

@@ -13,9 +13,11 @@ export const productsReducer = (
     }
     case FETCH_PRODUCTS_ARR: {
       let arr = [];
-      Object.keys(action.payload).map(key => {
-        return arr.push(action.payload[key]);
-      });
+      if (action.payload) {
+        Object.keys(action.payload).map(key => {
+          return arr.push(action.payload[key]);
+        });
+      }
       return {
         ...state,
         productsArr: arr

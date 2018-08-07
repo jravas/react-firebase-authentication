@@ -2,7 +2,7 @@ import React from "react";
 import { AdminProductItem } from "./AdminProductItem";
 
 export const AdminProductsList = ({ products, handleClickAction }) => {
-  return (
+  return products ? (
     <ul className="items-list-admin container-style">
       {Object.keys(products).map(key => (
         <AdminProductItem
@@ -12,5 +12,5 @@ export const AdminProductsList = ({ products, handleClickAction }) => {
         />
       ))}
     </ul>
-  );
+  ) : null;
 };
