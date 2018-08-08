@@ -61,7 +61,6 @@
       position: relative;
       &__select {
         appearance: none;
-        -webkit-appearance: none;
         width: 100%;
         padding: 0 25px;
         margin-bottom: 25px;

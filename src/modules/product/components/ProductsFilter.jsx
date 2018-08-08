@@ -18,9 +18,15 @@ export const ProductsFilter = ({ onFilter, onCategoryFilter, categories }) => (
     </div>
     <div className="filter-container__wrap price-select">
       <select className="filter-container__wrap__select" onChange={onFilter}>
-        <option value="DEF" label="Default" />
-        <option value="ASC" label="Price ascending" />
-        <option value="DESC" label="Price descending" />
+        <option value="DEF" selected label="Default">
+          Default
+        </option>
+        <option value="ASC" label="Price ascending">
+          Price ascending
+        </option>
+        <option value="DESC" label="Price descending">
+          Price descending
+        </option>
       </select>
     </div>
   </div>

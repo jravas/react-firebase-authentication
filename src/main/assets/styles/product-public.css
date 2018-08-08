@@ -18,6 +18,7 @@
     padding: 1.5% 2.5%;
     padding-bottom: 0;
     margin-bottom: 5%;
+    min-width: 260px;
   }
   a {
     text-decoration: none;

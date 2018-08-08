@@ -73,6 +73,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] add product/category modal overflow
 - [ ] product single action price -> cart checkout
 - [ ] object inside public item a params
+- [ ] swiper smaller version
 
 ## questions
 - [x] shared links unable to detect route change
