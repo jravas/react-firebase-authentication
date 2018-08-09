@@ -25,7 +25,11 @@ export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
       if (action.payload) {
         Object.keys(action.payload).map(key => arr.push(action.payload[key]));
         arr.forEach(element => {
-          total += Number(element.price);
+          if (element.discountActive) {
+            total += Number(element.actionPrice);
+          } else {
+            total += Number(element.price);
+          }
         });
       }
       return {
@@ -35,7 +39,6 @@ export const cartReducer = (state = { cart: [], cartTotal: 0 }, action) => {
       };
     }
     case CART_CHECKOUT: {
-      console.log("test");
       return {
         cart: 0,
         total: 0

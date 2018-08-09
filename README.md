@@ -56,9 +56,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
 - [x] firebase actions show errors
 - [x] change class components in functional if possible
-- [ ] check products category after category delete & update
-- [ ] auto prefixer --> then remove prefixes
+- [x] auto prefixer --> then remove prefixes
 - [x] cart checkout
+- [ ] check products category after category delete & update
 - [ ] button selected with tab
 - [ ] cart item leave animation
 - [ ] registration validation & messages
@@ -73,7 +73,10 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] add product/category modal overflow
 - [ ] product single action price -> cart checkout
 - [ ] object inside public item a params
-- [ ] swiper smaller version
+- [x] swiper smaller version
+- [ ] css replace comments
+- [ ] style notifications
+- [ ] search items z-index vs action badge
 
 ## questions
 - [x] shared links unable to detect route change

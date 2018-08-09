@@ -1,6 +1,7 @@
 @import "reset.css";
 @import "main.css";
 @import "navigation.css";
+@import "footer.css";
 @import "form.css";
 @import "item-list-admin.css";
 @import "item-add-admin.css";
@@ -12,3 +13,4 @@
 @import "cart-total.css";
 @import "loader.css";
 @import "product-action.css";
+@import "faq";

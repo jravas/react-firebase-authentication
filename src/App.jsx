@@ -11,12 +11,12 @@ import { Navigation } from "./modules";
 // loading bar
 import LoadingBar from "react-redux-loading-bar";
 import history from "./main/constants/history";
-// import { Footer } from "./main/components/Footer";
+import { Footer } from "./main/components/Footer";
 
 const App = () => {
   return (
     <Router history={history}>
-      <div>
+      <div className="main-wrapper">
         <Navigation />
         <LoadingBar
           updateTime={100}
@@ -30,7 +30,7 @@ const App = () => {
           }}
         />
         <Main />
-        {/* <Footer /> */}
+        <Footer />
         <ToastContainer />
       </div>
     </Router>

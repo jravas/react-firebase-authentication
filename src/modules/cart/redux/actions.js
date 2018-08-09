@@ -16,9 +16,26 @@ import * as routes from "@/main/constants/routes";
 
 // add to cart
 export const AddToCart = (product, authUser) => async dispatch => {
-  const { id, name, imageUrl, price, category } = product;
+  const {
+    id,
+    name,
+    imageUrl,
+    price,
+    actionPrice,
+    discountActive,
+    category
+  } = product;
   const cartId = cuid();
-  const model = CartItem(id, name, imageUrl, price, cartId, category);
+  const model = CartItem(
+    id,
+    name,
+    imageUrl,
+    price,
+    actionPrice,
+    discountActive,
+    cartId,
+    category
+  );
   if (authUser) {
     // add cart item to firebase
     usersRef.child(`${authUser.uid}/cart`).push(model);

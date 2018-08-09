@@ -13,7 +13,7 @@ import {
   AccountPage,
   UsersList
 } from "./authentication";
-import { Navigation } from "./navigation";
+import { Navigation, FooterNavigation } from "./navigation";
 import { Cart, CartCheckOut } from "./cart";
 
 export {
@@ -28,6 +28,7 @@ export {
   PasswordForgetPage,
   AccountPage,
   Navigation,
+  FooterNavigation,
   Cart,
   CartCheckOut,
   UsersList

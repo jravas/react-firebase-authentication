@@ -11,7 +11,7 @@ export class HomeSlider extends Component {
       loop: true,
       slidesPerView: 3,
       centeredSlides: true,
-      shouldSwiperUpdate: true,
+      rebuildOnUpdate: true,
       keyboard: {
         enabled: true
       },

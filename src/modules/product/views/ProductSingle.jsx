@@ -21,7 +21,7 @@ class ProductSingle extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
-
+    console.log(this.props.match.params);
     fetchProduct(id);
   }
 

@@ -20,6 +20,7 @@ import {
 // publc
 import HomePage from "@/main/views/Home";
 import { NotFound } from "@/main/views/NotFound";
+import { Faq } from "../views/Faq";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 
@@ -31,6 +32,7 @@ export const Main = () => (
       <Route exact path={routes.SINGLE_PRODUCT} component={ProductSingle} />
       <Route exact path={routes.CART} component={Cart} />
       <Route exact path={routes.CART_CHECKOUT} component={CartCheckOut} />
+      <Route exact path={routes.FAQ} component={Faq} />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route

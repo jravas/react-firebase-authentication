@@ -17,7 +17,9 @@ export const CartItem = ({ item, handleDelete }) => {
           />
         </div>
         <div className="cart-item__info__footer">
-          <span className="cart-item__info__footer__price">{item.price}</span>
+          <span className="cart-item__info__footer__price">
+            {item.discountActive ? item.actionPrice : item.price}
+          </span>
         </div>
       </section>
     </li>
