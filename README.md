@@ -76,7 +76,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [x] swiper smaller version
 - [ ] css replace comments
 - [ ] style notifications
-- [ ] search items z-index vs action badge
+- [ ] search items z-index vs action badge and home slider
+- [ ] cart item link
 
 ## questions
 - [x] shared links unable to detect route change

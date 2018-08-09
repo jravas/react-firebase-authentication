@@ -1,3 +1,6 @@
+/*
+  components: NavigationAuthAdmin, NavigationUser
+*/
 .main-navigation {
   display: flex;
   justify-content: center;
@@ -35,8 +38,6 @@
     }
   }
   &__search {
-    // overflow: hidden;
-    // border: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +83,6 @@
       .search-container {
         margin-left: auto;
         position: relative;
-        // margin-right: 50px;
         margin: 0 50px 0 auto;
         max-width: 500px;
         width: 100%;
@@ -254,6 +254,10 @@
       position: absolute;
       top: 20px;
       width: 100%;
+
+      /*
+        component: Search
+      */
       .search-container {
         position: relative;
         width: 100%;
@@ -295,7 +299,6 @@
           li {
             display: flex;
             padding: 5px;
-            // background: transparent !important;
           }
           &__image {
             width: 20%;
@@ -320,11 +323,4 @@
       }
     }
   }
-}
-@font-face {
-  font-family: "Rage";
-  src: url("../fonts/rage.ttf");
-}
-.main-navigation__logo a {
-  font-family: "Rage";
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProductPublic from "../../modules/product/components/ProductPublic";
+import { ProductPublic } from "../../modules/product/components/ProductPublic";
 import Swiper from "react-id-swiper/lib/custom";
 
 export class HomeSlider extends Component {
@@ -25,6 +25,11 @@ export class HomeSlider extends Component {
       },
       // Responsive breakpoints
       breakpoints: {
+        // when window width is <= 1024
+        1024: {
+          slidesPerView: 2,
+          centeredSlides: false
+        },
         // when window width is <= 768
         768: {
           slidesPerView: 1,

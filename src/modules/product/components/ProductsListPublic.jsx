@@ -1,5 +1,5 @@
 import React from "react";
-import ProductPublic from "./ProductPublic";
+import { ProductPublic } from "./ProductPublic";
 
 export const ProductsListPublic = ({ products }) => {
   return !products ? null : (

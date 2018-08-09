@@ -1,3 +1,17 @@
+/* component: ProductsListPublic */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    padding-top: 5%;
+    justify-content: start;
+    flex-wrap: nowrap;
+    overflow: auto;
+  }
+}
+
+/* component: ProductPublic */
 .product {
   display: flex;
   flex-direction: column;
@@ -14,7 +28,7 @@
   background-color: #fff;
   cursor: pointer;
   transition: box-shadow 0.5s ease;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 959px) {
     padding: 1.5% 2.5%;
     padding-bottom: 0;
     margin-bottom: 5%;
@@ -90,11 +104,156 @@
       top: -15px;
       right: -15px;
       width: 50px;
+      height: 50px;
       z-index: 999;
-      img {
-        max-width: 100%;
-        max-height: 100%;
+      mask-image: url("../images/percentage.svg");
+      background-color: #343a40;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+}
+
+/* component: ProductsFilter */
+.filter-container {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 20px;
+  margin-bottom: 1.25%;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+  &__wrap {
+    position: relative;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      &:first-child {
+        margin-bottom: 10px;
       }
     }
+    &__select {
+      appearance: none;
+      appearance: none;
+      width: 100%;
+      padding: 10px 25px;
+      padding-right: 45px;
+      box-sizing: border-box;
+      outline: none;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 20px;
+      /*line-height: 42px;*/
+      font-size: 16px;
+      font-weight: 300;
+      cursor: pointer;
+    }
+    &::after {
+      content: " ";
+      width: 15px;
+      height: 15px;
+      background: url("../images/down-arrow.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      pointer-events: none;
+    }
+  }
+  .price-select {
+    margin-left: auto;
+  }
+}
+
+/* view: ProductSingle */
+.product-single {
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    width: calc(100% / 2);
+    height: 480px;
+    padding-bottom: 5%;
+    position: relative;
+    img {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+    }
+    &--loading {
+      background-color: #d2d2d2;
+      animation: blinking 2s linear infinite;
+    }
+    @media screen and (max-width: 959px) {
+      width: 100%;
+      height: 240px;
+      padding: 5%;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 2);
+    padding-left: 60px;
+    box-sizing: border-box;
+    padding-bottom: 5%;
+    &__title {
+      font-size: 48px;
+      font-weight: 100;
+      color: #212529;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 20px;
+    }
+    &__description {
+      margin: 20px 0;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 300;
+    }
+    &__add-price {
+      display: flex;
+      margin-top: auto;
+      p {
+        margin-right: auto;
+        align-self: center;
+        font-size: 42px;
+        font-weight: 500;
+        color: #212529;
+      }
+      button {
+        margin-left: auto;
+      }
+    }
+    @media screen and (max-width: 959px) {
+      width: 100%;
+      padding: 0;
+      &__title {
+        font-size: 26px;
+        padding-bottom: 10px;
+        text-align: center;
+      }
+      &__description {
+        font-size: 16px;
+        padding: 0 20px;
+      }
+      &__add-price {
+        flex-direction: column;
+        text-align: center;
+        p {
+          width: 100%;
+          margin-bottom: 20px;
+          font-size: 26px;
+        }
+        button {
+          margin: 0 auto;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 }

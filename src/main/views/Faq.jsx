@@ -1,7 +1,7 @@
 import React from "react";
 import { FaqItem } from "../components/FaqItem";
 
-export const Faq = () => {
+export default () => {
   const items = [
     {
       question:

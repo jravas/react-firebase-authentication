@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Image from "@/main/assets/images/percentage.svg";
-class ProductPublic extends Component {
+
+export class ProductPublic extends Component {
   state = { imgLoading: true, productAction: true };
 
   handleLoad = () => {
@@ -14,9 +14,7 @@ class ProductPublic extends Component {
     return !product ? null : (
       <li className={productAction ? "product product--action" : "product"}>
         {!product.discountActive ? null : (
-          <div className="product--action__image">
-            <img src={Image} alt="Action" />
-          </div>
+          <div className="product--action__image" />
         )}
         <Link to={`/product/${product.id}`} params={{ id: product.id }}>
           <section
@@ -41,5 +39,3 @@ class ProductPublic extends Component {
     );
   }
 }
-
-export default ProductPublic;

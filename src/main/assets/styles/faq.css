@@ -1,3 +1,6 @@
+/*
+  view: Faq
+*/
 .faq {
   flex-direction: column;
   &__inner {

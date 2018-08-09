@@ -1,12 +1,23 @@
+/*
+  view: Cart
+*/
 .cart-list-helper {
   flex-direction: column;
+  flex: 1;
+  justify-content: center;
 }
 
+/*
+  component: CheckOutLink
+*/
 .cart-button {
   margin: 40px auto;
   text-decoration: none;
 }
 
+/*
+  component: CartList
+*/
 .cart-list {
   display: flex;
   flex-wrap: wrap;
@@ -16,13 +27,91 @@
 .cart-list-empty {
   text-align: center;
   font-size: 32px;
-  padding-top: 10%;
   color: #343a40;
 }
 
-/* cart checkout page */
+/*
+  view: CartCheckOut
+*/
 .cart-checkout {
   max-width: 640px;
   margin: 0 auto;
   flex-direction: column;
+}
+
+/*
+  component: CartTotal
+*/
+.cart-total {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/*
+  component: CartItem
+*/
+.cart-item {
+  display: flex;
+  width: 100%;
+  max-height: 100px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &__image {
+    width: 25%;
+    img {
+      margin: auto;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__info {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-size: 24px;
+        font-weight: 300;
+        @media screen and (max-width: 480px) {
+          padding-left: 10px;
+          font-size: 18px;
+        }
+      }
+      &__remove {
+        margin-left: auto;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+        width: 15px;
+        height: 15px;
+        mask-image: url("../images/cancel.svg");
+        background-color: #343a40;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        @media screen and (max-width: 480px) {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+    &__footer {
+      display: flex;
+      margin-top: auto;
+      &__price {
+        margin-left: auto;
+        font-size: 22px;
+        font-weight: 500;
+        @media screen and (max-width: 480px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }

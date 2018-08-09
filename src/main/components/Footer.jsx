@@ -5,9 +5,12 @@ export const Footer = () => {
   return (
     <footer className="footer-wrapper">
       <div className="footer-wrapper__styling-helper">
-        <div className="footer-wrapper__styling-helper__inner" />
+        <div className="footer-wrapper__styling-helper__inner footer-wrapper__styling-helper__inner--left" />
       </div>
       <FooterNavigation />
+      <div className="footer-wrapper__styling-helper">
+        <div className="footer-wrapper__styling-helper__inner footer-wrapper__styling-helper__inner--right" />
+      </div>
     </footer>
   );
 };

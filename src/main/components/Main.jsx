@@ -20,7 +20,7 @@ import {
 // publc
 import HomePage from "@/main/views/Home";
 import { NotFound } from "@/main/views/NotFound";
-import { Faq } from "../views/Faq";
+import Faq from "../views/Faq";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 
