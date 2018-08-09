@@ -13,12 +13,20 @@
       font-weight: 300;
       border-bottom: 2px solid #5d737e;
       color: #343a40;
+      @media screen and (max-width: 768px) {
+        font-size: 22px;
+        line-height: 23px;
+      }
     }
     p {
       font-size: 20px;
       line-height: 26px;
       font-weight: 100;
       padding-left: 1%;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+        line-height: 18px;
+      }
     }
   }
 }

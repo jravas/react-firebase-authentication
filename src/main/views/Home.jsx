@@ -12,12 +12,13 @@ class HomePage extends Component {
 
   render() {
     const { products } = this.props;
+    const discounted = products.filter(item => item.discountActive);
     return !products ? null : (
       <div>
         <h1 className="sale-title">Special Off>ers</h1>
         <div className="container-style home-fix">
-          <HomeSlider className="home-fix__slider" products={products} />
-          <ProductsListPublic products={products} />
+          <HomeSlider className="home-fix__slider" products={discounted} />
+          <ProductsListPublic products={discounted} />
         </div>
       </div>
     );

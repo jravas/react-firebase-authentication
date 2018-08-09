@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const CartItem = ({ item, handleDelete }) => {
   return !item ? null : (
@@ -8,7 +9,12 @@ export const CartItem = ({ item, handleDelete }) => {
       </section>
       <section className="cart-item__info">
         <div className="cart-item__info__header">
-          <h1>{item.name}</h1>
+          <Link
+            className="cart-item__info__header__title"
+            to={`product/${item.id}`}
+          >
+            {item.name}
+          </Link>
           <button
             type="button"
             data-item-id={item.cartId}

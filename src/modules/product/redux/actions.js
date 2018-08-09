@@ -21,6 +21,7 @@ export const addProduct = (
   dispatch(showLoading());
   let key = productsRef.push().key;
   if (category === "") {
+    // set category to uncategorised if not selected
     category = "Uncategorised";
   }
   // upload image
@@ -193,25 +194,91 @@ export const addCategory = name => async dispatch => {
 };
 
 //update category
-export const updateCategory = (categoryId, name) => async dispatch => {
+export const updateCategory = (category, newCatName) => async dispatch => {
   dispatch(showLoading());
   categoriesRef
-    .child(categoryId)
-    .update(Category(categoryId, name))
+    .child(category.id)
+    .update(Category(category.id, newCatName))
     .then(() => {
+      // update product category on category change
+      productsRef.on("value", snapshot => {
+        const products = snapshot.val();
+        Object.keys(products).map(key => {
+          if (products[key].category === category.name) {
+            const {
+              id,
+              name,
+              description,
+              imageUrl,
+              price,
+              actionPrice,
+              discountActive
+            } = products[key];
+
+            // update product
+            productsRef.update({
+              [id]: Product(
+                id,
+                name,
+                description,
+                newCatName,
+                imageUrl,
+                price,
+                actionPrice,
+                discountActive
+              )
+            });
+            return true;
+          }
+          return false;
+        });
+      });
       history.push(routes.ADMIN_CATEGORIES);
-      toast(`${name} edited !`, defaultToastConfig);
+      toast(`${newCatName} edited !`, defaultToastConfig);
       dispatch(hideLoading());
     });
 };
 
 // delete category
-export const deleteCategory = categoryId => async dispatch => {
+export const deleteCategory = catForDelete => async dispatch => {
   dispatch(showLoading());
   categoriesRef
-    .child(categoryId)
+    .child(catForDelete.id)
     .remove()
     .then(() => {
+      // update product category to uncategorised on category delete
+      productsRef.on("value", snapshot => {
+        const products = snapshot.val();
+        Object.keys(products).map(key => {
+          if (products[key].category === catForDelete.name) {
+            const {
+              id,
+              name,
+              description,
+              imageUrl,
+              price,
+              actionPrice,
+              discountActive
+            } = products[key];
+
+            // set category to uncategorised
+            productsRef.update({
+              [id]: Product(
+                id,
+                name,
+                description,
+                "Uncategorised",
+                imageUrl,
+                price,
+                actionPrice,
+                discountActive
+              )
+            });
+            return true;
+          }
+          return false;
+        });
+      });
       toast(`Category deleted !`, defaultToastConfig);
       dispatch(hideLoading());
     });

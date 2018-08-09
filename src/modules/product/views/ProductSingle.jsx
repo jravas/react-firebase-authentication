@@ -21,7 +21,6 @@ class ProductSingle extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     const { fetchProduct } = this.props;
-    console.log(this.props.match.params);
     fetchProduct(id);
   }
 
@@ -54,7 +53,9 @@ class ProductSingle extends Component {
             {product.description}
           </p>
           <div className="product-single__info__add-price">
-            <p>{product.price} $</p>
+            <p>
+              {product.discountActive ? product.actionPrice : product.price} $
+            </p>
             <button className="default-button" onClick={this.addToCart}>
               Add to cart
             </button>

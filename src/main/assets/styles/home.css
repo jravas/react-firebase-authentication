@@ -72,7 +72,10 @@
 .product-swiper-wrap {
   width: 100%;
   margin: 0 auto;
-  margin-top: -11%;
+  margin-top: -15%;
+  @media screen and (max-width: 1440px) {
+    margin-top: -11%;
+  }
   @media screen and (max-width: 768px) {
     /* margin-top: -130px; */
     display: none;
@@ -117,9 +120,10 @@
   right: 0;
   transform: rotate(180deg);
   opacity: 0.8;
-  transition: opacity 0.5s ease-in;
+  transition: background-color 0.5s ease-in;
   &:hover {
     opacity: 1;
+    background-color: #f6d155;
   }
 }
 
@@ -138,9 +142,10 @@
   cursor: pointer;
   left: 0;
   opacity: 0.8;
-  transition: opacity 0.5s ease-in;
+  transition: background-color 0.5s ease-in;
   &:hover {
     opacity: 1;
+    background-color: #f6d155;
   }
 }
 

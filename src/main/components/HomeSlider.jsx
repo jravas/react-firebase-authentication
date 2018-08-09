@@ -5,7 +5,6 @@ import Swiper from "react-id-swiper/lib/custom";
 export class HomeSlider extends Component {
   render() {
     const { products } = this.props;
-    let discounted = products.filter(item => item.discountActive);
     // swiper options
     const params = {
       loop: true,
@@ -15,10 +14,10 @@ export class HomeSlider extends Component {
       keyboard: {
         enabled: true
       },
-      // autoplay: {
-      //   delay: 2500,
-      //   disableOnInteraction: false
-      // },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
       navigation: {
         nextEl: ".swiper-button-next-custom",
         prevEl: ".swiper-button-prev-custom"
@@ -40,7 +39,7 @@ export class HomeSlider extends Component {
     return (
       <div className="product-swiper-wrap">
         <Swiper {...params}>
-          {discounted.map(item => (
+          {products.map(item => (
             <div className="home-product-wrap" key={item.id}>
               <ProductPublic product={item} />
             </div>

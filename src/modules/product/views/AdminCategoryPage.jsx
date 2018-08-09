@@ -11,9 +11,9 @@ class AdminCategoryPage extends Component {
 
   // delete category
   handleClickAction = event => {
-    const { deleteCategory } = this.props;
+    const { deleteCategory, categories } = this.props;
     const { itemId } = event.target.dataset;
-    deleteCategory(itemId);
+    deleteCategory(categories[itemId]);
   };
   // open add product modal
   openModal = event => {

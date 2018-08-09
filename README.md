@@ -27,57 +27,18 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 
 ## testing
-- [x] /modules/product/views controlled/uncontrolled error
-- [x] router routes component
-- [x] remove ./src/views
-- [x] refactor password change
-- [x] notifications
-- [x] add categories -> remove uncategorised bug
-- [x] default category
-- [x] products list right/middle click
-- [x] product description
-- [x] cart is empty message
-- [x] replace ../../ with @
-- [x] remove bootstrap
-- [x] close modal after category/product add
-- [x] add items to firebase cart after registration
-- [x] cart consts
-- [x] delete product image after image change
-- [x] set categories and products edit to be restircted
-- [x] admin product add/edit, categories edit
-- [x] loading product/product animation
-- [x] product/category add !!! VALIDATION !!!
-- [x] consider quick fix [itemname]: "  " for product and category edit
-- [x] authenticated unauthorised redirecting
-- [x] unauthenticated cart total
-- [x] empty categories
-- [x] product add/delete  updates only after reload
-- [x] total rounded
-- [x] change password -> This operation is sensitive and requires recent authentication. Log in again before retrying this request.
-- [x] firebase actions show errors
-- [x] change class components in functional if possible
-- [x] auto prefixer --> then remove prefixes
-- [x] cart checkout
-- [ ] check products category after category delete & update
-- [ ] button selected with tab
 - [ ] cart item leave animation
 - [ ] registration validation & messages
 - [ ] for array .length
-- [ ] fonts
 - [ ] currency
 - [ ] ? passing cart to fetchCartItems
 - [ ]  cart checkout login users auto fill -> delivery options -> review and checkout
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
 - [ ] if user access checkout page from url -> cart checkout emty cart message
-- [x] empty cart after successful order if if user is auth empty firebase cart
 - [ ] add product/category modal overflow
-- [ ] product single action price -> cart checkout
 - [ ] object inside public item a params
-- [x] swiper smaller version
-- [ ] css replace comments
 - [ ] style notifications
 - [ ] search items z-index vs action badge and home slider
-- [ ] cart item link
 
 ## questions
 - [x] shared links unable to detect route change

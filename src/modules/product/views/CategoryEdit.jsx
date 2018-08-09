@@ -23,13 +23,12 @@ class CategoryEdit extends Component {
   };
 
   submitAction = event => {
-    const { id } = this.props.match.params;
-    const { updateCategory } = this.props;
+    const { updateCategory, category } = this.props;
     const { name } = this.state.form;
 
     this.checkInputs();
     if (name.length) {
-      updateCategory(id, name);
+      updateCategory(category, name);
     }
   };
 
