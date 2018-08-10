@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Search from "@/main/components/Search";
+import { Link, withRouter } from "react-router-dom";
 import * as routes from "@/main/constants/routes";
+import Search from "@/main/components/Search";
 
-export class MobileLinks extends Component {
+export class MobileLinksWORouter extends Component {
   componentDidMount() {
     document.body.style.overflow = "hidden";
   }
@@ -11,7 +11,7 @@ export class MobileLinks extends Component {
     document.body.style.overflow = "auto";
   }
   render() {
-    const { onClick } = this.props;
+    const { onClick, location } = this.props;
     return (
       <ul className="main-navigation__mobile">
         <button
@@ -22,19 +22,47 @@ export class MobileLinks extends Component {
         <div className="main-navigation__mobile__wrap">
           <Search />
         </div>
-        <li className="main-navigation__mobile__item">
+        <li
+          className={
+            location.pathname === routes.HOME
+              ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+              : "main-navigation__mobile__item"
+          }
+        >
           <Link to={routes.HOME}>Home</Link>
         </li>
-        <li className="main-navigation__mobile__item">
+        <li
+          className={
+            location.pathname === routes.PRODUCTS
+              ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+              : "main-navigation__mobile__item"
+          }
+        >
           <Link to={routes.PRODUCTS}>Products</Link>
         </li>
-        <li className="main-navigation__mobile__item">
+        <li
+          className={
+            location.pathname === routes.CART
+              ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+              : "main-navigation__mobile__item"
+          }
+        >
           <Link to={routes.CART}>Cart</Link>
         </li>
-        <li className="main-navigation__mobile__item">
+        <li
+          className={
+            location.pathname === routes.ACCOUNT
+              ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+              : "main-navigation__mobile__item"
+          }
+        >
           <Link to={routes.ACCOUNT}>Account</Link>
         </li>
       </ul>
     );
   }
 }
+
+const MobileLinks = withRouter(MobileLinksWORouter);
+
+export { MobileLinks };
