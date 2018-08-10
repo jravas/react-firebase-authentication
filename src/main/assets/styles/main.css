@@ -3,6 +3,11 @@ body {
   background-color: #fcfcfc;
 }
 
+a,
+button {
+  outline: none;
+}
+
 /* global wrapper */
 .main-wrapper {
   display: flex;

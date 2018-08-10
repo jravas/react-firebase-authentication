@@ -1,6 +1,7 @@
 /* form styles */
 .form-container {
   max-width: 640px;
+  width: 100%;
   margin: 60px auto;
   padding: 5%;
   background-color: #fff;

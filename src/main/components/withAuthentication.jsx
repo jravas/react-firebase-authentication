@@ -1,6 +1,7 @@
 import React from "react";
 import { firebase } from "../firebase";
 import { connect } from "react-redux";
+import { Loader } from "@/main/components/Loader";
 
 export const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
@@ -18,7 +19,7 @@ export const withAuthentication = Component => {
 
     render() {
       const { loading } = this.state;
-      return loading ? <div className="loader" /> : <Component />;
+      return loading ? <Loader /> : <Component />;
     }
   }
   const mapDispatchToProps = dispatch => ({

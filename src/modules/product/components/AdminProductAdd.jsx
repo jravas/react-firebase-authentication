@@ -115,6 +115,10 @@ class AdminProductAdd extends Component {
   componentDidMount() {
     const { fetchCategories } = this.props;
     fetchCategories();
+    document.body.style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.body.style.overflow = "auto";
   }
 
   render() {

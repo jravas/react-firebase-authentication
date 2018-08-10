@@ -2,7 +2,7 @@
   components: AdminProductAdd, AdminCategoryAdd
 */
 .item-add {
-  position: absolute;
+  position: fixed;
   z-index: 3;
   top: 0;
   left: 0;
@@ -10,6 +10,9 @@
   min-height: 100%;
   height: auto;
   background: rgba(0, 0, 0, 0.43);
+  /* test */
+  max-height: 100%;
+  overflow-y: auto;
   &__image {
     height: 240px;
     margin-bottom: 25px;

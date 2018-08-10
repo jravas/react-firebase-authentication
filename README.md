@@ -28,14 +28,12 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## testing
 - [ ] cart item leave animation
-- [ ] registration validation & messages
 - [ ] for array .length
 - [ ] currency
 - [ ] ? passing cart to fetchCartItems
 - [ ]  cart checkout login users auto fill -> delivery options -> review and checkout
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
 - [ ] if user access checkout page from url -> cart checkout emty cart message
-- [ ] add product/category modal overflow
 - [ ] object inside public item a params
 - [ ] style notifications
 - [ ] search items z-index vs action badge and home slider

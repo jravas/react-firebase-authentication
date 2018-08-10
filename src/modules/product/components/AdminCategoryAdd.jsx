@@ -33,6 +33,13 @@ class AdminCategoryAdd extends Component {
     }
   };
 
+  componentDidMount() {
+    document.body.style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.body.style.overflow = "auto";
+  }
+
   render() {
     const { name } = this.state.form;
     const { errors } = this.state;
