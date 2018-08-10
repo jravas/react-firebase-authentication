@@ -1,5 +1,4 @@
 import { auth } from "@/main/firebase";
-// todo
 import { db, usersRef } from "@/main/firebase/firebase";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import { User } from "../models/user";
@@ -38,6 +37,7 @@ export const AddUser = (
       dispatch(hideLoading());
     });
 };
+
 // sign in
 export const SignIn = (email, password, cart) => async dispatch => {
   dispatch(showLoading());
@@ -48,20 +48,22 @@ export const SignIn = (email, password, cart) => async dispatch => {
       usersRef.child(`${user.user.uid}/cart`).once("value", snapshot => {
         let arr = [];
         let firebaseCart = snapshot.val();
+
+        // check if cart exist in firebase
         if (firebaseCart) {
           Object.keys(firebaseCart).map(key => arr.push(firebaseCart[key]));
+
           // check difference between cart and firebase
-          const diffBy = pred => (a, b) =>
-            a.filter(x => !b.some(y => pred(x, y)));
-          const makeSymmDiffFunc = pred => (a, b) =>
-            diffBy(pred)(a, b).concat(diffBy(pred)(b, a));
-          const myDiff = makeSymmDiffFunc((x, y) => x.cartId === y.cartId);
-          const result = myDiff(arr, cart);
+          const result = cart.filter(
+            item => !arr.some(other => item.cartId === other.cartId)
+          );
+
           // add items from cart to firebase
           result.forEach(el => {
             usersRef.child(`${user.user.uid}/cart`).push(el);
           });
         } else {
+          // if no items in firebase cart add local item to firebase cart
           cart.forEach(el => {
             usersRef.child(`${user.user.uid}/cart`).push(el);
           });
