@@ -2,7 +2,7 @@
   "name": "react-firebase-authentication",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jravas.github.io/react-firebase-authentication",
+  "homepage": "https://jravas.github.io/react-firebase-authentication/",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -64,7 +64,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.9.0",

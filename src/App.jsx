@@ -15,7 +15,7 @@ import { Footer } from "./main/components/Footer";
 
 const App = () => {
   return (
-    <Router history={history}>
+    <Router history={history} basename="/react-firebase-authentication">
       <div className="main-wrapper">
         <Navigation />
         <LoadingBar
