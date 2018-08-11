@@ -39,9 +39,7 @@ class Links extends Component {
         <li className="main-navigation__links__item">
           <Link
             className={
-              location.pathname === routes.PRODUCTS ||
-              // ugly fix
-              location.pathname.slice(0, 8) === "/product"
+              location.pathname === routes.PRODUCTS
                 ? "main-navigation__links__item__link--active icon"
                 : " main-navigation__links__item__link icon"
             }

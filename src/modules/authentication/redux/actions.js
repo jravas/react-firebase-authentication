@@ -6,13 +6,20 @@ import { toast } from "react-toastify";
 import defaultToastConfig from "@/main/constants/defaultToastConfig";
 import history from "@/main/constants/history";
 import * as routes from "@/main/constants/routes";
-import { USERS_SET } from "./types";
+import { USERS_SET, GET_USER } from "./types";
 
 // add user
 export const AddUser = (
   username,
-  email,
   passwordOne,
+  firstName,
+  lastName,
+  email,
+  address,
+  state,
+  phone,
+  city,
+  zipCode,
   cart
 ) => async dispatch => {
   dispatch(showLoading());
@@ -22,7 +29,21 @@ export const AddUser = (
     .then(authUser => {
       // create user in firebase database
       db.ref(`users/${authUser.user.uid}`)
-        .set(User(authUser.user.uid, username, email, 0))
+        .set(
+          User(
+            authUser.user.uid,
+            username,
+            email,
+            firstName,
+            lastName,
+            address,
+            state,
+            phone,
+            city,
+            zipCode,
+            0
+          )
+        )
         .then(() => {
           // sync item added to cart with firebase
           cart.forEach(el => {
@@ -120,4 +141,16 @@ export const ListUsers = () => async dispatch => {
     .then(() => {
       dispatch(hideLoading());
     });
+};
+
+// get user by id
+export const GetUser = userId => async dispatch => {
+  dispatch(showLoading());
+  usersRef.child(userId).on("value", snapshot => {
+    dispatch({
+      type: GET_USER,
+      payload: snapshot.val()
+    });
+    dispatch(hideLoading());
+  });
 };

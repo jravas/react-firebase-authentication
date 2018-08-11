@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../redux/actions";
+import { fetchCartItems } from "../redux/actions";
+import { GetUser } from "../../authentication/redux/actions";
 
 const INITIAL_STATE = {
   form: {
@@ -88,11 +89,21 @@ class CartCheckOut extends Component {
     }
   };
 
-  // cart item delete
   componentDidMount() {
-    const { fetchCartItems, authUser, cart } = this.props;
+    const { fetchCartItems, authUser, cart, GetUser } = this.props;
     // fetch cart items
     fetchCartItems(authUser, cart);
+    if (authUser) {
+      // get user info
+      GetUser(authUser.uid);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.user !== this.props.user) {
+      // fill form with user info
+      this.setState({ form: { ...this.props.user } });
+    }
   }
 
   render() {
@@ -228,9 +239,12 @@ class CartCheckOut extends Component {
   }
 }
 
+const actions = { fetchCartItems, GetUser };
+
 const mapStateToProps = state => ({
   cart: state.cartState.cart,
-  authUser: state.sessionState.authUser
+  authUser: state.sessionState.authUser,
+  user: state.usersState.user
 });
 
 export default connect(
