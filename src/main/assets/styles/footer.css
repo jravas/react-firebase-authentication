@@ -9,6 +9,7 @@
     flex: 1;
     background-color: #343a40;
     padding-bottom: 7px;
+    z-index: 999;
     @media screen and (max-width: 768px) {
       padding-bottom: 3px;
     }
@@ -33,6 +34,7 @@
     background-color: #343a40;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
+    box-shadow: 0 0 5px 1px rgba(83, 82, 82, 0.49);
     &__links {
       display: flex;
       flex-direction: row;

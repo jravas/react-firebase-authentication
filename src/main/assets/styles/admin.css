@@ -28,7 +28,7 @@
     position: relative;
     padding: 7% 7%;
     @media screen and (max-width: 1024px) {
-      padding-top: 12%;
+      padding-top: 15%;
     }
   }
   &__cancel {
@@ -48,8 +48,10 @@
     opacity: 0.8;
     transition: opacity 0.25s ease-in;
     @media screen and (max-width: 1024px) {
-      right: 25px;
-      top: 25px;
+      right: 20px;
+      top: 20px;
+      width: 15px;
+      height: 15px;
     }
     &:hover {
       opacity: 1;
@@ -69,6 +71,9 @@
     padding: 15px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    &:last-child {
+      border-bottom: none;
+    }
     a {
       color: #343a40;
       font-size: 20px;
@@ -77,6 +82,10 @@
       text-decoration: none;
       &:hover {
         text-decoration: underline;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+        line-height: 18px;
       }
     }
     &__delete {
@@ -95,6 +104,10 @@
       transition: opacity 0.25s ease-in;
       &:hover {
         opacity: 1;
+      }
+      @media screen and (max-width: 768px) {
+        width: 15px;
+        height: 15px;
       }
     }
   }
