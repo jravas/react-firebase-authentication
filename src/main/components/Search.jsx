@@ -58,18 +58,13 @@ class Search extends Component {
                         // list only first 6 search results
                         index > 5 ? null : (
                           <li
+                            className={
+                              highlightedIndex === index ? "selected" : ""
+                            }
                             {...getItemProps({
                               key: item.id,
                               index,
-                              item,
-                              style: {
-                                backgroundColor:
-                                  highlightedIndex === index
-                                    ? "rgba(0,0,0,0.5)"
-                                    : "white",
-                                fontWeight:
-                                  selectedItem === item ? "bold" : "normal"
-                              }
+                              item
                             })}
                           >
                             <div className="search-list__image">
