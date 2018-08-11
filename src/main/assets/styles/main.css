@@ -145,7 +145,8 @@ button {
     text-shadow: rgba(0, 0, 0, 0.7) 4px 4px;
     color: rgb(246, 209, 85);
     @media screen and (max-width: 768px) {
-      font-size: 42px;
+      font-size: 32px;
+      padding-bottom: 10%;
     }
   }
   &__image {
@@ -153,7 +154,7 @@ button {
     max-width: 350px;
     width: 100%;
     @media screen and (max-width: 768px) {
-      max-width: 280px;
+      max-width: 160px;
     }
     img {
       max-width: 100%;
