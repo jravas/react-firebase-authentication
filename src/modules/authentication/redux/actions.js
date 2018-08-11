@@ -154,3 +154,41 @@ export const GetUser = userId => async dispatch => {
     dispatch(hideLoading());
   });
 };
+
+// update user info
+export const UpdateUser = ({
+  id,
+  username,
+  email,
+  firstName,
+  lastName,
+  address,
+  state,
+  phone,
+  city,
+  zipCode,
+  cart
+}) => async dispatch => {
+  dispatch(showLoading());
+  usersRef
+    .child(id)
+    .update(
+      User(
+        id,
+        username,
+        email,
+        firstName,
+        lastName,
+        address,
+        state,
+        phone,
+        city,
+        zipCode,
+        cart
+      )
+    )
+    .then(() => {
+      toast("User info updated", defaultToastConfig);
+      dispatch(hideLoading());
+    });
+};

@@ -17,10 +17,6 @@ class HomePage extends Component {
     }
   }
 
-  handleLoad = event => {
-    // console.log(event);
-  };
-
   render() {
     const { isLoading } = this.state;
     const { products } = this.props;
@@ -31,11 +27,7 @@ class HomePage extends Component {
       <div>
         <h1 className="sale-title">Special Off>ers</h1>
         <div className="container-style home-fix">
-          <HomeSlider
-            onLoad={this.handleLoad}
-            className="home-fix__slider"
-            products={discounted}
-          />
+          <HomeSlider className="home-fix__slider" products={discounted} />
           <ProductsListPublic products={discounted} />
         </div>
       </div>

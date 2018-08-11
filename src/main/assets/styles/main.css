@@ -150,14 +150,47 @@ button {
 .account-page {
   flex-direction: column;
   &__content {
+    width: 100%;
     align-self: center;
+    &__title {
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      width: 100%;
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
     h1 {
       font-size: 24px;
       font-weight: 300;
+      margin-right: auto;
+      @media screen and (max-width: 768px) {
+        padding-bottom: 20px;
+        margin: 0 auto;
+      }
     }
-    button {
-      display: block;
-      margin: 20px auto;
+    &__edit-form {
+      padding: 0 5%;
+      box-sizing: border-box;
+    }
+  }
+
+  .account-form {
+    width: 100%;
+    h1 {
+      font-size: 24px;
+      font-weight: 300;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    form {
+      padding: 0 5%;
+      box-sizing: border-box;
     }
   }
 }
