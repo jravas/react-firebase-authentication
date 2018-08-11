@@ -34,7 +34,6 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
 - [ ] if user access checkout page from url -> cart checkout emty cart message
 - [ ] object inside public item a params
-- [ ] style notifications
 
 ## questions
 - [x] shared links unable to detect route change

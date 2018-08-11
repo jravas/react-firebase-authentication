@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// import validator from "validator";
+import isEmail from "validator/lib/isEmail";
 import * as actions from "../redux/actions";
 
 const INITIAL_STATE = {
@@ -79,6 +81,7 @@ class SignUpForm extends Component {
       firstName.length &&
       lastName.length &&
       email.length &&
+      isEmail(email) &&
       address.length &&
       state.length &&
       phone.length &&
@@ -156,6 +159,10 @@ class SignUpForm extends Component {
             <p className="form-container__form__error">
               This field is required !
             </p>
+          ) : null}
+
+          {!errors.email && email.length && !isEmail(email) ? (
+            <p className="form-container__form__error">Not valid email !</p>
           ) : null}
           <input
             className="form-container__form__input"

@@ -28,6 +28,10 @@
       line-height: 42px;
       font-size: 16px;
       font-weight: 300;
+      transition: all 0.5s ease-in;
+      &:focus {
+        border-color: #5d737e;
+      }
     }
     &__discount {
       margin-bottom: 25px;
