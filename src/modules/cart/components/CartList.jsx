@@ -1,13 +1,14 @@
 import React from "react";
+import FlipMove from "react-flip-move";
 import { CartItem } from "./CartItem";
 
 export const CartList = ({ cart, handleDelete }) => {
   return cart.length ? (
-    <ul className="cart-list">
+    <FlipMove typeName="ul" className="cart-list">
       {cart.map(item => (
         <CartItem item={item} key={item.cartId} handleDelete={handleDelete} />
       ))}
-    </ul>
+    </FlipMove>
   ) : (
     <div className="cart-list-empty">
       <h1>Your cart is empty</h1>
