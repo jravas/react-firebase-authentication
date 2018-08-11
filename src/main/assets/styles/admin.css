@@ -27,6 +27,9 @@
     margin: 5% auto;
     position: relative;
     padding: 7% 7%;
+    @media screen and (max-width: 1024px) {
+      padding-top: 12%;
+    }
   }
   &__cancel {
     width: 20px;
@@ -44,6 +47,10 @@
     background-size: contain;
     opacity: 0.8;
     transition: opacity 0.25s ease-in;
+    @media screen and (max-width: 1024px) {
+      right: 25px;
+      top: 25px;
+    }
     &:hover {
       opacity: 1;
     }

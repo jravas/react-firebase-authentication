@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import * as routes from "@/main/constants/routes";
 import Search from "@/main/components/Search";
+import admin from "@/main/constants/hardCodedAdmin";
 
 export class MobileLinksWORouter extends Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ export class MobileLinksWORouter extends Component {
     document.body.style.overflow = "auto";
   }
   render() {
-    const { onClick, location } = this.props;
+    const { onClick, location, authUser } = this.props;
     return (
       <ul className="main-navigation__mobile">
         <button
@@ -58,11 +60,47 @@ export class MobileLinksWORouter extends Component {
         >
           <Link to={routes.ACCOUNT}>Account</Link>
         </li>
+        {authUser.email !== admin.email ? null : (
+          <li
+            className={
+              location.pathname === routes.ADMIN_PRODUCTS
+                ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+                : "main-navigation__mobile__item"
+            }
+          >
+            <Link to={routes.ADMIN_PRODUCTS}>Products administration</Link>
+          </li>
+        )}
+        {authUser.email !== admin.email ? null : (
+          <li
+            className={
+              location.pathname === routes.ADMIN_CATEGORIES
+                ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+                : "main-navigation__mobile__item"
+            }
+          >
+            <Link to={routes.ADMIN_CATEGORIES}>Categories administration</Link>
+          </li>
+        )}
+        {authUser.email !== admin.email ? null : (
+          <li
+            className={
+              location.pathname === routes.ADMIN_USERS
+                ? "main-navigation__mobile__item main-navigation__mobile__item--active"
+                : "main-navigation__mobile__item"
+            }
+          >
+            <Link to={routes.ADMIN_USERS}>Users</Link>
+          </li>
+        )}
       </ul>
     );
   }
 }
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
 
-const MobileLinks = withRouter(MobileLinksWORouter);
+const MobileLinks = withRouter(connect(mapStateToProps)(MobileLinksWORouter));
 
 export { MobileLinks };
