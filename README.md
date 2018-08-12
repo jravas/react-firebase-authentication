@@ -32,7 +32,6 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [ ] ? passing cart to fetchCartItems
 - [ ]  cart checkout login user auto fill -> delivery options -> review and checkout
 - [ ] styel checkout steps =  cart icon -> delivery icon -> payment (optional) ->  invoice icon
-- [ ] if user access checkout page from url -> cart checkout emty cart message
 - [ ] object inside public item a params
 
 ## questions

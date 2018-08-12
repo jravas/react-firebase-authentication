@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCartItems } from "../redux/actions";
+import { withRouter } from "react-router-dom";
+import { fetchCartItems, CheckOutOrder } from "../redux/actions";
 import { GetUser } from "../../authentication/redux/actions";
+import * as routes from "@/main/constants/routes";
 
 const INITIAL_STATE = {
   form: {
@@ -100,9 +102,15 @@ class CartCheckOut extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.user !== this.props.user) {
+    const { history, cart, user } = this.props;
+    if (prevProps.user !== user) {
       // fill form with user info
-      this.setState({ form: { ...this.props.user } });
+      this.setState({ form: { ...user } });
+    }
+    if (prevProps.cart !== cart) {
+      if (cart.length === 0) {
+        history.push(routes.CART);
+      }
     }
   }
 
@@ -239,7 +247,7 @@ class CartCheckOut extends Component {
   }
 }
 
-const actions = { fetchCartItems, GetUser };
+const actions = { fetchCartItems, GetUser, CheckOutOrder };
 
 const mapStateToProps = state => ({
   cart: state.cartState.cart,
@@ -250,4 +258,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions
-)(CartCheckOut);
+)(withRouter(CartCheckOut));
