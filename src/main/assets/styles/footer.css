@@ -9,7 +9,7 @@
     flex: 1;
     background-color: #343a40;
     padding-bottom: 7px;
-    z-index: 999;
+    z-index: 998;
     @media screen and (max-width: 768px) {
       padding-bottom: 3px;
     }

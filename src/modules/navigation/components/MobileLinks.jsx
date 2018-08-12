@@ -60,7 +60,7 @@ export class MobileLinksWORouter extends Component {
         >
           <Link to={routes.ACCOUNT}>Account</Link>
         </li>
-        {authUser.email !== admin.email ? null : (
+        {authUser && authUser.email === admin.email ? (
           <li
             className={
               location.pathname === routes.ADMIN_PRODUCTS
@@ -70,8 +70,8 @@ export class MobileLinksWORouter extends Component {
           >
             <Link to={routes.ADMIN_PRODUCTS}>Products administration</Link>
           </li>
-        )}
-        {authUser.email !== admin.email ? null : (
+        ) : null}
+        {authUser && authUser.email === admin.email ? (
           <li
             className={
               location.pathname === routes.ADMIN_CATEGORIES
@@ -81,8 +81,8 @@ export class MobileLinksWORouter extends Component {
           >
             <Link to={routes.ADMIN_CATEGORIES}>Categories administration</Link>
           </li>
-        )}
-        {authUser.email !== admin.email ? null : (
+        ) : null}
+        {authUser && authUser.email === admin.email ? (
           <li
             className={
               location.pathname === routes.ADMIN_USERS
@@ -92,7 +92,7 @@ export class MobileLinksWORouter extends Component {
           >
             <Link to={routes.ADMIN_USERS}>Users</Link>
           </li>
-        )}
+        ) : null}
       </ul>
     );
   }
