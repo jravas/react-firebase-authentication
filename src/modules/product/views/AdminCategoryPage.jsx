@@ -34,7 +34,7 @@ class AdminCategoryPage extends Component {
     const { modal } = this.state;
     return (
       <div>
-        {modal ? <AdminCategoryAdd onClick={this.closeModal} /> : null}
+        {modal && <AdminCategoryAdd onClick={this.closeModal} />}
         <AdminCategoriesList
           categories={categories}
           handleClickAction={this.handleClickAction}

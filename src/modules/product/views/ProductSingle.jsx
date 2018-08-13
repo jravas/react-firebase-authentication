@@ -35,33 +35,35 @@ class ProductSingle extends Component {
   render() {
     const { imgLoading } = this.state;
     const { product } = this.props;
-    return !product ? null : (
-      <section className="product-single container-style">
-        <div
-          onLoad={this.handleLoad}
-          className={`product-single__image ${
-            imgLoading
-              ? "product-single__image--loading"
-              : "product-single__image"
-          }`}
-        >
-          <img src={product.imageUrl} alt="Product" />
-        </div>
-        <div className="product-single__info">
-          <h1 className="product-single__info__title">{product.name}</h1>
-          <p className="product-single__info__description">
-            {product.description}
-          </p>
-          <div className="product-single__info__add-price">
-            <p>
-              {product.discountActive ? product.actionPrice : product.price} $
-            </p>
-            <button className="default-button" onClick={this.addToCart}>
-              Add to cart
-            </button>
+    return (
+      product && (
+        <section className="product-single container-style">
+          <div
+            onLoad={this.handleLoad}
+            className={`product-single__image ${
+              imgLoading
+                ? "product-single__image--loading"
+                : "product-single__image"
+            }`}
+          >
+            <img src={product.imageUrl} alt="Product" />
           </div>
-        </div>
-      </section>
+          <div className="product-single__info">
+            <h1 className="product-single__info__title">{product.name}</h1>
+            <p className="product-single__info__description">
+              {product.description}
+            </p>
+            <div className="product-single__info__add-price">
+              <p>
+                {product.discountActive ? product.actionPrice : product.price} $
+              </p>
+              <button className="default-button" onClick={this.addToCart}>
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </section>
+      )
     );
   }
 }
@@ -69,7 +71,7 @@ class ProductSingle extends Component {
 const actions = { fetchProduct, AddToCart };
 
 const mapStateToProps = state => ({
-  product: state.productsState.products,
+  product: state.productsState.product,
   authUser: state.sessionState.authUser
 });
 

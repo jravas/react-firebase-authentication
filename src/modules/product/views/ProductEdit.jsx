@@ -171,11 +171,11 @@ class ProductEdit extends Component {
               value={name}
               onChange={this.handleInput}
             />
-            {errors.name ? (
+            {errors.name && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="Product price"
@@ -184,11 +184,11 @@ class ProductEdit extends Component {
               value={price}
               onChange={this.handleInput}
             />
-            {errors.price ? (
+            {errors.price && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <div className="form-container__form__discount">
               <span>Discount:</span>
               <label htmlFor="action">
@@ -212,7 +212,7 @@ class ProductEdit extends Component {
                 No
               </label>
             </div>
-            {discountActive ? (
+            {discountActive && (
               <input
                 className="form-container__form__input"
                 placeholder="Discount price"
@@ -221,7 +221,7 @@ class ProductEdit extends Component {
                 value={actionPrice}
                 onChange={this.handleInput}
               />
-            ) : null}
+            )}
             <div className="form-container__form__wrap">
               <select
                 className="form-container__form__wrap__select"
@@ -230,11 +230,11 @@ class ProductEdit extends Component {
                 value={category}
                 onChange={this.handleInput}
               >
-                {!categories
+                {!categories.length
                   ? null
-                  : Object.keys(categories).map(key => (
-                      <option key={key} value={categories[key].name}>
-                        {categories[key].name}
+                  : categories.map(item => (
+                      <option key={item.id} value={item.name}>
+                        {item.name}
                       </option>
                     ))}
               </select>
@@ -247,11 +247,11 @@ class ProductEdit extends Component {
               cols="30"
               rows="10"
             />
-            {errors.description ? (
+            {errors.description && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input type="file" onChange={this.fileSelectedHandler} />
             <button
               type="button"
@@ -271,7 +271,7 @@ const actions = { fetchCategories, fetchProduct, updateProduct };
 
 const mapStateToProps = state => ({
   categories: state.categoriesState.categories,
-  product: state.productsState.products
+  product: state.productsState.product
 });
 
 export default connect(

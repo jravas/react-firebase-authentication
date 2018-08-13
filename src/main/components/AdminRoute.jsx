@@ -8,7 +8,7 @@ const AdminRoute = ({ component: Component, authUser, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        authUser !== null && authUser.email === admin.email ? (
+        authUser && authUser.email === admin.email ? (
           <Component {...props} />
         ) : (
           <Redirect

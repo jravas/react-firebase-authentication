@@ -133,7 +133,7 @@ class AdminProductAdd extends Component {
             className="item-add__cancel"
             onClick={onClick}
           />
-          {!pictureUrl ? null : (
+          {pictureUrl && (
             <div className="item-add__image">
               <img src={pictureUrl} alt="Product" />
             </div>
@@ -147,11 +147,11 @@ class AdminProductAdd extends Component {
               value={name}
               onChange={this.handleInput}
             />
-            {errors.name ? (
+            {errors.name && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="Product price"
@@ -160,11 +160,11 @@ class AdminProductAdd extends Component {
               value={price}
               onChange={this.handleInput}
             />
-            {errors.price ? (
+            {errors.price && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <div className="form-container__form__discount">
               <span>Discount:</span>
               <label htmlFor="action">
@@ -188,7 +188,7 @@ class AdminProductAdd extends Component {
                 No
               </label>
             </div>
-            {discountActive ? (
+            {discountActive && (
               <input
                 className="form-container__form__input"
                 placeholder="Discount price"
@@ -197,7 +197,7 @@ class AdminProductAdd extends Component {
                 value={actionPrice}
                 onChange={this.handleInput}
               />
-            ) : null}
+            )}
             <div className="form-container__form__wrap">
               <select
                 className="form-container__form__wrap__select"
@@ -206,14 +206,11 @@ class AdminProductAdd extends Component {
                 onChange={this.handleInput}
                 value={category}
               >
-                {!categories
+                {!categories.length
                   ? null
-                  : Object.keys(categories).map(key => (
-                      <option
-                        key={categories[key].id}
-                        value={categories[key].name}
-                      >
-                        {categories[key].name}
+                  : categories.map(item => (
+                      <option key={item.id} value={item.name}>
+                        {item.name}
                       </option>
                     ))}
               </select>
@@ -226,21 +223,21 @@ class AdminProductAdd extends Component {
               cols="30"
               rows="10"
             />
-            {errors.description ? (
+            {errors.description && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__file"
               type="file"
               onChange={this.fileSelectedHandler}
             />
-            {errors.picture ? (
+            {errors.picture && (
               <p className="form-container__form__error">
                 Product image is required !
               </p>
-            ) : null}
+            )}
             <button
               className="default-button"
               type="button"

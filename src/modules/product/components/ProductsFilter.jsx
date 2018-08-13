@@ -7,7 +7,7 @@ export const ProductsFilter = ({ onFilter, onCategoryFilter, categories }) => (
         className="filter-container__wrap__select"
         onChange={onCategoryFilter}
       >
-        {!categories
+        {!categories.length
           ? null
           : categories.map((item, index) => (
               <option key={index} value={item}>

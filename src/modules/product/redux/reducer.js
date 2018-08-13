@@ -1,14 +1,19 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR, FETCH_CATEGORIES } from "./types";
+import {
+  FETCH_PRODUCT,
+  FETCH_PRODUCTS_ARR,
+  FETCH_CATEGORIES,
+  FETCH_CATEGORY
+} from "./types";
 
 export const productsReducer = (
-  state = { products: {}, productsArr: [] },
+  state = { productsArr: [], product: {} },
   action
 ) => {
   switch (action.type) {
-    case FETCH_PRODUCTS: {
+    case FETCH_PRODUCT: {
       return {
         ...state,
-        products: action.payload
+        product: action.payload
       };
     }
     case FETCH_PRODUCTS_ARR: {
@@ -30,12 +35,27 @@ export const productsReducer = (
 
 // categories reducer
 
-export const categoriesReducer = (state = { categories: {} }, action) => {
+export const categoriesReducer = (
+  state = { categories: [], category: {} },
+  action
+) => {
   switch (action.type) {
     case FETCH_CATEGORIES: {
+      let arr = [];
+      if (action.payload) {
+        Object.keys(action.payload).map(key => {
+          return arr.push(action.payload[key]);
+        });
+      }
       return {
         ...state,
-        categories: action.payload
+        categories: arr
+      };
+    }
+    case FETCH_CATEGORY: {
+      return {
+        ...state,
+        category: action.payload
       };
     }
     default:

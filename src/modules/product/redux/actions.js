@@ -1,6 +1,11 @@
 import { productsRef, storage, categoriesRef } from "@/main/firebase/firebase";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ARR, FETCH_CATEGORIES } from "./types";
+import {
+  FETCH_PRODUCT,
+  FETCH_PRODUCTS_ARR,
+  FETCH_CATEGORIES,
+  FETCH_CATEGORY
+} from "./types";
 import { Product } from "../models/product";
 import { Category } from "../models/category";
 import { toast } from "react-toastify";
@@ -145,25 +150,13 @@ export const fetchProduct = productId => async dispatch => {
     .child(productId)
     .once("value", snapshot => {
       dispatch({
-        type: FETCH_PRODUCTS,
+        type: FETCH_PRODUCT,
         payload: snapshot.val()
       });
     })
     .then(() => {
       dispatch(hideLoading());
     });
-};
-
-// list products
-export const fetchProducts = () => async dispatch => {
-  dispatch(showLoading());
-  productsRef.on("value", snapshot => {
-    dispatch({
-      type: FETCH_PRODUCTS,
-      payload: snapshot.val()
-    });
-    dispatch(hideLoading());
-  });
 };
 
 // list products
@@ -289,7 +282,7 @@ export const fetchCategory = categoryId => async dispatch => {
   dispatch(showLoading());
   categoriesRef.child(categoryId).on("value", snapshot => {
     dispatch({
-      type: FETCH_CATEGORIES,
+      type: FETCH_CATEGORY,
       payload: snapshot.val()
     });
     dispatch(hideLoading());

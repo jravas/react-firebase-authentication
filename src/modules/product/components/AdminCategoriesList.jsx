@@ -2,12 +2,12 @@ import React from "react";
 import { AdminCategoryItem } from "./AdminCategoryItem";
 
 export const AdminCategoriesList = ({ categories, handleClickAction }) => {
-  return !categories ? null : (
+  return !categories.length ? null : (
     <ul className="items-list-admin container-style">
-      {Object.keys(categories).map(key => (
+      {categories.map(item => (
         <AdminCategoryItem
-          key={key}
-          item={categories[key]}
+          key={item.id}
+          item={item}
           handleClickAction={handleClickAction}
         />
       ))}

@@ -138,11 +138,11 @@ class CartCheckOut extends Component {
             value={firstName}
             onChange={this.handleInput}
           />
-          {errors.firstName ? (
+          {errors.firstName && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Last Name"
@@ -151,11 +151,11 @@ class CartCheckOut extends Component {
             value={lastName}
             onChange={this.handleInput}
           />
-          {errors.lastName ? (
+          {errors.lastName && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Email"
@@ -164,11 +164,11 @@ class CartCheckOut extends Component {
             value={email}
             onChange={this.handleInput}
           />
-          {errors.email ? (
+          {errors.email && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Address"
@@ -177,11 +177,11 @@ class CartCheckOut extends Component {
             value={address}
             onChange={this.handleInput}
           />
-          {errors.address ? (
+          {errors.address && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="State"
@@ -190,11 +190,11 @@ class CartCheckOut extends Component {
             value={state}
             onChange={this.handleInput}
           />
-          {errors.state ? (
+          {errors.state && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Phone"
@@ -203,11 +203,11 @@ class CartCheckOut extends Component {
             value={phone}
             onChange={this.handleInput}
           />
-          {errors.phone ? (
+          {errors.phone && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="City"
@@ -216,11 +216,11 @@ class CartCheckOut extends Component {
             value={city}
             onChange={this.handleInput}
           />
-          {errors.city ? (
+          {errors.city && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="ZIP code"
@@ -229,11 +229,11 @@ class CartCheckOut extends Component {
             value={zipCode}
             onChange={this.handleInput}
           />
-          {errors.zipCode ? (
+          {errors.zipCode && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <button
             className="default-button"
             type="button"

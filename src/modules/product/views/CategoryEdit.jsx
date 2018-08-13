@@ -58,11 +58,11 @@ class CategoryEdit extends Component {
             value={name}
             onChange={this.handleInput}
           />
-          {errors.name ? (
+          {errors.name && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <button
             className="default-button"
             type="button"
@@ -79,7 +79,7 @@ class CategoryEdit extends Component {
 const actions = { fetchCategory, updateCategory };
 
 const mapStateToProps = state => ({
-  category: state.categoriesState.categories
+  category: state.categoriesState.category
 });
 
 export default connect(

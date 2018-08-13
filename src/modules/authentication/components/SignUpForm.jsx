@@ -140,11 +140,11 @@ class SignUpForm extends Component {
             value={username}
             onChange={this.handleInput}
           />
-          {errors.username ? (
+          {errors.username && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             type="email"
             className="form-container__form__input"
@@ -155,11 +155,11 @@ class SignUpForm extends Component {
             value={email}
             onChange={this.handleInput}
           />
-          {errors.email ? (
+          {errors.email && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
 
           {!errors.email && email.length && !isEmail(email) ? (
             <p className="form-container__form__error">Not valid email !</p>
@@ -172,11 +172,11 @@ class SignUpForm extends Component {
             value={firstName}
             onChange={this.handleInput}
           />
-          {errors.firstName ? (
+          {errors.firstName && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Last Name"
@@ -185,11 +185,11 @@ class SignUpForm extends Component {
             value={lastName}
             onChange={this.handleInput}
           />
-          {errors.lastName ? (
+          {errors.lastName && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Address"
@@ -198,11 +198,11 @@ class SignUpForm extends Component {
             value={address}
             onChange={this.handleInput}
           />
-          {errors.address ? (
+          {errors.address && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="State"
@@ -211,11 +211,11 @@ class SignUpForm extends Component {
             value={state}
             onChange={this.handleInput}
           />
-          {errors.state ? (
+          {errors.state && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="Phone"
@@ -224,11 +224,11 @@ class SignUpForm extends Component {
             value={phone}
             onChange={this.handleInput}
           />
-          {errors.phone ? (
+          {errors.phone && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="City"
@@ -237,11 +237,11 @@ class SignUpForm extends Component {
             value={city}
             onChange={this.handleInput}
           />
-          {errors.city ? (
+          {errors.city && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             className="form-container__form__input"
             placeholder="ZIP code"
@@ -250,11 +250,11 @@ class SignUpForm extends Component {
             value={zipCode}
             onChange={this.handleInput}
           />
-          {errors.zipCode ? (
+          {errors.zipCode && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
+          )}
           <input
             type="password"
             className="form-container__form__input"
@@ -264,16 +264,16 @@ class SignUpForm extends Component {
             value={passwordOne}
             onChange={this.handleInput}
           />
-          {errors.passwordOne ? (
+          {errors.passwordOne && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
-          {errors.passwordsSame ? (
+          )}
+          {errors.passwordsSame && (
             <p className="form-container__form__error">
               Passwords must be identical !
             </p>
-          ) : null}
+          )}
           <input
             type="password"
             className="form-container__form__input"
@@ -283,16 +283,16 @@ class SignUpForm extends Component {
             value={passwordTwo}
             onChange={this.handleInput}
           />
-          {errors.passwordTwo ? (
+          {errors.passwordTwo && (
             <p className="form-container__form__error">
               This field is required !
             </p>
-          ) : null}
-          {errors.passwordsSame ? (
+          )}
+          {errors.passwordsSame && (
             <p className="form-container__form__error">
               Passwords must be identical !
             </p>
-          ) : null}
+          )}
           <button
             type="button"
             className="default-button"

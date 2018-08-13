@@ -2,15 +2,15 @@ import React from "react";
 import { AdminProductItem } from "./AdminProductItem";
 
 export const AdminProductsList = ({ products, handleClickAction }) => {
-  return products ? (
+  return !products.length ? null : (
     <ul className="items-list-admin container-style">
-      {Object.keys(products).map(key => (
+      {products.map(product => (
         <AdminProductItem
-          key={key}
-          item={products[key]}
+          key={product.id}
+          item={product}
           handleClickAction={handleClickAction}
         />
       ))}
     </ul>
-  ) : null;
+  );
 };

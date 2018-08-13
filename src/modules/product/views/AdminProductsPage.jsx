@@ -23,8 +23,8 @@ class AdminProductsPage extends Component {
   };
 
   componentDidMount() {
-    const { fetchProducts } = this.props;
-    fetchProducts();
+    const { fetchProductsArr } = this.props;
+    fetchProductsArr();
   }
 
   render() {
@@ -32,7 +32,7 @@ class AdminProductsPage extends Component {
     const { modal } = this.state;
     return (
       <div>
-        {!modal ? null : <AdminProductAdd onClick={this.closeModal} />}
+        {modal && <AdminProductAdd onClick={this.closeModal} />}
         <AdminProductsList
           products={products}
           handleClickAction={this.handleClickAction}
@@ -44,7 +44,7 @@ class AdminProductsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.productsState.products
+  products: state.productsState.productsArr
 });
 
 export default connect(

@@ -28,11 +28,6 @@ export class HomeSlider extends Component {
         1024: {
           slidesPerView: 2,
           centeredSlides: false
-        },
-        // when window width is <= 768
-        768: {
-          slidesPerView: 1,
-          centeredSlides: false
         }
       }
     };

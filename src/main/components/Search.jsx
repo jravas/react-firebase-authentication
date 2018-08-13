@@ -15,7 +15,7 @@ class Search extends Component {
   };
   render() {
     const { products } = this.props;
-    return !products ? null : (
+    return !products.length ? null : (
       <Downshift
         onChange={this.itemSelected}
         itemToString={item => (item ? item.name : "")}
@@ -43,41 +43,38 @@ class Search extends Component {
               placeholder="Search products"
             />
             <ul className="search-list" {...getMenuProps()}>
-              {isOpen
-                ? products
-                    .filter(
-                      item =>
-                        !inputValue ||
-                        item.name.includes(inputValue) ||
-                        item.name
-                          .toLowerCase()
-                          .includes(inputValue.toLowerCase())
-                    )
-                    .map(
-                      (item, index) =>
-                        // list only first 6 search results
-                        index > 5 ? null : (
-                          <li
-                            className={
-                              highlightedIndex === index ? "selected" : ""
-                            }
-                            {...getItemProps({
-                              key: item.id,
-                              index,
-                              item
-                            })}
-                          >
-                            <div className="search-list__image">
-                              <img src={item.imageUrl} alt="Product" />
-                            </div>
-                            <div className="search-list__info">
-                              <h1>{item.name}</h1>
-                              <p>{item.price}</p>
-                            </div>
-                          </li>
-                        )
-                    )
-                : null}
+              {isOpen &&
+                products
+                  .filter(
+                    item =>
+                      !inputValue ||
+                      item.name.includes(inputValue) ||
+                      item.name.toLowerCase().includes(inputValue.toLowerCase())
+                  )
+                  .map(
+                    (item, index) =>
+                      // list only first 6 search results
+                      index > 5 ? null : (
+                        <li
+                          className={
+                            highlightedIndex === index ? "selected" : ""
+                          }
+                          {...getItemProps({
+                            key: item.id,
+                            index,
+                            item
+                          })}
+                        >
+                          <div className="search-list__image">
+                            <img src={item.imageUrl} alt="Product" />
+                          </div>
+                          <div className="search-list__info">
+                            <h1>{item.name}</h1>
+                            <p>{item.price}</p>
+                          </div>
+                        </li>
+                      )
+                  )}
             </ul>
           </div>
         )}

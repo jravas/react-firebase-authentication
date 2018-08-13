@@ -126,11 +126,11 @@ class AccountPage extends Component {
               value={firstName}
               onChange={this.handleInput}
             />
-            {errors.firstName ? (
+            {errors.firstName && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="Last Name"
@@ -139,11 +139,11 @@ class AccountPage extends Component {
               value={lastName}
               onChange={this.handleInput}
             />
-            {errors.lastName ? (
+            {errors.lastName && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="Address"
@@ -152,11 +152,11 @@ class AccountPage extends Component {
               value={address}
               onChange={this.handleInput}
             />
-            {errors.address ? (
+            {errors.address && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="State"
@@ -165,11 +165,11 @@ class AccountPage extends Component {
               value={state}
               onChange={this.handleInput}
             />
-            {errors.state ? (
+            {errors.state && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="Phone"
@@ -178,11 +178,11 @@ class AccountPage extends Component {
               value={phone}
               onChange={this.handleInput}
             />
-            {errors.phone ? (
+            {errors.phone && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="City"
@@ -191,11 +191,11 @@ class AccountPage extends Component {
               value={city}
               onChange={this.handleInput}
             />
-            {errors.city ? (
+            {errors.city && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <input
               className="form-container__form__input"
               placeholder="ZIP code"
@@ -204,11 +204,11 @@ class AccountPage extends Component {
               value={zipCode}
               onChange={this.handleInput}
             />
-            {errors.zipCode ? (
+            {errors.zipCode && (
               <p className="form-container__form__error">
                 This field is required !
               </p>
-            ) : null}
+            )}
             <button
               className="default-button"
               type="button"

@@ -13,9 +13,7 @@ class UsersList extends Component {
     const { users } = this.props;
     return (
       <ul className="items-list-admin container-style">
-        {Object.keys(users).map((key, i) => (
-          <UserItem user={users[key]} key={users[key].id} />
-        ))}
+        {users.map(item => <UserItem user={item} key={item.id} />)}
       </ul>
     );
   }

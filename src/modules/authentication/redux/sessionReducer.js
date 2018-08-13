@@ -1,9 +1,6 @@
 import { AUTH_USER_SET } from "./types";
 
-export const sessionReducer = (
-  state = { authUser: null, user: null },
-  action
-) => {
+export const sessionReducer = (state = { authUser: null }, action) => {
   switch (action.type) {
     case AUTH_USER_SET: {
       return {

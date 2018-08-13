@@ -11,7 +11,7 @@ export class ProductPublic extends Component {
   render() {
     const { imgLoading, productAction } = this.state;
     const { product } = this.props;
-    return !product ? null : (
+    return (
       <li className={productAction ? "product product--action" : "product"}>
         {!product.discountActive ? null : (
           <div className="product--action__image" />
@@ -27,7 +27,7 @@ export class ProductPublic extends Component {
           </section>
           <section className="product__info">
             <h1 className="product__info__name">{product.name}</h1>
-            {!product.discountActive ? null : (
+            {product.discountActive && (
               <p className="product__info__price-old">{product.price}</p>
             )}
             <p className="product__info__price">
